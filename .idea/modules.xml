@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-admin/bcap-bpm-admin.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-admin/bcap-bpm-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-api/bcap-bpm-api.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-api/bcap-bpm-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-core/bcap-bpm-core.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-core/bcap-bpm-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-domain/bcap-bpm-domain.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-domain/bcap-bpm-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-web/bcap-bpm-web.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-web/bcap-bpm-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-core/bcap-common-core.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-core/bcap-common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-support/bcap-common-support.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-support/bcap-common-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-master.iml" filepath="$PROJECT_DIR$/bcap-master.iml" />
+    </modules>
+  </component>
+</project>
