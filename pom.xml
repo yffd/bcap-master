@@ -12,6 +12,7 @@
         <module>bcap-bpm</module>
         <module>bcap-common</module>
         <module>bcap-demo</module>
+        <module>bcap-uamc</module>
     </modules>
 
     <properties>
@@ -23,6 +24,7 @@
         <fastjson.version>1.2.46</fastjson.version>
 
         <druid.version>1.1.6</druid.version>
+        <httpclient.version>4.5.2</httpclient.version>
 
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -65,6 +67,17 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

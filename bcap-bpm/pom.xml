@@ -15,11 +15,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>bcap-bpm-api</module>
-        <module>bcap-bpm-core</module>
         <module>bcap-bpm-domain</module>
-        <module>bcap-bpm-web</module>
-        <module>bcap-bpm-admin</module>
+        <module>bcap-bpm-client</module>
+        <module>bcap-bpm-infrastructure</module>
+        <module>bcap-bpm-application</module>
+        <module>bcap-bpm-ui</module>
     </modules>
 
     <properties>

@@ -12,13 +12,20 @@
     <artifactId>bcap-common-support</artifactId>
 
     <properties>
-        <bcap-common-core.version>1.0.0</bcap-common-core.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.yffd</groupId>
-            <artifactId>bcap-common-core</artifactId>
-            <version>${bcap-common-core.version}</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

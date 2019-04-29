@@ -12,9 +12,8 @@
     <artifactId>bcap-common</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>bcap-common-web</module>
         <module>bcap-common-support</module>
-        <module>bcap-common-core</module>
+        <module>bcap-common-web</module>
     </modules>
 
 </project>

@@ -7,24 +7,31 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bcap-bpm-admin" />
-        <module name="bcap-bpm-api" />
-        <module name="bcap-bpm-core" />
+        <module name="bcap-bpm-application" />
+        <module name="bcap-bpm-client" />
         <module name="bcap-bpm-domain" />
-        <module name="bcap-bpm-web" />
-        <module name="bcap-common-core" />
+        <module name="bcap-bpm-infrastructure" />
+        <module name="bcap-bpm-ui" />
         <module name="bcap-common-support" />
         <module name="bcap-common-web" />
         <module name="bcap-demo-core" />
+        <module name="bcap-infrastructure" />
+        <module name="bcap-uamc-domain" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bcap-application" target="8" />
       <module name="bcap-bpm" target="8" />
       <module name="bcap-bpm-admin" target="8" />
       <module name="bcap-bpm-api" target="8" />
+      <module name="bcap-bpm-app" target="8" />
+      <module name="bcap-bpm-application" target="8" />
+      <module name="bcap-bpm-client" target="8" />
       <module name="bcap-bpm-core" target="8" />
       <module name="bcap-bpm-domain" target="8" />
+      <module name="bcap-bpm-infrastructure" target="8" />
       <module name="bcap-bpm-service" target="8" />
+      <module name="bcap-bpm-ui" target="8" />
       <module name="bcap-bpm-web" target="8" />
       <module name="bcap-common" target="8" />
       <module name="bcap-common-core" target="8" />
@@ -32,7 +39,12 @@
       <module name="bcap-common-web" target="8" />
       <module name="bcap-demo" target="8" />
       <module name="bcap-demo-core" target="8" />
+      <module name="bcap-domain" target="8" />
+      <module name="bcap-infrastructure" target="8" />
       <module name="bcap-master" target="8" />
+      <module name="bcap-uamc" target="8" />
+      <module name="bcap-uamc-domain" target="8" />
+      <module name="bcap-ui" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -11,5 +11,16 @@
 
     <artifactId>bcap-bpm-domain</artifactId>
 
+    <properties>
+        <bcap-bpm.version>1.0.0</bcap-bpm.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

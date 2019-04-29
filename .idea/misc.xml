@@ -8,8 +8,18 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/bcap-application/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-api/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-app/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-core/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-service/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-web/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-bpm/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-common/bcap-common-core/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-ui/pom.xml" />
       </set>
     </option>
   </component>
