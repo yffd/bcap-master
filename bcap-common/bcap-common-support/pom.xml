@@ -12,20 +12,36 @@
     <artifactId>bcap-common-support</artifactId>
 
     <properties>
+        <!-- spring -->
+        <spring.version>4.2.6.RELEASE</spring.version>
+        <mybatis.version>3.4.0</mybatis.version>
     </properties>
+
     <dependencies>
+        <dependency>
+            <groupId>com.yffd</groupId>
+            <artifactId>bcap-common-domain</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
+
 </project>
