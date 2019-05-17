@@ -1,6 +1,6 @@
 package com.yffd.bcap.common.code.generator.sql;
 
-import com.yffd.bcap.common.support.util.StringUtil;
+import com.yffd.bcap.common.support.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,7 +131,7 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < size; i++) {
 			TableColumn tc = tableColumns.get(i);
-			if (StringUtil.isNotBlank(tableAlias)) sb.append(tableAlias).append(".");
+			if (StringUtils.isNotBlank(tableAlias)) sb.append(tableAlias).append(".");
 			sb.append(tc.getColName()).append(" as ").append(tc.getPropName());
 			if (i < (size - 1)) sb.append(", ");
 			if (((i+1) % 5) == 0) sb.append("\r\n");

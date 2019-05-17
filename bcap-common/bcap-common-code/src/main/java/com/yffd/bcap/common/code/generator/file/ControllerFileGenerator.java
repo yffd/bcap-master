@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Date;
 
-import com.yffd.bcap.common.support.util.StringUtil;
+import com.yffd.bcap.common.support.util.StringUtils;
 
 /**
  * @Description  XxxController代码生成器.
@@ -29,7 +29,7 @@ public class ControllerFileGenerator extends FileGenerator {
 		
 	public String getRequestMapping(Class<?> entityClazz) {
 		String tmp = this.entityFmt(entityClazz, null, "Entity", null, null);
-		String underlineStr = StringUtil.camel2underline(tmp, false, null, null);
+		String underlineStr = StringUtils.camel2underline(tmp, false, null, null);
 		underlineStr = underlineStr.substring(underlineStr.indexOf("_")+1);//去掉前缀
 		String ret = "/" + underlineStr.replace("_", "/");
 		return ret;

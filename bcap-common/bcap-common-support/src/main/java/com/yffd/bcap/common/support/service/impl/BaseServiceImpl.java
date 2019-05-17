@@ -85,13 +85,13 @@ public abstract class BaseServiceImpl<E> implements IBaseService<E> {
 	}
 
 	@Override
-	public Integer save(E entity, LoginInfo loginInfo) {
+	public Integer addOne(E entity, LoginInfo loginInfo) {
 		this.beforeSetPropertiesForAdd(entity, loginInfo);
 		return this.getBindDao().insertOne(entity);
 	}
 
 	@Override
-	public Integer save(List<E> entityList, LoginInfo loginInfo) {
+	public Integer addList(List<E> entityList, LoginInfo loginInfo) {
 		if(null==entityList || entityList.size()==0) return 0;
 		List<E> tmpList = new ArrayList<E>();
 		for(E entity : entityList) {

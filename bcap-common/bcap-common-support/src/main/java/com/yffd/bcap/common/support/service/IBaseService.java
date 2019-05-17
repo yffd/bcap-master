@@ -125,7 +125,7 @@ public interface IBaseService<E> {
 	 * @param loginInfo
 	 * @return
 	 */
-	Integer save(E entity, LoginInfo loginInfo);
+	Integer addOne(E entity, LoginInfo loginInfo);
 	
 	/**
 	 * 添加：批量
@@ -135,7 +135,7 @@ public interface IBaseService<E> {
 	 * @param loginInfo
 	 * @return
 	 */
-	Integer save(List<E> entityList, LoginInfo loginInfo);
+	Integer addList(List<E> entityList, LoginInfo loginInfo);
 	
 	/**
 	 * 修改

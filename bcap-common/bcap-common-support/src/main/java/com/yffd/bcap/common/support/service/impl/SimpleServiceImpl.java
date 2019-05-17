@@ -3,7 +3,7 @@ package com.yffd.bcap.common.support.service.impl;
 import com.yffd.bcap.common.domain.model.login.LoginInfo;
 import com.yffd.bcap.common.domain.model.page.PageData;
 import com.yffd.bcap.common.domain.model.page.PageInfo;
-import com.yffd.bcap.common.support.repository.mybatis.dao.DefaultMybatisDao;
+import com.yffd.bcap.common.support.db.mybatis.dao.DefaultMybatisDao;
 import com.yffd.bcap.common.support.service.IBaseService;
 
 import java.util.ArrayList;
@@ -83,13 +83,13 @@ public abstract class SimpleServiceImpl<E> extends DefaultMybatisDao<E> implemen
 	}
 	
 	@Override
-	public Integer save(E entity, LoginInfo loginInfo) {
+	public Integer addOne(E entity, LoginInfo loginInfo) {
 		this.beforeSetPropertiesForAdd(entity, loginInfo);
 		return super.insertOneBy(entity);
 	}
 
 	@Override
-	public Integer save(List<E> entityList, LoginInfo loginInfo) {
+	public Integer addList(List<E> entityList, LoginInfo loginInfo) {
 		if(null==entityList || entityList.size()==0) return 0;
 		List<E> tmpList = new ArrayList<>();
 		for(E entity : entityList) {

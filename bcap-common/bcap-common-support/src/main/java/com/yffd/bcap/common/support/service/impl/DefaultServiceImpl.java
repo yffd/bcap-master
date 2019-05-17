@@ -1,8 +1,8 @@
 package com.yffd.bcap.common.support.service.impl;
 
-import com.yffd.bcap.common.domain.model.EntityObject;
+import com.yffd.bcap.common.domain.model.entity.EntityObject;
 import com.yffd.bcap.common.domain.model.login.LoginInfo;
-import com.yffd.bcap.common.support.repository.mybatis.MybatisConstants;
+import com.yffd.bcap.common.support.db.mybatis.MybatisConstants;
 import com.yffd.bcap.common.support.service.IBaseService;
 
 import java.util.Date;

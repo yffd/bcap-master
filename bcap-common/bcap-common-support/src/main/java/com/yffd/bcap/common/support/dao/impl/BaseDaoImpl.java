@@ -3,7 +3,7 @@ package com.yffd.bcap.common.support.dao.impl;
 import com.yffd.bcap.common.domain.model.page.PageData;
 import com.yffd.bcap.common.domain.model.page.PageInfo;
 import com.yffd.bcap.common.support.dao.IBaseDao;
-import com.yffd.bcap.common.support.repository.mybatis.dao.DefaultMybatisDao;
+import com.yffd.bcap.common.support.db.mybatis.dao.DefaultMybatisDao;
 
 import java.util.List;
 

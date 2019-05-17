@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/bcap-common/bcap-common-core/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-ui/pom.xml" />
       </set>
     </option>

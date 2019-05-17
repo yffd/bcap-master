@@ -13,6 +13,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>bcap-uamc-domain</module>
+        <module>bcap-uamc-application</module>
+        <module>bcap-uamc-infrastructure</module>
+        <module>bcap-uamc-client</module>
     </modules>
 
 

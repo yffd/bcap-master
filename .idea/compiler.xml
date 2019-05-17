@@ -12,39 +12,52 @@
         <module name="bcap-bpm-domain" />
         <module name="bcap-bpm-infrastructure" />
         <module name="bcap-bpm-ui" />
+        <module name="bcap-common-code" />
+        <module name="bcap-common-domain" />
+        <module name="bcap-common-domain-support" />
         <module name="bcap-common-support" />
         <module name="bcap-common-web" />
         <module name="bcap-demo-core" />
         <module name="bcap-infrastructure" />
+        <module name="bcap-uamc-application" />
+        <module name="bcap-uamc-client" />
         <module name="bcap-uamc-domain" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bcap-application" target="8" />
-      <module name="bcap-bpm" target="8" />
+      <module name="bcap-bpm" target="1.8" />
       <module name="bcap-bpm-admin" target="8" />
       <module name="bcap-bpm-api" target="8" />
       <module name="bcap-bpm-app" target="8" />
-      <module name="bcap-bpm-application" target="8" />
-      <module name="bcap-bpm-client" target="8" />
+      <module name="bcap-bpm-application" target="1.8" />
+      <module name="bcap-bpm-client" target="1.8" />
       <module name="bcap-bpm-core" target="8" />
-      <module name="bcap-bpm-domain" target="8" />
-      <module name="bcap-bpm-infrastructure" target="8" />
+      <module name="bcap-bpm-domain" target="1.8" />
+      <module name="bcap-bpm-infrastructure" target="1.8" />
       <module name="bcap-bpm-service" target="8" />
-      <module name="bcap-bpm-ui" target="8" />
+      <module name="bcap-bpm-ui" target="1.8" />
       <module name="bcap-bpm-web" target="8" />
-      <module name="bcap-common" target="8" />
+      <module name="bcap-common" target="1.8" />
+      <module name="bcap-common-code" target="1.8" />
       <module name="bcap-common-core" target="8" />
-      <module name="bcap-common-support" target="8" />
-      <module name="bcap-common-web" target="8" />
-      <module name="bcap-demo" target="8" />
-      <module name="bcap-demo-core" target="8" />
+      <module name="bcap-common-domain" target="1.8" />
+      <module name="bcap-common-domain-support" target="1.8" />
+      <module name="bcap-common-support" target="1.8" />
+      <module name="bcap-common-web" target="1.8" />
+      <module name="bcap-demo" target="1.8" />
+      <module name="bcap-demo-core" target="1.8" />
       <module name="bcap-domain" target="8" />
       <module name="bcap-infrastructure" target="8" />
-      <module name="bcap-master" target="8" />
-      <module name="bcap-uamc" target="8" />
-      <module name="bcap-uamc-domain" target="8" />
+      <module name="bcap-master" target="1.8" />
+      <module name="bcap-uamc" target="1.8" />
+      <module name="bcap-uamc-application" target="1.8" />
+      <module name="bcap-uamc-client" target="1.8" />
+      <module name="bcap-uamc-domain" target="1.8" />
+      <module name="bcap-uamc-infrastructure" target="8" />
       <module name="bcap-ui" target="8" />
+      <module name="demo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

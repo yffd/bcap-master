@@ -1,6 +1,6 @@
 package com.yffd.bcap.common.code.generator.sql;
 
-import com.yffd.bcap.common.support.util.StringUtil;
+import com.yffd.bcap.common.support.util.StringUtils;
 
 import java.util.List;
 
@@ -81,7 +81,7 @@ public class InsertMybatisSqlBuilder extends MybatisSqlBuilder {
 			TableColumn tc = tableColumns.get(i);
 			if ("id".equalsIgnoreCase(tc.getColName())) continue;
 			String propName = tc.getPropName();
-			String columnValue = StringUtil.isBlank(paramPreffix) ? propName : paramPreffix + "." + propName;
+			String columnValue = StringUtils.isBlank(paramPreffix) ? propName : paramPreffix + "." + propName;
 			sb.append(String.format("#{%s}", columnValue));
 			if (i < (size - 1)) sb.append(", ");
 			if (((i+1) % 5) == 0) sb.append("\r\n");

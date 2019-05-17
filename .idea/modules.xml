@@ -9,12 +9,17 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-infrastructure/bcap-bpm-infrastructure.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-infrastructure/bcap-bpm-infrastructure.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-ui/bcap-bpm-ui.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-ui/bcap-bpm-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-code/bcap-common-code.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-code/bcap-common-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-domain/bcap-common-domain.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-domain/bcap-common-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-domain-support/bcap-common-domain-support.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-domain-support/bcap-common-domain-support.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-support/bcap-common-support.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-support/bcap-common-support.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-master.iml" filepath="$PROJECT_DIR$/bcap-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/bcap-uamc-application.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/bcap-uamc-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-client/bcap-uamc-client.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-client/bcap-uamc-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" />
     </modules>
   </component>

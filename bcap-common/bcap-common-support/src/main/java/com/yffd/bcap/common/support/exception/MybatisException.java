@@ -1,7 +1,7 @@
 package com.yffd.bcap.common.support.exception;
 
 import com.yffd.bcap.common.domain.model.exception.BaseException;
-import com.yffd.bcap.common.support.util.StringUtil;
+import com.yffd.bcap.common.support.util.StringUtils;
 
 public class MybatisException extends BaseException {
     private static final String DEF_NAME = "bcap-mybatis";
@@ -105,7 +105,7 @@ public class MybatisException extends BaseException {
      */
     public static MybatisException DB_SQL_ID_EMPTY(String... msg) {
         String tmp = "sqlId 不能为空";
-        if (StringUtil.isNotBlank(msg[0])) tmp = msg[0];
+        if (StringUtils.isNotBlank(msg[0])) tmp = msg[0];
         return new MybatisException(null, "DD1000", tmp, "");
     }
 

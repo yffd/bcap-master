@@ -1,6 +1,6 @@
 package com.yffd.bcap.common.domain.model.login;
 
-import com.yffd.bcap.common.domain.model.ValueObject;
+import com.yffd.bcap.common.domain.model.valobj.ValueObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

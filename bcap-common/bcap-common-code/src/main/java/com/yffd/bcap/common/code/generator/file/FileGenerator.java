@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.yffd.bcap.common.support.util.StringUtil;
+import com.yffd.bcap.common.support.util.StringUtils;
 
 /**
  * @Description  简单描述该类的功能（可选）.
@@ -47,11 +47,11 @@ public class FileGenerator {
 	public String entityFmt(Class<?> entityClazz, String entityPrefix, String entitySuffix, 
 			String fmtPrefix, String fmtSuffix) {
 		String simpleName = entityClazz.getSimpleName();
-		int beginIndex = StringUtil.isBlank(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();
-		int endIndex = StringUtil.isBlank(entitySuffix) ? simpleName.length() : simpleName.lastIndexOf(entitySuffix);
+		int beginIndex = StringUtils.isBlank(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();
+		int endIndex = StringUtils.isBlank(entitySuffix) ? simpleName.length() : simpleName.lastIndexOf(entitySuffix);
 		String tableName = simpleName.substring(beginIndex, endIndex);
-		tableName = StringUtil.isBlank(fmtPrefix) ? tableName : fmtPrefix + tableName;
-		tableName = StringUtil.isBlank(fmtSuffix) ? tableName : tableName + fmtSuffix;
+		tableName = StringUtils.isBlank(fmtPrefix) ? tableName : fmtPrefix + tableName;
+		tableName = StringUtils.isBlank(fmtSuffix) ? tableName : tableName + fmtSuffix;
 		return tableName;
 	}
 	

@@ -16,6 +16,7 @@
         <module>bcap-common-support</module>
         <module>bcap-common-web</module>
         <module>bcap-common-code</module>
+        <module>bcap-common-domain-support</module>
     </modules>
 
 </project>
