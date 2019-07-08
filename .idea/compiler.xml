@@ -13,15 +13,18 @@
         <module name="bcap-bpm-infrastructure" />
         <module name="bcap-bpm-ui" />
         <module name="bcap-common-code" />
-        <module name="bcap-common-domain" />
-        <module name="bcap-common-domain-support" />
+        <module name="bcap-common-ddd" />
+        <module name="bcap-common-generic" />
+        <module name="bcap-common-model" />
         <module name="bcap-common-support" />
+        <module name="bcap-common-ttt" />
         <module name="bcap-common-web" />
         <module name="bcap-demo-core" />
         <module name="bcap-infrastructure" />
         <module name="bcap-uamc-application" />
         <module name="bcap-uamc-client" />
         <module name="bcap-uamc-domain" />
+        <module name="bcap-uamc-infrastructure" />
         <module name="demo" />
       </profile>
     </annotationProcessing>
@@ -41,10 +44,14 @@
       <module name="bcap-bpm-web" target="8" />
       <module name="bcap-common" target="1.8" />
       <module name="bcap-common-code" target="1.8" />
-      <module name="bcap-common-core" target="8" />
+      <module name="bcap-common-core" target="1.8" />
+      <module name="bcap-common-ddd" target="1.8" />
       <module name="bcap-common-domain" target="1.8" />
       <module name="bcap-common-domain-support" target="1.8" />
+      <module name="bcap-common-generic" target="1.8" />
+      <module name="bcap-common-model" target="1.8" />
       <module name="bcap-common-support" target="1.8" />
+      <module name="bcap-common-ttt" target="1.8" />
       <module name="bcap-common-web" target="1.8" />
       <module name="bcap-demo" target="1.8" />
       <module name="bcap-demo-core" target="1.8" />
@@ -55,7 +62,7 @@
       <module name="bcap-uamc-application" target="1.8" />
       <module name="bcap-uamc-client" target="1.8" />
       <module name="bcap-uamc-domain" target="1.8" />
-      <module name="bcap-uamc-infrastructure" target="8" />
+      <module name="bcap-uamc-infrastructure" target="1.8" />
       <module name="bcap-ui" target="8" />
       <module name="demo" target="1.8" />
     </bytecodeTargetLevel>

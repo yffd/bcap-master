@@ -26,7 +26,7 @@ public class StringUtils {
      * @return
      */
     public static boolean isBlank(final CharSequence cs) {
-        return StringUtils.isBlank(cs);
+        return org.apache.commons.lang3.StringUtils.isBlank(cs);
     }
 
     /**

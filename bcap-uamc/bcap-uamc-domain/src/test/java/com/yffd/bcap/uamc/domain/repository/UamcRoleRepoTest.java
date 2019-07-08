@@ -14,6 +14,7 @@ public class UamcRoleRepoTest {
     @Autowired
     private RoleRepo uamcRoleRepo;
 
+
     @Test
     public void saveTest() {
         UamcRole role = new UamcRole();
@@ -24,4 +25,5 @@ public class UamcRoleRepoTest {
         UamcRole result = uamcRoleRepo.save(role);
         System.out.println(result.getRoleId());
     }
+
 }

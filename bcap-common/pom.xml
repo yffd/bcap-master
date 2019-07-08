@@ -12,11 +12,32 @@
     <artifactId>bcap-common</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>bcap-common-domain</module>
         <module>bcap-common-support</module>
         <module>bcap-common-web</module>
         <module>bcap-common-code</module>
-        <module>bcap-common-domain-support</module>
+        <module>bcap-common-ddd</module>
+        <module>bcap-common-model</module>
     </modules>
 
+    <properties>
+        <httpclient.version>4.5.2</httpclient.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8.1</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
 </project>

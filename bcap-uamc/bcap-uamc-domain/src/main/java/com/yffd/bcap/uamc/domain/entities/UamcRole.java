@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.domain.model.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

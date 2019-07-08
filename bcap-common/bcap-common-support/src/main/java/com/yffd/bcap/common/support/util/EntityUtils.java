@@ -1,7 +1,7 @@
 package com.yffd.bcap.common.support.util;
 
-import com.yffd.bcap.common.domain.model.entity.EntityObject;
-import com.yffd.bcap.common.domain.model.login.LoginInfo;
+import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.model.login.LoginInfo;
 
 import java.util.Calendar;
 

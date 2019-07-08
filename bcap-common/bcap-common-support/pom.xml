@@ -20,7 +20,12 @@
     <dependencies>
         <dependency>
             <groupId>com.yffd</groupId>
-            <artifactId>bcap-common-domain</artifactId>
+            <artifactId>bcap-common-model</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yffd</groupId>
+            <artifactId>bcap-common-ddd</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -36,12 +41,14 @@
             <version>${mybatis.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

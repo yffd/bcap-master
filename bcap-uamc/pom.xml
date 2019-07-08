@@ -16,6 +16,7 @@
         <module>bcap-uamc-application</module>
         <module>bcap-uamc-infrastructure</module>
         <module>bcap-uamc-client</module>
+        <module>bcap-uamc-infrastructure</module>
     </modules>
 
 
