@@ -1,10 +1,10 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import lombok.Data;
 
 @Data
-public class UamcPermission extends EntityObject {
+public class UamcPermission extends DataObjectSupport {
     private static final long serialVersionUID = -8198274109263931920L;
     private String pmsId;//权限ID
     private String pmsName;//权限名称

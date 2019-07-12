@@ -16,20 +16,20 @@ public class UpdateMybatisSqlBuilder extends MybatisSqlBuilder {
 	public static final String SQL_ID_UPDATEBY = "updateBy";
 	public static final String DEF_PARAM_TYPE = "java.util.Map";
 	
-	public String buildSqlUpdate(Class<?> entityClazz, Class<?> baseEntityClazz) {
+	public String buildSqlUpdate(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 更新 -->").append("\r\n");
 		sb.append(String.format("<update id=\"%s\" parameterType=\"java.util.Map\">", SQL_ID_UPDATEBY)).append("\r\n");
 		sb.append("\t").append(String.format("update <include refid=\"%s\" />", DEF_SQL_ID_TABLE_NAME)).append("\r\n");
 		
 		sb.append("\t").append("<set>").append("\r\n");
-		sb.append(this.linesFmt(this.buildSet(entityClazz, baseEntityClazz), "\t", "\r\n"));
+		sb.append(this.linesFmt(this.buildSet(rootEntityClazz, baserootEntityClazz), "\t", "\r\n"));
 		sb.append("\t").append("</set>").append("\r\n");
 		
 		sb.append("\t").append("<where>").append("\r\n");
 		String tableAlias = null;
-		String paramAlias = "entityOld";
-		String whereContent = this.buildWhereConditions(tableAlias, paramAlias, entityClazz, baseEntityClazz);
+		String paramAlias = "rootEntityOld";
+		String whereContent = this.buildWhereConditions(tableAlias, paramAlias, rootEntityClazz, baserootEntityClazz);
 		buildChoose(paramAlias, DEF_PARAM_MAP_ALIAS, whereContent, sb);
 		sb.append("\t").append("</where>").append("\r\n");
 		
@@ -38,12 +38,12 @@ public class UpdateMybatisSqlBuilder extends MybatisSqlBuilder {
 	}
 	
 	@Override
-	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseEntityClazz) {
+	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
 		List<TableColumn> equalColums = new ArrayList<>();
 		List<TableColumn> likeColums = new ArrayList<>();
 		List<TableColumn> inColums = new ArrayList<>();
 		
-		List<TableColumn> columns = this.prop2column(entityClazz, baseEntityClazz);
+		List<TableColumn> columns = this.prop2column(rootEntityClazz, baserootEntityClazz);
 		for (TableColumn tc : columns) {
 			String propName = tc.getPropName();
 			if (DEF_SKIP_PROPS.contains(propName)) continue;
@@ -75,9 +75,9 @@ public class UpdateMybatisSqlBuilder extends MybatisSqlBuilder {
 		sb.append("\t").append("</choose>").append("\r\n");
 	}
 	
-	private String buildSet(Class<?> entityClazz, Class<?> baseEntityClazz) {
+	private String buildSet(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
 		StringBuilder sb = new StringBuilder();
-		List<TableColumn> tableColumns = this.prop2column(entityClazz, baseEntityClazz);
+		List<TableColumn> tableColumns = this.prop2column(rootEntityClazz, baserootEntityClazz);
 		sb.append(String.format("<if test=\"%s != null\">", DEF_PARAM_ALIAS)).append("\r\n");
 		for (TableColumn tc : tableColumns) {
 			if ("id".equals(tc.getPropName()) || "createBy".equals(tc.getPropName()) || "createTime".equals(tc.getPropName())) {
@@ -85,7 +85,7 @@ public class UpdateMybatisSqlBuilder extends MybatisSqlBuilder {
 			} else if("version".equals(tc.getPropName())) {
 				sb.append("\t").append("VERSION = VERSION + 1,").append("\r\n");
 			} else {
-				// <if test="entity.delFlag != null and entity.delFlag != ''"> DEL_FLAG = #{entity.delFlag},  </if>
+				// <if test="rootEntity.delFlag != null and rootEntity.delFlag != ''"> DEL_FLAG = #{rootEntity.delFlag},  </if>
 				String paramName = DEF_PARAM_ALIAS + "." + tc.getPropName();
 				String columnName = tc.getColName();
 				if (String.class.getName().equals(tc.getPropType().getName())) {

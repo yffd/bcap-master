@@ -85,8 +85,8 @@ public class HttpClientUtils {
             paramsList.add(new BasicNameValuePair(key, params.get(key)));
         }
         try {
-            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(paramsList, "UTF-8");
-            post.setEntity(formEntity);
+            UrlEncodedFormEntity formrootEntity = new UrlEncodedFormEntity(paramsList, "UTF-8");
+            post.setEntity(formrootEntity);
             // 发送请求
             HttpResponse response = client.execute(post);
             // 获取内容
@@ -144,8 +144,8 @@ public class HttpClientUtils {
 
     private static String extractContent(HttpResponse response) throws IOException {
         if (response.getStatusLine().getStatusCode() == 200) {
-            HttpEntity entity = response.getEntity();
-            InputStream contentInputStream = entity.getContent();
+            HttpEntity rootEntity = response.getEntity();
+            InputStream contentInputStream = rootEntity.getContent();
             BufferedReader reader = new BufferedReader(new InputStreamReader(contentInputStream, "UTF-8"));
             StringBuffer sb = new StringBuffer("");
             String line = null;

@@ -1,10 +1,10 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import lombok.Data;
 
 @Data
-public class UamcOrganization extends EntityObject {
+public class UamcOrganization extends DataObjectSupport {
     private static final long serialVersionUID = 2689173809583888360L;
     private String orgId;//机构ID
     private String orgName;//机构名称

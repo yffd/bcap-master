@@ -3,7 +3,7 @@ package com.yffd.bcap.bpm.application.service.impl;
 import com.yffd.bcap.bpm.domain.vo.ProcessInstanceVo;
 import com.yffd.bcap.common.core.utils.EasyStringUtils;
 import com.yffd.bpm.infrastructure.exception.BpmException;
-import org.flowable.engine.IdentityService;
+import org.flowable.engine.IdrootEntityService;
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
 import org.flowable.engine.repository.ProcessDefinition;
@@ -19,7 +19,7 @@ public class ProcessInstanceServiceImpl {
     @Autowired
     private RepositoryService repositoryService;
     @Autowired
-    private IdentityService identityService;
+    private IdrootEntityService idrootEntityService;
     @Autowired
     private RuntimeService runtimeService;
 
@@ -43,7 +43,7 @@ public class ProcessInstanceServiceImpl {
             throw BpmException.BIZ_ERROR("流程模型[" + definitionKey + "]已挂起，不能发布新流程");
         }
         // 设置流程启动人-操作人
-        identityService.setAuthenticatedUserId(operator);
+        idrootEntityService.setAuthenticatedUserId(operator);
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(definitionKey, businessKey, variables);
         if(processInstance == null){
             throw BpmException.BIZ_ERROR("流程发布失败");

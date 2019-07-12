@@ -19,40 +19,40 @@ public class InsertMybatisSqlBuilder extends MybatisSqlBuilder {
 	public static final String SQL_ID_INSERT_BATCH_BY = "insertBatchBy";
 	public static final String DEF_PARAM_TYPE = "java.util.Map";
 	
-	public String buildSqlInsertOne(Class<?> entityClazz, Class<?> baseEntityClazz) {
+	public String buildSqlInsertOne(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 单条插入 -->").append("\r\n");
 		sb.append(String.format("<insert id=\"%s\" parameterType=\"%s\" keyProperty=\"id\" useGeneratedKeys=\"true\">", 
 				SQL_ID_INSERT_ONE_BY, DEF_PARAM_TYPE)).append("\r\n");
 		
 		sb.append("\t").append(String.format("insert into <include refid=\"%s\" />", DEF_SQL_ID_TABLE_NAME)).append("\r\n");
-		sb.append(this.linesFmt(this.buildInto(entityClazz, baseEntityClazz), "\t", "\r\n"));
+		sb.append(this.linesFmt(this.buildInto(rootEntityClazz, baserootEntityClazz), "\t", "\r\n"));
 		sb.append("\t").append("values").append("\r\n");
-		sb.append(this.linesFmt(buildValues(null, entityClazz, baseEntityClazz), "\t", "\r\n"));
+		sb.append(this.linesFmt(buildValues(null, rootEntityClazz, baserootEntityClazz), "\t", "\r\n"));
 		
 		sb.append("</insert>").append("\r\n");
 		return sb.toString();
 	}
 	
-	public String buildSqlInsertBatch(Class<?> entityClazz, Class<?> baseEntityClazz) {
+	public String buildSqlInsertBatch(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 批量插入 -->").append("\r\n");
 		sb.append(String.format("<insert id=\"%s\" parameterType=\"%s\" keyProperty=\"id\" useGeneratedKeys=\"true\">", 
 				SQL_ID_INSERT_BATCH_BY, DEF_PARAM_TYPE)).append("\r\n");
 		
 		sb.append("\t").append(String.format("insert into <include refid=\"%s\" />", DEF_SQL_ID_TABLE_NAME)).append("\r\n");
-		sb.append(this.linesFmt(this.buildInto(entityClazz, baseEntityClazz), "\t", "\r\n"));
+		sb.append(this.linesFmt(this.buildInto(rootEntityClazz, baserootEntityClazz), "\t", "\r\n"));
 		sb.append("\t").append("values").append("\r\n");
 		sb.append("\t").append("<foreach collection=\"list\" item=\"item\" index=\"index\" separator=\",\">").append("\r\n");
-		sb.append(this.linesFmt(buildValues("item", entityClazz, baseEntityClazz), "\t", "\r\n"));
+		sb.append(this.linesFmt(buildValues("item", rootEntityClazz, baserootEntityClazz), "\t", "\r\n"));
 		sb.append("\t").append("</foreach>").append("\r\n");
 		
 		sb.append("</insert>").append("\r\n");
 		return sb.toString();
 	}
 	
-	private String buildInto(Class<?> entityClazz, Class<?> baseEntityClazz) {
-		List<TableColumn> tableColumns = this.prop2column(entityClazz, baseEntityClazz);
+	private String buildInto(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+		List<TableColumn> tableColumns = this.prop2column(rootEntityClazz, baserootEntityClazz);
 		int size = tableColumns.size();
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
@@ -72,8 +72,8 @@ public class InsertMybatisSqlBuilder extends MybatisSqlBuilder {
 //		return sb.subSequence(0, sb.length() - 2).toString();
 	}
 	
-	private String buildValues(String paramPreffix, Class<?> entityClazz, Class<?> baseEntityClazz) {
-		List<TableColumn> tableColumns = this.prop2column(entityClazz, baseEntityClazz);
+	private String buildValues(String paramPreffix, Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+		List<TableColumn> tableColumns = this.prop2column(rootEntityClazz, baserootEntityClazz);
 		int size = tableColumns.size();
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");

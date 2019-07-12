@@ -1,12 +1,13 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class UamcAccount extends EntityObject {
+
+public class UamcAccount extends DataObjectSupport {
     private static final long serialVersionUID = 2771217497705346815L;
     private String acntId;//账号ID
     private String acntPwd;//账号密码

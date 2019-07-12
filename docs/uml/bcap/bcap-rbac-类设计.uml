@@ -1425,7 +1425,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="Qx8HbIHsIEuYRH4r00hs1QAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="IsCHsKr7V0eNeH51Pn40RgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">EntityHelper</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">EntitySupport</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="olYUkMO10UGsZnY3de3WugAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -4288,7 +4288,7 @@
 <XPD:REF name="Views[0]">r+WZ82spQUOMD+38E1ilYAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[52]" type="UMLClass" guid="BCMoh8L5lUqVkwdsJDXncAAA">
-<XPD:ATTR name="Name" type="string">EntityHelper</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">EntitySupport</XPD:ATTR>
 <XPD:REF name="Namespace">ZpBpm7uYq0SxbFWhYPqqOwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">u+zERSGPp06/rOL//pcQQgAA</XPD:REF>

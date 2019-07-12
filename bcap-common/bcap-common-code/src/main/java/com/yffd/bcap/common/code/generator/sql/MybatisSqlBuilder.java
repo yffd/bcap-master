@@ -35,7 +35,7 @@ public class MybatisSqlBuilder {
 	public static final String DEF_REGEX_IN_CODE = ".*((?i)c)ode.*";
 	public static final String DEF_REGEX_LIKE_NAME = ".*((?i)n)ame.*";
 	
-	public static final String DEF_ENTITY_SUFFIX = "Entity";
+	public static final String DEF_entity_SUFFIX = "entity";
 	public static final String DEF_PARAM_SUFFIX = "Iter";
 	public static final String DEF_SQL_ID_TABLE_NAME = "table_name";
 	public static final String DEF_SQL_ID_WHERE = "conditions_where";
@@ -51,12 +51,12 @@ public class MybatisSqlBuilder {
 		DEF_SKIP_PROPS.add("updateTime");
 	}
 	
-	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseEntityClazz) {
+	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseentityClazz) {
 		List<TableColumn> equalColums = new ArrayList<>();
 		List<TableColumn> likeColums = new ArrayList<>();
 		List<TableColumn> inColums = new ArrayList<>();
 		
-		List<TableColumn> columns = this.prop2column(entityClazz, baseEntityClazz);
+		List<TableColumn> columns = this.prop2column(entityClazz, baseentityClazz);
 		for (TableColumn tc : columns) {
 			String propName = tc.getPropName();
 			if (DEF_SKIP_PROPS.contains(propName)) continue;
@@ -390,13 +390,13 @@ public class MybatisSqlBuilder {
 		return this.entityName2tableName(entityClazz, null, entitySuffix, null, null);
 	}
 	
-	public List<TableColumn> prop2column(Class<?> entityClazz, Class<?> baseEntityClazz) {
+	public List<TableColumn> prop2column(Class<?> entityClazz, Class<?> baseentityClazz) {
 		List<TableColumn> retList = new ArrayList<>();
 		if (null == entityClazz) return retList;
 		Class<?> stopClazz = Object.class;	// 排查实体类的class属性
-		if (null == baseEntityClazz || Object.class.getName().equals(baseEntityClazz.getName())) stopClazz = Object.class;
+		if (null == baseentityClazz || Object.class.getName().equals(baseentityClazz.getName())) stopClazz = Object.class;
 		// 子类
-		if (null != baseEntityClazz) stopClazz = baseEntityClazz;
+		if (null != baseentityClazz) stopClazz = baseentityClazz;
 		Map<String, Class<?>> props = JavaBeanUtils.getProps(entityClazz, stopClazz);
 		if (CollectionUtils.isNotEmpty(props)) {
 			List<TableColumn> tmpList = new ArrayList<>();
@@ -413,8 +413,8 @@ public class MybatisSqlBuilder {
 			retList.addAll(tmpList);
 		}
 		// 父类
-		if (null != baseEntityClazz) {
-			Map<String, Class<?>> propsBase = JavaBeanUtils.getProps(baseEntityClazz, Object.class);
+		if (null != baseentityClazz) {
+			Map<String, Class<?>> propsBase = JavaBeanUtils.getProps(baseentityClazz, Object.class);
 			if (CollectionUtils.isNotEmpty(propsBase)) {
 				List<TableColumn> tmpList = new ArrayList<>();
 				Set<String> keys = propsBase.keySet();
@@ -446,7 +446,7 @@ public class MybatisSqlBuilder {
 		return tmp;
 	}
 	
-	public String entityName2tableName(Class<?> entityClazz, String entityPrefix, String entitySuffix, 
+	public String entityName2tableName(Class<?> entityClazz, String entityPrefix, String entitySuffix,
 			String tablePrefix, String tableSuffix) {
 		String simpleName = entityClazz.getSimpleName();
 		int beginIndex = StringUtils.isBlank(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();

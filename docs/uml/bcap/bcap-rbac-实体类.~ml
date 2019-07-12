@@ -44,7 +44,7 @@
 <XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="c52ydgohuEWldtVZcZdbCAAA">
 <XPD:ATTR name="Name" type="string">Kum, Deukkyu</XPD:ATTR>
 <XPD:ATTR name="StereotypeProfile" type="string">UMLStandard</XPD:ATTR>
-<XPD:ATTR name="StereotypeName" type="string">entity</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">rootEntity</XPD:ATTR>
 <XPD:REF name="Namespace">R4cV9LqhsEObrBMH6rm0VgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>

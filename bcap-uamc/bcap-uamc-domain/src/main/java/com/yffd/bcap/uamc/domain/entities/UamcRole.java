@@ -1,17 +1,18 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UamcRole extends EntityObject {
+public class UamcRole extends DataObjectSupport {
     private static final long serialVersionUID = -2563742842078527305L;
     @Id
     private String roleId;//角色ID

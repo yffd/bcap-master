@@ -1,10 +1,10 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import lombok.Data;
 
 @Data
-public class UamcRsOperation extends EntityObject {
+public class UamcRsOperation extends DataObjectSupport {
     private static final long serialVersionUID = -2308268338934424105L;
     private String oprtnId;//操作ID
     private String oprtnName;//操作名称

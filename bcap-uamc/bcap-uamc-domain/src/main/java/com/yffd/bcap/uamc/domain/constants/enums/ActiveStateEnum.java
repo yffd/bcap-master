@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.domain.constants.enums;
 
 public enum ActiveStateEnum {
-    ACTIVE("1", "启用"), INACTIVE("0", "禁用")
+    ACTIVE("1", "启用"), DEACTIVE("0", "停用")
     ;
 
     private String code;

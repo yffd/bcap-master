@@ -94,13 +94,13 @@
 	update <include refid="table_name" />
 	<set>
 		VERSION = VERSION + 1, 
-		<if test="entity.updateBy != null and entity.updateBy != ''"> UPDATE_BY = #{entity.updateBy}, </if>
-		<if test="entity.updateTime != null"> UPDATE_TIME = #{entity.updateTime}, </if>
+		<if test="rootEntity.updateBy != null and rootEntity.updateBy != ''"> UPDATE_BY = #{rootEntity.updateBy}, </if>
+		<if test="rootEntity.updateTime != null"> UPDATE_TIME = #{rootEntity.updateTime}, </if>
 	</set>
 	<where>
-		and TREE_ID = #{entityOld.nodeTree}
-		<![CDATA[ and NODE_LEFT >= #{entityOld.nodeLeft} ]]>
-		<![CDATA[ and NODE_RIGHT <= #{entityOld.nodeRight} ]]>
+		and TREE_ID = #{rootEntityOld.nodeTree}
+		<![CDATA[ and NODE_LEFT >= #{rootEntityOld.nodeLeft} ]]>
+		<![CDATA[ and NODE_RIGHT <= #{rootEntityOld.nodeRight} ]]>
 	</where>
 </update>
 <!-- 删除节点，以及子孙节点 -->

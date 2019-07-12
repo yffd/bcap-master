@@ -17,6 +17,7 @@
         <module>bcap-uamc-infrastructure</module>
         <module>bcap-uamc-client</module>
         <module>bcap-uamc-infrastructure</module>
+        <module>bcap-uamc-ui</module>
     </modules>
 
 

@@ -1,13 +1,10 @@
 package com.yffd.bcap.uamc.domain.model.role.service;
 
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.uamc.domain.model.role.aggregate.RoleAgrgt;
-import com.yffd.bcap.uamc.domain.model.role.entity.RoleEntity;
 import com.yffd.bcap.uamc.domain.model.role.repository.RoleRepo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -36,14 +33,14 @@ public class RoleServiceTest {
 
     @Test
     public void addRoleTest() {
-        /*RoleEntity roleEntity = spy(RoleEntity.class);
-        roleEntity.setRoleId(roleRepo.nextIdentity());
-        RoleAgrgt roleAgrgt = new RoleAgrgt(sysOperator, roleEntity);
+        /*RolerootEntity rolerootEntity = spy(RolerootEntity.class);
+        rolerootEntity.setRoleId(roleRepo.nextIdrootEntity);
+        RoleAgrgt roleAgrgt = new RoleAgrgt(sysOperator, rolerootEntity);
 
-        doNothing().when(roleRepo).add(roleEntity);
+        doNothing().when(roleRepo).add(rolerootEntity);
         roleService.addRole(roleRepo, roleAgrgt);
 
-        System.out.println(roleEntity.getRoleId());
-        System.out.println(roleAgrgt.getSysOperator().getOperatorId());*/
+        System.out.println(rolerootEntity.getRoleId());
+        System.out.println(roleAgrgt.sysOperator.getOperatorId());*/
     }
 }

@@ -25,30 +25,30 @@ import com.yffd.bcap.common.support.util.StringUtils;
  * @see 	 
  */
 public class FileGenerator {
-	public static final String DEF_ENTITY_SUFFIX = "Entity";
+	public static final String DEF_rootEntity_SUFFIX = "rootEntity";
 	private static final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
 	
-	private List<String> skipEntityList = new ArrayList<String>();
+	private List<String> skiprootEntityList = new ArrayList<String>();
 	
 	{
-		skipEntityList.add("EasyPersistEntity");
-		skipEntityList.add("BaseEntity");
-		skipEntityList.add("CommonEntity");
+		skiprootEntityList.add("EasyPersistrootEntity");
+		skiprootEntityList.add("BaserootEntity");
+		skiprootEntityList.add("CommonrootEntity");
 	}
 	
-	public List<String> getSkipEntityList() {
-		return skipEntityList;
+	public List<String> getSkiprootEntityList() {
+		return skiprootEntityList;
 	}
 
 	public String dateFmt(Date date) {
 		return DATE_FMT.format(new Date());
 	}
 	
-	public String entityFmt(Class<?> entityClazz, String entityPrefix, String entitySuffix, 
+	public String rootEntityFmt(Class<?> rootEntityClazz, String rootEntityPrefix, String rootEntitySuffix,
 			String fmtPrefix, String fmtSuffix) {
-		String simpleName = entityClazz.getSimpleName();
-		int beginIndex = StringUtils.isBlank(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();
-		int endIndex = StringUtils.isBlank(entitySuffix) ? simpleName.length() : simpleName.lastIndexOf(entitySuffix);
+		String simpleName = rootEntityClazz.getSimpleName();
+		int beginIndex = StringUtils.isBlank(rootEntityPrefix) ? 0 : simpleName.indexOf(rootEntityPrefix) + rootEntityPrefix.length();
+		int endIndex = StringUtils.isBlank(rootEntitySuffix) ? simpleName.length() : simpleName.lastIndexOf(rootEntitySuffix);
 		String tableName = simpleName.substring(beginIndex, endIndex);
 		tableName = StringUtils.isBlank(fmtPrefix) ? tableName : fmtPrefix + tableName;
 		tableName = StringUtils.isBlank(fmtSuffix) ? tableName : tableName + fmtSuffix;

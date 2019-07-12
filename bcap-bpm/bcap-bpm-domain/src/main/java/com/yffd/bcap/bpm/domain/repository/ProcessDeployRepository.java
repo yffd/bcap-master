@@ -4,7 +4,7 @@ import com.yffd.bcap.bpm.domain.model.deploy.ProcessDeploy;
 
 public interface ProcessDeployRepository {
 
-    void add(ProcessDeploy processDeployEntity);
+    void add(ProcessDeploy processDeployrootEntity);
 
     void remove(String id);
 }

@@ -21,7 +21,7 @@ public class UamcRoleRepoTest {
         role.setRoleName("t2");
         role.setRoleState("enabled");
         role.setRoleId("a1fba29a38a84736aaee388aab095cea");
-//        role.setRoleId(IdentityGeneratorUtil.getId());
+//        role.setRoleId(IdrootEntityGeneratorUtil.getId());
         UamcRole result = uamcRoleRepo.save(role);
         System.out.println(result.getRoleId());
     }

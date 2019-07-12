@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.yffd</groupId>
-            <artifactId>bcap-common-model</artifactId>
+            <artifactId>bcap-common-support</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

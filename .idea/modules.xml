@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-ddd/bcap-common-ddd.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-ddd/bcap-common-ddd.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-model/bcap-common-model.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-model/bcap-common-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-support/bcap-common-support.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-support/bcap-common-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-ttt/bcap-common-ttt.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-ttt/bcap-common-ttt.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" />
@@ -22,6 +23,7 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-client/bcap-uamc-client.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-client/bcap-uamc-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/bcap-uamc-infrastructure.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/bcap-uamc-infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui/bcap-uamc-ui.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui/bcap-uamc-ui.iml" />
     </modules>
   </component>
 </project>

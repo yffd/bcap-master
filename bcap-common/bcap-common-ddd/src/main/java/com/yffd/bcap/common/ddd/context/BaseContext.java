@@ -1,9 +1,9 @@
 package com.yffd.bcap.common.ddd.context;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import com.yffd.bcap.common.model.login.LoginInfo;
 
-public abstract class BaseContext<E extends EntityObject> implements IBaseCtx {
+public abstract class BaseContext<E extends DataObjectSupport> implements IBaseCtx {
     private LoginInfo loginInfo;
     private E entity;
 

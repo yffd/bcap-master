@@ -1,12 +1,12 @@
 package com.yffd.bcap.common.code.generator.mybatis.sql;
 
-import java.util.List;
-
 import com.yffd.bcap.common.code.generator.model.BaseEntity;
 import com.yffd.bcap.common.code.generator.model.MyUserEntity;
 import com.yffd.bcap.common.code.generator.sql.MybatisSqlBuilder;
 import com.yffd.bcap.common.support.util.CollectionUtils;
 import org.junit.Test;
+
+import java.util.List;
 
 
 /**
@@ -36,7 +36,7 @@ public class MybatisSqlBuilderTest {
 	@Test
 	public void entityName2tableNameTest() {
 		String entityPrefix = "Uumc";
-		String entitySuffix = "Entity";
+		String entitySuffix = "entity";
 		String tablePrefix = "Table";
 		String tableSuffix = "View";
 		Class<?> entityClazz = MyUserEntity.class;

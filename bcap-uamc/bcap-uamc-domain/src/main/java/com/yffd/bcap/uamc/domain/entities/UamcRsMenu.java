@@ -1,10 +1,10 @@
 package com.yffd.bcap.uamc.domain.entities;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import lombok.Data;
 
 @Data
-public class UamcRsMenu extends EntityObject {
+public class UamcRsMenu extends DataObjectSupport {
     private static final long serialVersionUID = 24854088184227134L;
     private String menuId;//菜单ID
     private String menuName;//菜单名称
