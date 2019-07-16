@@ -195,7 +195,19 @@
 </html></richcontent>
 </node>
 <node CREATED="1556531188767" ID="ID_210821884" MODIFIED="1556531206328" TEXT="&#x67e5;&#x8be2;&#xff08;&#x5206;&#x9875;&#xff09;"/>
-<node CREATED="1556531209082" ID="ID_1422298389" MODIFIED="1557905610730" TEXT="&#x67e5;&#x770b;&#x8d44;&#x6e90;&#x4fe1;&#x606f;&#xff08;&#x83dc;&#x5355;&#x3001;&#x64cd;&#x4f5c;&#x3001;&#x6587;&#x4ef6;&#x3001;...&#xff09;"/>
+<node CREATED="1556531209082" ID="ID_1422298389" MODIFIED="1563160093924" TEXT="&#x67e5;&#x770b;&#x8d44;&#x6e90;&#x4fe1;&#x606f;&#xff08;&#x83dc;&#x5355;&#x3001;&#x64cd;&#x4f5c;&#x3001;&#x6587;&#x4ef6;&#x3001;...&#xff09;">
+<richcontent TYPE="NOTE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      1.&#19968;&#20010;&#26435;&#38480;&#23545;&#24212;&#19968;&#20010;&#31995;&#32479;&#36164;&#28304;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node CREATED="1556519731426" ID="ID_1126138650" MODIFIED="1556604269914" POSITION="right" TEXT="&#x8d44;&#x6e90;&#x7ba1;&#x7406;">
 <richcontent TYPE="NOTE"><html>

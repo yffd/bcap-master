@@ -2,14 +2,32 @@ package com.yffd.bcap.uamc.domain.model.user;
 
 import com.yffd.bcap.common.support.exception.BcapValidateException;
 import com.yffd.bcap.uamc.domain.model.account.AccountData;
+import com.yffd.bcap.uamc.domain.model.account.AccountRepo;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.organization.OrgData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
+import com.yffd.bcap.uamc.domain.model.relation.GroupUserRltRepo;
+import com.yffd.bcap.uamc.domain.model.relation.PmsUserRltRepo;
+import com.yffd.bcap.uamc.domain.model.relation.RoleUserRltRepo;
 import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
 
 import java.util.List;
 
 public class UserService {
+
+    public void deleteUserWithRlt(UserEntity userEntity, UserRepo userRepo, GroupUserRltRepo groupUserRltRepo,
+                                  RoleUserRltRepo roleUserRltRepo, PmsUserRltRepo pmsUserRltRepo, AccountRepo accountRepo) {
+        String deleteUserId = userEntity.deleteById();
+        userRepo.deleteById(deleteUserId);
+        //1.删除用户与组的关联关系；
+        groupUserRltRepo.deleteRltByUserId(deleteUserId);
+        //2.删除用户与角色的关联关系；
+        roleUserRltRepo.deleteRltByUserId(deleteUserId);
+        //3.删除用户与权限的关联关系；
+        pmsUserRltRepo.deleteRltByUserId(deleteUserId);
+        //4.删除用户账号；
+        accountRepo.deleteByUserId(deleteUserId);
+    }
 
     public AccountData hasAccount(UserRepo repo) {
         //TODO
@@ -68,16 +86,4 @@ public class UserService {
         return null;
     }
 
-    public void delete(UserRepo repo) {
-        this.validateAndThrow(repo);
-        //1.删除用户与组的关联关系；
-        //TODO
-        //2.删除用户与角色的关联关系；
-        //3.删除用户与权限的关联关系；
-        //4.删除用户账号；
-    }
-
-    private void validateAndThrow(UserRepo userRepo) {
-        if (null == userRepo) throw BcapValidateException.ERROR_PARAMS("资源库不能为空[roleRepo]");
-    }
 }

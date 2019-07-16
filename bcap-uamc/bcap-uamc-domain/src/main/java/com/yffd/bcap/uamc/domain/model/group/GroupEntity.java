@@ -55,6 +55,21 @@ public class GroupEntity extends EntityObjectSupport<GroupData> {
     }
 
     /**
+     * 解除指派角色
+     * @param roleIds
+     * @return  key:roleId, value:groupId
+     */
+    public Map<String, String> removeRltRoles(Set<String> roleIds) {
+        if (CollectionUtils.isEmpty(roleIds))
+            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+        Map<String, String> map = new HashMap<>(roleIds.size());
+        for (String roleId : roleIds) {
+            map.put(roleId, this.data().getGroupId());
+        }
+        return map;
+    }
+
+    /**
      * 指派权限
      * @param pmsIds
      * @return  key:pmsId, value:groupId
@@ -68,4 +83,26 @@ public class GroupEntity extends EntityObjectSupport<GroupData> {
         }
         return map;
     }
+
+    /**
+     * 解除指派权限
+     * @param pmsIds
+     * @return  key:pmsId, value:groupId
+     */
+    public Map<String, String> removeRltPermissions(Set<String> pmsIds) {
+        if (CollectionUtils.isEmpty(pmsIds))
+            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+        Map<String, String> map = new HashMap<>(pmsIds.size());
+        for (String pmsId : pmsIds) {
+            map.put(pmsId, this.data().getGroupId());
+        }
+        return map;
+    }
+
+    public Set<String> deleteByGroupIds(Set<String> delIds) {
+        if (CollectionUtils.isEmpty(delIds))
+            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+        return delIds;
+    }
+
 }

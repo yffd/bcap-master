@@ -36,6 +36,15 @@ public class UserEntity extends EntityObjectSupport<UserData> {
     }
 
     /**
+     * 解除已指派组
+     * @param groupIds
+     * @return
+     */
+    public Map<String, String> removeRltGroups(Set<String> groupIds) {
+        return this.assignToGroups(groupIds);
+    }
+
+    /**
      * 指派角色
      * @param roleIds
      * @return
@@ -51,6 +60,15 @@ public class UserEntity extends EntityObjectSupport<UserData> {
     }
 
     /**
+     * 解除已指派角色
+     * @param roleIds
+     * @return
+     */
+    public Map<String, String> removeRltRoles(Set<String> roleIds) {
+        return this.assignToRoles(roleIds);
+    }
+
+    /**
      * 指派权限
      * @param pmsIds
      * @return
@@ -63,5 +81,14 @@ public class UserEntity extends EntityObjectSupport<UserData> {
             map.put(pmsId, this.data().getUserId());
         }
         return map;
+    }
+
+    /**
+     * 解除已指派权限
+     * @param pmsIds
+     * @return
+     */
+    public Map<String, String> removeRltPermissions(Set<String> pmsIds) {
+        return this.assignToPermissions(pmsIds);
     }
 }

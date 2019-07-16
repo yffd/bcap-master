@@ -2,7 +2,6 @@ package com.yffd.bcap.uamc.domain.model.role.entity;
 
 import com.yffd.bcap.common.ddd.domain.data.DataObjectHelper;
 import com.yffd.bcap.common.ddd.domain.entity.IEntityObject;
-import com.yffd.bcap.common.model.generator.IdentityGenerator;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.support.exception.BcapValidateException;
 import com.yffd.bcap.common.support.util.CollectionUtils;
@@ -29,7 +28,6 @@ public class RoleEntity implements IEntityObject {
     }
 
     public RoleData add() {
-        if (StringUtils.isBlank(this.data.getRoleId())) this.data.setRoleId(IdentityGenerator.getId());
         DataObjectHelper.initPropsForAdd(this.data, this.sysOperator);
         return this.data;
     }

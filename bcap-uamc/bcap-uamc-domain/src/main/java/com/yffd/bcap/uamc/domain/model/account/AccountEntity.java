@@ -35,7 +35,7 @@ public class AccountEntity extends EntityObjectSupport<AccountData> {
         return this.data();
     }
 
-    public AccountData recordLogin() {
+    public AccountData recordLoginInfo() {
         if (StringUtils.isBlank(this.data().getAcntId()))
             throw BcapValidateException.ERROR_PARAMS("启用失败，数据实体ID不能为空[" + this.data().getClass() + "]");
         this.initPropsForUpdate();

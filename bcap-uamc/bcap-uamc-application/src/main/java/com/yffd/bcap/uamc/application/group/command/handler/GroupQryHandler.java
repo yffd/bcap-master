@@ -10,47 +10,27 @@ import com.yffd.bcap.uamc.domain.model.user.UserData;
 
 import java.util.List;
 
-public class GroupQryHandler {
+public interface GroupQryHandler {
 
-    private GroupRepo groupRepo;
-
-    List<GroupTreeVo> listTree(GroupCriteriaVo criteria) {
-        //TODO
-        return null;
-    }
+    List<GroupTreeVo> listTree(GroupCriteriaVo criteria);
 
     /**
      * 查询所拥有的用户（直接用户）
      * @param pageInfo
      * @return
      */
-    public PageData<UserData> hasDirectUsers(PageInfo pageInfo) {
-        //TODO
-        return null;
-    }
+    PageData<UserData> hasDirectUsers(PageInfo pageInfo);
 
     /**
      * 查询所拥有的所有用户（汇总用户）
      * @param pageInfo
      * @return
      */
-    public PageData<UserData> hasUsers(PageInfo pageInfo) {
-        //TODO
-        return null;
-    }
+    PageData<UserData> hasUsers(PageInfo pageInfo);
 
-    public PageData<UserData> hasRoles(PageInfo pageInfo) {
-        //TODO
-        return null;
-    }
+    PageData<UserData> hasRoles(PageInfo pageInfo);
 
-    public PageData<PermissionData> hasDirectPermissions(PageInfo pageInfo) {
-        //TODO
-        return null;
-    }
+    PageData<PermissionData> hasDirectPermissions(PageInfo pageInfo);
 
-    public PageData<PermissionData> hasPermissions(PageInfo pageInfo) {
-        //TODO
-        return null;
-    }
+    PageData<PermissionData> hasPermissions(PageInfo pageInfo);
 }

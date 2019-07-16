@@ -3,9 +3,9 @@ package com.yffd.bcap.uamc.domain.model.resource;
 import com.yffd.bcap.common.ddd.domain.entity.EntityObjectSupport;
 import com.yffd.bcap.common.model.system.SysOperator;
 
-public class ResourceFileEntity extends EntityObjectSupport<ResourceMenuEntity> {
+public class ResourceFileEntity extends EntityObjectSupport<ResourceMenuData> {
 
-    public ResourceFileEntity(ResourceMenuEntity data, SysOperator sysOperator) {
+    public ResourceFileEntity(ResourceMenuData data, SysOperator sysOperator) {
         super(data, sysOperator);
     }
 

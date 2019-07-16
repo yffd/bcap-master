@@ -2,6 +2,7 @@ package com.yffd.bcap.common.ddd.domain.entity;
 
 import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import com.yffd.bcap.common.ddd.domain.data.DataObjectHelper;
+import com.yffd.bcap.common.model.generator.IdentityGenerator;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.support.exception.BcapValidateException;
 import com.yffd.bcap.common.support.util.StringUtils;
@@ -18,6 +19,10 @@ public abstract class EntityObjectSupport<E extends DataObjectSupport> implement
     }
 
     public abstract String identity();
+
+    public String nextIdentity() {
+        return IdentityGenerator.getId();
+    }
 
     public E data() {
         return this.data;

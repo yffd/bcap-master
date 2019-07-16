@@ -16,10 +16,17 @@ public class AccountService {
         //TODO
     }
 
+    /**
+     * 账号登录校验
+     */
     public void checkLogin() {
         //TODO
     }
 
+    /**
+     * 账号注销
+     * @param repo
+     */
     public void cancel(AccountRepo repo) {
         //1.账户注销是客户行为，是否删除个人账号，建议逻辑删除账户；
         //TODO
