@@ -5,6 +5,7 @@ import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
 import com.yffd.bcap.common.ddd.exception.DomainValidateException;
 import com.yffd.bcap.common.model.generator.IdentityGenerator;
 import com.yffd.bcap.common.model.system.SysOperator;
+import com.yffd.bcap.common.model.utils.BcapJavaBeanUtils;
 
 public abstract class EntityObjectSupport<E extends DataObjectSupport> implements IEntityObject {
     private SysOperator sysOperator;
@@ -54,7 +55,6 @@ public abstract class EntityObjectSupport<E extends DataObjectSupport> implement
             throw DomainValidateException.ERROR_PARAMS("主键查询失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         return this.identity();
     }
-
 
     protected void initPropsForAdd() {
         DataObjectHelper.initPropsForAdd(this.data, this.sysOperator);

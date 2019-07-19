@@ -1,7 +1,9 @@
 package com.yffd.bcap.common.ddd.domain.data;
 
+import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
+@MappedSuperclass
 public abstract class DataObjectSupport implements IDataObject {
     private String delFlag;     //删除标记，已删除=1、未删除=0
     private Integer version;    //版本号

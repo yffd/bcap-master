@@ -4,18 +4,18 @@ import java.util.List;
 
 /**
  * 领域厂库接口
- * @param <E>   数据实体
+ * @param <D>   数据实体
  */
-public interface RepositorySupport<E> extends IRepository {
+public interface RepositorySupport<D> extends IRepository {
 
-    void insertOne(E entity);
+    void insertOne(D data);
 
-    void updateById(E entity);
+    void updateById(D data);
 
     void deleteById(String id);
 
-    E findById(String id);
+    D findById(String id);
 
-    List<E>  listData(E entity);
+    List<D>  listData(D data);
 
 }

@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GroupJpa extends JpaRepository<GroupData, String> {
 
-    GroupData findByGroupName(String groupName);
 }

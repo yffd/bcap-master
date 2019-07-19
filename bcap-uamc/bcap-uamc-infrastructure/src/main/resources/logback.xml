@@ -27,14 +27,15 @@
         </triggeringPolicy>
     </appender>
 
-    <!-- 日志输出级别 -->
-    <root level="INFO">
+    <!-- name值可以是包名或具体的类名：该包（包括子包）下的类或该类将采用此logger -->
+    <logger name="com.yffd.bcap.uamc" level="INFO">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- 日志输出级别：root的默认level是INFO -->
+    <root level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>
 
-    <!--<logger name="com.yffd.jysg.springcloudproviderdept.dao" level="debug" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
-    </logger>-->
 </configuration>
