@@ -1,13 +1,9 @@
 package com.yffd.bcap.common.code.generator.file;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Date;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
 
-import com.yffd.bcap.common.support.util.StringUtils;
+import java.io.*;
+import java.util.Date;
 
 /**
  * @Description  XxxController代码生成器.
@@ -29,7 +25,7 @@ public class ControllerFileGenerator extends FileGenerator {
 		
 	public String getRequestMapping(Class<?> rootEntityClazz) {
 		String tmp = this.rootEntityFmt(rootEntityClazz, null, "rootEntity", null, null);
-		String underlineStr = StringUtils.camel2underline(tmp, false, null, null);
+		String underlineStr = BcapStringUtils.camel2underline(tmp, false, null, null);
 		underlineStr = underlineStr.substring(underlineStr.indexOf("_")+1);//去掉前缀
 		String ret = "/" + underlineStr.replace("_", "/");
 		return ret;

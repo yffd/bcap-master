@@ -17,9 +17,9 @@
     <file url="file://$PROJECT_DIR$/bcap-common/bcap-common-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-demo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-demo/demo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-application" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui" charset="UTF-8" />

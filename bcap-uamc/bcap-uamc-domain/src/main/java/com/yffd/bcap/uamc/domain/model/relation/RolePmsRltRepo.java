@@ -1,20 +1,20 @@
 package com.yffd.bcap.uamc.domain.model.relation;
 
-import java.util.Map;
-
 public interface RolePmsRltRepo {
 
     /**
      * 建立关联关系（权限：角色）
-     * @param relationMap   key:pmsId, value:roleId
+     * @param pmsId     权限ID
+     * @param roleId    角色ID
      */
-    void addRlt(Map<String, String> relationMap);
+    void addRlt(String pmsId, String roleId);
 
     /**
-     *  移除关联关系（权限：角色）
-     * @param relationMap   key:pmsId, value:roleId
+     * 移除关联关系（权限：角色）
+     * @param pmsId     权限ID
+     * @param roleId    角色ID
      */
-    void deleteRlt(Map<String, String> relationMap);
+    void deleteRlt(String pmsId, String roleId);
 
     /**
      * 根据权限ID删除关联关系（权限：角色），应用场景：权限删除或失效时

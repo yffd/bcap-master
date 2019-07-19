@@ -20,7 +20,6 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-master.iml" filepath="$PROJECT_DIR$/bcap-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/bcap-uamc-application.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/bcap-uamc-application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-client/bcap-uamc-client.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-client/bcap-uamc-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/bcap-uamc-infrastructure.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/bcap-uamc-infrastructure.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui/bcap-uamc-ui.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui/bcap-uamc-ui.iml" />

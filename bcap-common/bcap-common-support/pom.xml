@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bcap-common-support</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <!-- spring -->
@@ -35,6 +36,11 @@
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

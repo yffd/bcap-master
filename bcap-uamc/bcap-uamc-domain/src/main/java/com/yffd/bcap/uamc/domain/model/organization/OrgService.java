@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.organization;
 
-import com.yffd.bcap.common.support.util.CollectionUtils;
+import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -23,10 +23,10 @@ public class OrgService {
         Set<String> tmpOrgIds = new HashSet<>();
         tmpOrgIds.add(delOrgId);
         Set<String> childrenIds = this.orgChildrenIds(delOrgId, orgRepo);
-        if (CollectionUtils.isNotEmpty(tmpOrgIds)) tmpOrgIds.addAll(childrenIds);
+        if (BcapCollectionUtils.isNotEmpty(tmpOrgIds)) tmpOrgIds.addAll(childrenIds);
         if (orgRepo.exsistUser(tmpOrgIds)) return;
         //2.若有子机构，则子机构一起删除；
-        if (CollectionUtils.isNotEmpty(childrenIds))
+        if (BcapCollectionUtils.isNotEmpty(childrenIds))
             orgRepo.deleteByIds(childrenIds);
         //3.删除机构
         orgRepo.deleteById(delOrgId);
@@ -45,8 +45,8 @@ public class OrgService {
     }
 
     public Set<String> orgChildrenIds(String orgId, OrgRepo orgRepo) {
-        List<OrgData> orgDataList = orgRepo.findByOrgPathIn(orgId);
-        if (CollectionUtils.isEmpty(orgDataList)) return null;
+        List<OrgData> orgDataList = orgRepo.findChildren(orgId);
+        if (BcapCollectionUtils.isEmpty(orgDataList)) return null;
         Set<String> childrenIds = new HashSet<>();
         for (OrgData orgData : orgDataList) {
             childrenIds.add(orgData.getOrgId());

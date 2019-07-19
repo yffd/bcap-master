@@ -1,20 +1,12 @@
 package com.yffd.bcap.common.code.generator.file;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
+
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.yffd.bcap.common.support.util.StringUtils;
 
 /**
  * @Description  简单描述该类的功能（可选）.
@@ -47,11 +39,11 @@ public class FileGenerator {
 	public String rootEntityFmt(Class<?> rootEntityClazz, String rootEntityPrefix, String rootEntitySuffix,
 			String fmtPrefix, String fmtSuffix) {
 		String simpleName = rootEntityClazz.getSimpleName();
-		int beginIndex = StringUtils.isBlank(rootEntityPrefix) ? 0 : simpleName.indexOf(rootEntityPrefix) + rootEntityPrefix.length();
-		int endIndex = StringUtils.isBlank(rootEntitySuffix) ? simpleName.length() : simpleName.lastIndexOf(rootEntitySuffix);
+		int beginIndex = BcapStringUtils.isEmpty(rootEntityPrefix) ? 0 : simpleName.indexOf(rootEntityPrefix) + rootEntityPrefix.length();
+		int endIndex = BcapStringUtils.isEmpty(rootEntitySuffix) ? simpleName.length() : simpleName.lastIndexOf(rootEntitySuffix);
 		String tableName = simpleName.substring(beginIndex, endIndex);
-		tableName = StringUtils.isBlank(fmtPrefix) ? tableName : fmtPrefix + tableName;
-		tableName = StringUtils.isBlank(fmtSuffix) ? tableName : tableName + fmtSuffix;
+		tableName = BcapStringUtils.isEmpty(fmtPrefix) ? tableName : fmtPrefix + tableName;
+		tableName = BcapStringUtils.isEmpty(fmtSuffix) ? tableName : tableName + fmtSuffix;
 		return tableName;
 	}
 	

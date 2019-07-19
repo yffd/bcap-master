@@ -1,6 +1,6 @@
 package com.yffd.bcap.common.code.generator.sql;
 
-import com.yffd.bcap.common.support.util.StringUtils;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 	public static final String SQL_ID_SELECT_ONE = "selectOneBy";
 	public static final String SQL_ID_SELECT_LIST = "selectListBy";
 	public static final String SQL_ID_SELECT_COUNT = "selectCountBy";
-	public static final String DEF_PARAM_TYPE = "java.util.Map";
+	public static final String DEF_PARAM_TYPE = "java.utils.Map";
 	public static final String DEF_RESULT_TYPE = "java.lang.Integer";
 	public static final String DEF_TABLE_ALIAS = "t";
 	
@@ -131,7 +131,7 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < size; i++) {
 			TableColumn tc = tableColumns.get(i);
-			if (StringUtils.isNotBlank(tableAlias)) sb.append(tableAlias).append(".");
+			if (BcapStringUtils.isNotEmpty(tableAlias)) sb.append(tableAlias).append(".");
 			sb.append(tc.getColName()).append(" as ").append(tc.getPropName());
 			if (i < (size - 1)) sb.append(", ");
 			if (((i+1) % 5) == 0) sb.append("\r\n");

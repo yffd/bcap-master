@@ -3,7 +3,7 @@ package com.yffd.bcap.common.code.generator.mybatis.sql;
 import com.yffd.bcap.common.code.generator.model.BaseEntity;
 import com.yffd.bcap.common.code.generator.model.MyUserEntity;
 import com.yffd.bcap.common.code.generator.sql.MybatisSqlBuilder;
-import com.yffd.bcap.common.support.util.CollectionUtils;
+import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 import org.junit.Test;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class MybatisSqlBuilderTest {
 	@Test
 	public void prop2columnTest() {
 		List<MybatisSqlBuilder.TableColumn> result = sqlBuilder.prop2column(MyUserEntity.class, BaseEntity.class);
-		if (CollectionUtils.isEmpty(result)) {
+		if (BcapCollectionUtils.isEmpty(result)) {
 			System.out.println("未解析到属性"); 
 			return;
 		} 

@@ -10,11 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bcap-common-ddd</artifactId>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
             <groupId>com.yffd</groupId>
-            <artifactId>bcap-common-support</artifactId>
+            <artifactId>bcap-common-model</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

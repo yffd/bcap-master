@@ -1,20 +1,20 @@
 package com.yffd.bcap.uamc.domain.model.relation;
 
-import java.util.Map;
-
 public interface GroupPmsRltRepo {
 
     /**
      * 建立关联关系（权限：组）
-     * @param relationMap   key:pmsId, value:groupId
+     * @param pmsId     权限ID
+     * @param groupId   组ID
      */
-    void addRlt(Map<String, String> relationMap);
+    void addRlt(String pmsId, String groupId);
 
     /**
-     *  移除关联关系（权限：组）
-     * @param relationMap   key:pmsId, value:roleId
+     * 移除关联关系（权限：组）
+     * @param pmsId     权限ID
+     * @param groupId   组ID
      */
-    void deleteRlt(Map<String, String> relationMap);
+    void deleteRlt(String pmsId, String groupId);
 
     /**
      * 根据权限ID删除关联关系（权限：组），应用场景：权限删除或失效时

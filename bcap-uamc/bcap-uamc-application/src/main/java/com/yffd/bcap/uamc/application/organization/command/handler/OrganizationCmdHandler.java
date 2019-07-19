@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.organization.command.handler;
 
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
+import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.organization.OrgData;
 import com.yffd.bcap.uamc.domain.model.organization.OrgEntity;
 import com.yffd.bcap.uamc.domain.model.organization.OrgRepo;
@@ -14,7 +14,7 @@ public class OrganizationCmdHandler {
     public void addOrg(OrgData orgData, SysOperator sysOperator) {
         OrgEntity orgEntity = new OrgEntity(orgData, sysOperator);
         if (exsistById(orgEntity))
-            throw BcapValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ orgData.getOrgId() +", class："+ orgData.getClass() +"]");
+            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ orgData.getOrgId() +", class："+ orgData.getClass() +"]");
         orgRepo.insertOne(orgEntity.add());
     }
 

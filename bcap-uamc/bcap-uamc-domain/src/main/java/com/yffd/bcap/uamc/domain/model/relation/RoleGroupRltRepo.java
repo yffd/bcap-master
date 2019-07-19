@@ -1,20 +1,20 @@
 package com.yffd.bcap.uamc.domain.model.relation;
 
-import java.util.Map;
-
 public interface RoleGroupRltRepo {
 
     /**
      * 建立关联关系（组：角色）
-     * @param relationMap   key:groupId, value:roleId
+     * @param groupId   组ID
+     * @param roleId    角色ID
      */
-    void addRlt(Map<String, String> relationMap);
+    void addRlt(String groupId, String roleId);
 
     /**
-     *  移除关联关系（组：角色）
-     * @param relationMap   key:groupId, value:roleId
+     * 移除关联关系（组：角色）
+     * @param groupId   组ID
+     * @param roleId    角色ID
      */
-    void deleteRlt(Map<String, String> relationMap);
+    void deleteRlt(String groupId, String roleId);
 
     /**
      * 根据组ID删除关联关系（组：角色），应用场景：组删除或失效时

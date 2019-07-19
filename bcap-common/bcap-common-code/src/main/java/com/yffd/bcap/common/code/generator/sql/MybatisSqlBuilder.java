@@ -1,21 +1,11 @@
 package com.yffd.bcap.common.code.generator.sql;
 
-import com.yffd.bcap.common.support.util.CollectionUtils;
-import com.yffd.bcap.common.support.util.JavaBeanUtils;
-import com.yffd.bcap.common.support.util.StringUtils;
+import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
+import com.yffd.bcap.common.model.utils.BcapJavaBeanUtils;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 
 /**
@@ -24,7 +14,7 @@ import java.util.Set;
  * @author       zhangST
  * @version		 1.0
  * @since		 JDK 1.7+
- * @see 	 
+ * @see
  */
 public class MybatisSqlBuilder {
 
@@ -34,14 +24,14 @@ public class MybatisSqlBuilder {
 	public static final String DEF_REGEX_IN_ID = ".*((?i)i)d.*";
 	public static final String DEF_REGEX_IN_CODE = ".*((?i)c)ode.*";
 	public static final String DEF_REGEX_LIKE_NAME = ".*((?i)n)ame.*";
-	
+
 	public static final String DEF_entity_SUFFIX = "entity";
 	public static final String DEF_PARAM_SUFFIX = "Iter";
 	public static final String DEF_SQL_ID_TABLE_NAME = "table_name";
 	public static final String DEF_SQL_ID_WHERE = "conditions_where";
 
 	public static final List<String> DEF_SKIP_PROPS = new ArrayList<String>();
-	
+
 	static {
 		DEF_SKIP_PROPS.add("version");
 		DEF_SKIP_PROPS.add("delFlag");
@@ -50,12 +40,12 @@ public class MybatisSqlBuilder {
 		DEF_SKIP_PROPS.add("updateBy");
 		DEF_SKIP_PROPS.add("updateTime");
 	}
-	
+
 	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseentityClazz) {
 		List<TableColumn> equalColums = new ArrayList<>();
 		List<TableColumn> likeColums = new ArrayList<>();
 		List<TableColumn> inColums = new ArrayList<>();
-		
+
 		List<TableColumn> columns = this.prop2column(entityClazz, baseentityClazz);
 		for (TableColumn tc : columns) {
 			String propName = tc.getPropName();
@@ -70,58 +60,58 @@ public class MybatisSqlBuilder {
 				equalColums.add(tc);
 			}
 		}
-		
+
 		String paramMapAlias = DEF_PARAM_MAP_ALIAS;
-		
+
 		List<String> equalStringList = this.buildIfEqual(equalColums, tableAlias, paramAlias);
 		List<String> likeStringList = this.buildIfLike(likeColums, tableAlias, paramAlias);
 		List<String> inStringList = this.buildIfIn(inColums, tableAlias, paramMapAlias);
 		String conditions = this.buildConditions(paramAlias, paramMapAlias, equalStringList, likeStringList, inStringList);
 		return conditions;
 	}
-	
-	protected String buildConditions(String paramAlias, String paramMapAlias, 
+
+	protected String buildConditions(String paramAlias, String paramMapAlias,
 			List<String> equalStringList, List<String> likeStringList, List<String> inStringList) {
 		StringBuilder sb = new StringBuilder();
 		// 实体属性
-		if (CollectionUtils.isNotEmpty(equalStringList) || CollectionUtils.isNotEmpty(likeStringList)) {
+		if (BcapCollectionUtils.isNotEmpty(equalStringList) || BcapCollectionUtils.isNotEmpty(likeStringList)) {
 			sb.append("<!-- 实体属性过滤 -->").append("\r\n");
 			sb.append(String.format("<if test=\"%s != null\">", paramAlias)).append("\r\n");
 			// equal
-			if (CollectionUtils.isNotEmpty(equalStringList)) {
+			if (BcapCollectionUtils.isNotEmpty(equalStringList)) {
 				sb.append(String.format("%s<!-- Equal query -->", "\t")).append("\r\n");
 				for (String line : equalStringList) {
 					sb.append(String.format("%s%s", "\t", line)).append("\r\n");
 				}
 			}
 			// like
-			if (CollectionUtils.isNotEmpty(likeStringList)) {
+			if (BcapCollectionUtils.isNotEmpty(likeStringList)) {
 				sb.append(String.format("%s<!-- Like query -->", "\t")).append("\r\n");
 				for (String line : likeStringList) {
 					sb.append(String.format("%s%s", "\t", line)).append("\r\n");
 				}
 			}
-			
+
 			sb.append("</if>").append("\r\n");
 		}
-		
+
 		// 非实体属性 in
-		if (CollectionUtils.isNotEmpty(inStringList)) {
+		if (BcapCollectionUtils.isNotEmpty(inStringList)) {
 			sb.append("<!-- 非实体属性过滤 -->").append("\r\n");
 			sb.append(String.format("<if test=\"%s != null\">", paramMapAlias)).append("\r\n");
-			
+
 			sb.append(String.format("%s<!-- In query -->", "\t")).append("\r\n");
 			for (String line : inStringList) {
 				String tmp = String.format("%s", line);
 				sb.append(this.linesFmt(tmp, "\t", "\r\n"));
 			}
-						
+
 			sb.append("</if>");
 		}
-		
+
 		return sb.toString();
 	}
-	
+
 	/**
 	 * 多条件过滤
 	 * @Date	2018年9月19日 下午1:59:59 <br/>
@@ -132,17 +122,17 @@ public class MybatisSqlBuilder {
 	 * @return
 	 */
 	protected List<String> buildIfIn(List<TableColumn> tableColumns, String tableAlias, String paramMapAlias) {
-		if (CollectionUtils.isEmpty(tableColumns)) return null;
+		if (BcapCollectionUtils.isEmpty(tableColumns)) return null;
 		List<String> retList = new ArrayList<>();
 		for (TableColumn tc : tableColumns) {
 			String propName = tc.getPropName();
 			String colName = tc.getColName();
-			
-			if (StringUtils.isBlank(paramMapAlias)) paramMapAlias = DEF_PARAM_MAP_ALIAS;
+
+			if (BcapStringUtils.isEmpty(paramMapAlias)) paramMapAlias = DEF_PARAM_MAP_ALIAS;
 			String paramName = paramMapAlias + "." + propName + DEF_PARAM_SUFFIX;
 			String columnName = colName;
-			if (StringUtils.isNotBlank(tableAlias)) columnName = tableAlias + "." + columnName;
-			
+			if (BcapStringUtils.isNotEmpty(tableAlias)) columnName = tableAlias + "." + columnName;
+
 			StringBuilder sb = new StringBuilder();
 			sb.append("<if test=\""+paramName+" != null and "+ paramName +".size()>0\">").append("\r\n");
 			sb.append("and ").append(columnName).append(" in ")
@@ -153,7 +143,7 @@ public class MybatisSqlBuilder {
 		}
 		return retList;
 	}
-	
+
 	/**
 	 * 多条件过滤
 	 * @author  zhangST
@@ -163,18 +153,18 @@ public class MybatisSqlBuilder {
 	 * @return
 	 */
 	protected List<String> buildIfEqual(List<TableColumn> tableColumns, String tableAlias, String paramAlias) {
-		if (CollectionUtils.isEmpty(tableColumns)) return null;
+		if (BcapCollectionUtils.isEmpty(tableColumns)) return null;
 		List<String> retList = new ArrayList<>();
 		for (TableColumn tc : tableColumns) {
 			Class<?> propType = tc.getPropType();
 			String propName = tc.getPropName();
 			String colName = tc.getColName();
-			
-			if (StringUtils.isBlank(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
+
+			if (BcapStringUtils.isEmpty(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
 			String paramName = paramAlias + "." + propName;
 			String columnName = colName;
-			if (StringUtils.isNotBlank(tableAlias)) columnName = tableAlias + "." + columnName;
-			
+			if (BcapStringUtils.isNotEmpty(tableAlias)) columnName = tableAlias + "." + columnName;
+
 			if(String.class.getName().equals(propType.getName())) {
 				// <if test="entity.delFlag != null and entity.delFlag != ''"> and DEL_FLAG = #{entity.delFlag} </if>
 				String tmp = String.format("<if test=\"%s != null and %s != ''\"> and %s = #{%s} </if>", paramName, paramName, columnName, paramName);
@@ -191,7 +181,7 @@ public class MybatisSqlBuilder {
 		}
 		return retList;
 	}
-	
+
 	/**
 	 * 多条件过滤
 	 * @Date	2018年9月19日 下午2:30:44 <br/>
@@ -202,18 +192,18 @@ public class MybatisSqlBuilder {
 	 * @return
 	 */
 	protected List<String> buildIfLike(List<TableColumn> tableColumns, String tableAlias, String paramAlias) {
-		if (CollectionUtils.isEmpty(tableColumns)) return null;
+		if (BcapCollectionUtils.isEmpty(tableColumns)) return null;
 		List<String> retList = new ArrayList<>();
 		for (TableColumn tc : tableColumns) {
 			Class<?> propType = tc.getPropType();
 			String propName = tc.getPropName();
 			String colName = tc.getColName();
-			
-			if (StringUtils.isBlank(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
+
+			if (BcapStringUtils.isEmpty(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
 			String paramName = paramAlias + "." + propName;
 			String columnName = colName;
-			if (StringUtils.isNotBlank(tableAlias)) columnName = tableAlias + "." + columnName;
-			
+			if (BcapStringUtils.isNotEmpty(tableAlias)) columnName = tableAlias + "." + columnName;
+
 			if (String.class.getName().equals(propType.getName())) {
 				// <if test="entity.userName != null and entity.userName != ''"> and t.USER_NAME like CONCAT('%', #{entity.userName}, '%') </if>
 				String tmp = String.format("<if test=\"%s != null and %s != ''\"> and %s like CONCAT('%%', #{%s}, '%%') </if>",
@@ -228,7 +218,7 @@ public class MybatisSqlBuilder {
 		}
 		return retList;
 	}
-	
+
 	/**
 	 * 单条件过滤
 	 * @param paramAlias
@@ -238,29 +228,29 @@ public class MybatisSqlBuilder {
 	 * @param inStringList
 	 * @return
 	 */
-	protected String buildWhenConditions(String paramAlias, String paramMapAlias, 
+	protected String buildWhenConditions(String paramAlias, String paramMapAlias,
 			List<String> equalStringList, List<String> likeStringList, List<String> inStringList) {
 		StringBuilder sb = new StringBuilder();
 		// 实体属性
-		if (CollectionUtils.isNotEmpty(equalStringList) || CollectionUtils.isNotEmpty(likeStringList)) {
+		if (BcapCollectionUtils.isNotEmpty(equalStringList) || BcapCollectionUtils.isNotEmpty(likeStringList)) {
 			// equal
-			if (CollectionUtils.isNotEmpty(equalStringList)) {
+			if (BcapCollectionUtils.isNotEmpty(equalStringList)) {
 				sb.append(String.format("%s<!-- 实体属性过滤(Equal query) -->", "\t")).append("\r\n");
 				for (String line : equalStringList) {
 					sb.append(String.format("%s%s", "\t", line)).append("\r\n");
 				}
 			}
 			// like
-			if (CollectionUtils.isNotEmpty(likeStringList)) {
+			if (BcapCollectionUtils.isNotEmpty(likeStringList)) {
 				sb.append(String.format("%s<!-- 实体属性过滤(Like query) -->", "\t")).append("\r\n");
 				for (String line : likeStringList) {
 					sb.append(String.format("%s%s", "\t", line)).append("\r\n");
 				}
 			}
 		}
-		
+
 		// 非实体属性 in
-		if (CollectionUtils.isNotEmpty(inStringList)) {
+		if (BcapCollectionUtils.isNotEmpty(inStringList)) {
 			sb.append(String.format("%s<!-- 非实体属性过滤(In query) -->", "\t")).append("\r\n");
 			for (String line : inStringList) {
 				String tmp = String.format("%s", line);
@@ -269,7 +259,7 @@ public class MybatisSqlBuilder {
 		}
 		return sb.toString();
 	}
-	
+
 	/**
 	 * 单条件过滤
 	 * @Date	2018年9月19日 下午1:59:59 <br/>
@@ -280,16 +270,16 @@ public class MybatisSqlBuilder {
 	 * @return
 	 */
 	protected List<String> buildWhenIn(List<TableColumn> tableColumns, String tableAlias, String paramMapAlias) {
-		if (CollectionUtils.isEmpty(tableColumns)) return null;
+		if (BcapCollectionUtils.isEmpty(tableColumns)) return null;
 		List<String> retList = new ArrayList<>();
 		for (TableColumn tc : tableColumns) {
 			String propName = tc.getPropName();
 			String colName = tc.getColName();
-			
-			if (StringUtils.isBlank(paramMapAlias)) paramMapAlias = DEF_PARAM_MAP_ALIAS;
+
+			if (BcapStringUtils.isEmpty(paramMapAlias)) paramMapAlias = DEF_PARAM_MAP_ALIAS;
 			String paramName = paramMapAlias + "." + propName + DEF_PARAM_SUFFIX;
 			String columnName = colName;
-			if (StringUtils.isNotBlank(tableAlias)) columnName = tableAlias + "." + columnName;
+			if (BcapStringUtils.isNotEmpty(tableAlias)) columnName = tableAlias + "." + columnName;
 //			<when test="propsMap != null and propsMap.idIter != null and propsMap.idIter.size()>0">
 //			and ID in <foreach item="item" index="index" collection="propsMap.idIter" open="(" separator="," close=") ">#{item}</foreach>
 //			</when>
@@ -303,7 +293,7 @@ public class MybatisSqlBuilder {
 		}
 		return retList;
 	}
-	
+
 	/**
 	 * 单条件过滤
 	 * @Date	2018年9月19日 下午2:00:58 <br/>
@@ -314,38 +304,38 @@ public class MybatisSqlBuilder {
 	 * @return
 	 */
 	protected List<String> buildWhenEqual(List<TableColumn> tableColumns, String tableAlias, String paramAlias) {
-		if (CollectionUtils.isEmpty(tableColumns)) return null;
+		if (BcapCollectionUtils.isEmpty(tableColumns)) return null;
 		List<String> retList = new ArrayList<>();
 		for (TableColumn tc : tableColumns) {
 			Class<?> propType = tc.getPropType();
 			String propName = tc.getPropName();
 			String colName = tc.getColName();
-			
-			if (StringUtils.isBlank(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
+
+			if (BcapStringUtils.isEmpty(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
 			String paramName = paramAlias + "." + propName;
 			String columnName = colName;
-			if (StringUtils.isNotBlank(tableAlias)) columnName = tableAlias + "." + columnName;
-			
+			if (BcapStringUtils.isNotEmpty(tableAlias)) columnName = tableAlias + "." + columnName;
+
 			if(String.class.getName().equals(propType.getName())) {
 				// <when test="entity != null and entity.id != null and entity.id != ''"> and ID = #{entity.id} </when>
-				String tmp = String.format("<when test=\"%s != null and %s != null and %s != ''\"> and %s = #{%s} </when>", 
+				String tmp = String.format("<when test=\"%s != null and %s != null and %s != ''\"> and %s = #{%s} </when>",
 						paramAlias, paramName, paramName, columnName, paramName);
 				retList.add(tmp);
 			} else if (Date.class.getName().equals(propType.getName())) {
 				// <when test="entity != null and entity.createTime != null "><![CDATA[ and CREATE_TIME = #{entity.createTime} ]]></when>
-				String tmp = String.format("<when test=\"%s != null and %s != null\"><![CDATA[ and %s = #{%s} ]]></when>", 
+				String tmp = String.format("<when test=\"%s != null and %s != null\"><![CDATA[ and %s = #{%s} ]]></when>",
 						paramAlias, paramName, columnName, paramName);
 				retList.add(tmp);
 			} else {
 				// <when test="entity != null and entity.version != null "> and VERSION = #{entity.version} </if>
-				String tmp = String.format("<when test=\"%s != null and %s != null\"> and %s = #{%s} </when>", 
+				String tmp = String.format("<when test=\"%s != null and %s != null\"> and %s = #{%s} </when>",
 						paramAlias, paramName, columnName, paramName);
 				retList.add(tmp);
 			}
 		}
 		return retList;
 	}
-	
+
 	/**
 	 * 单条件过滤
 	 * @Date	2018年9月19日 下午2:30:44 <br/>
@@ -356,18 +346,18 @@ public class MybatisSqlBuilder {
 	 * @return
 	 */
 	protected List<String> buildWhenLike(List<TableColumn> tableColumns, String tableAlias, String paramAlias) {
-		if (CollectionUtils.isEmpty(tableColumns)) return null;
+		if (BcapCollectionUtils.isEmpty(tableColumns)) return null;
 		List<String> retList = new ArrayList<>();
 		for (TableColumn tc : tableColumns) {
 			Class<?> propType = tc.getPropType();
 			String propName = tc.getPropName();
 			String colName = tc.getColName();
-			
-			if (StringUtils.isBlank(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
+
+			if (BcapStringUtils.isEmpty(paramAlias)) paramAlias = DEF_PARAM_ALIAS;
 			String paramName = paramAlias + "." + propName;
 			String columnName = colName;
-			if (StringUtils.isNotBlank(tableAlias)) columnName = tableAlias + "." + columnName;
-			
+			if (BcapStringUtils.isNotEmpty(tableAlias)) columnName = tableAlias + "." + columnName;
+
 			if (String.class.getName().equals(propType.getName())) {
 				// <when test="entity != null and entity.userName != null and entity.userName != ''"> and t.USER_NAME like CONCAT('%', #{entity.userName}, '%') </when>
 				String tmp = String.format("<when test=\"%s != null and %s != null and %s != ''\"> and %s like CONCAT('%%', #{%s}, '%%') </when>",
@@ -382,14 +372,14 @@ public class MybatisSqlBuilder {
 		}
 		return retList;
 	}
-	
+
 	/*********************************************************************************/
 	/*********************************************************************************/
-	
+
 	public String entityName2tableName(Class<?> entityClazz, String entitySuffix) {
 		return this.entityName2tableName(entityClazz, null, entitySuffix, null, null);
 	}
-	
+
 	public List<TableColumn> prop2column(Class<?> entityClazz, Class<?> baseentityClazz) {
 		List<TableColumn> retList = new ArrayList<>();
 		if (null == entityClazz) return retList;
@@ -397,40 +387,40 @@ public class MybatisSqlBuilder {
 		if (null == baseentityClazz || Object.class.getName().equals(baseentityClazz.getName())) stopClazz = Object.class;
 		// 子类
 		if (null != baseentityClazz) stopClazz = baseentityClazz;
-		Map<String, Class<?>> props = JavaBeanUtils.getProps(entityClazz, stopClazz);
-		if (CollectionUtils.isNotEmpty(props)) {
+		Map<String, Class<?>> props = BcapJavaBeanUtils.getProps(entityClazz, stopClazz);
+		if (BcapCollectionUtils.isNotEmpty(props)) {
 			List<TableColumn> tmpList = new ArrayList<>();
 			Set<String> keys = props.keySet();
 			for (String key : keys) {
 				String propName = key;
 				Class<?> propType = props.get(key);
-				String colName = StringUtils.camel2underline(propName, true);	// 驼峰》下划线
+				String colName = BcapStringUtils.camel2underline(propName, true);	// 驼峰》下划线
 				TableColumn tc = new TableColumn(colName, propName, propType);
 				tmpList.add(tc);
 			}
-			
+
 			Collections.sort(tmpList);
 			retList.addAll(tmpList);
 		}
 		// 父类
 		if (null != baseentityClazz) {
-			Map<String, Class<?>> propsBase = JavaBeanUtils.getProps(baseentityClazz, Object.class);
-			if (CollectionUtils.isNotEmpty(propsBase)) {
+			Map<String, Class<?>> propsBase = BcapJavaBeanUtils.getProps(baseentityClazz, Object.class);
+			if (BcapCollectionUtils.isNotEmpty(propsBase)) {
 				List<TableColumn> tmpList = new ArrayList<>();
 				Set<String> keys = propsBase.keySet();
 				for (String key : keys) {
 					String propName = key;
 					Class<?> propType = propsBase.get(key);
-					String colName = StringUtils.camel2underline(propName, true, null, null);	// 驼峰》下划线
+					String colName = BcapStringUtils.camel2underline(propName, true, null, null);	// 驼峰》下划线
 					TableColumn tc = new TableColumn(colName, propName, propType);
 					tmpList.add(tc);
 				}
-				
+
 				Collections.sort(tmpList);
 				retList.addAll(tmpList);
 			}
 		}
-		
+
 		// 处理ID
 		List<TableColumn> tmp = new ArrayList<>();
 		Iterator<TableColumn> it = retList.iterator();
@@ -442,19 +432,19 @@ public class MybatisSqlBuilder {
 			}
 		}
 		tmp.addAll(retList);
-				
+
 		return tmp;
 	}
-	
+
 	public String entityName2tableName(Class<?> entityClazz, String entityPrefix, String entitySuffix,
 			String tablePrefix, String tableSuffix) {
 		String simpleName = entityClazz.getSimpleName();
-		int beginIndex = StringUtils.isBlank(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();
-		int endIndex = StringUtils.isBlank(entitySuffix) ? simpleName.length() : simpleName.lastIndexOf(entitySuffix);
+		int beginIndex = BcapStringUtils.isEmpty(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();
+		int endIndex = BcapStringUtils.isEmpty(entitySuffix) ? simpleName.length() : simpleName.lastIndexOf(entitySuffix);
 		String tableName = simpleName.substring(beginIndex, endIndex);
-		tableName = StringUtils.isBlank(tablePrefix) ? tableName : tablePrefix + tableName;
-		tableName = StringUtils.isBlank(tableSuffix) ? tableName : tableName + tableSuffix;
-		tableName = StringUtils.camel2underline(tableName, false);
+		tableName = BcapStringUtils.isEmpty(tablePrefix) ? tableName : tablePrefix + tableName;
+		tableName = BcapStringUtils.isEmpty(tableSuffix) ? tableName : tableName + tableSuffix;
+		tableName = BcapStringUtils.camel2underline(tableName, false);
 		return tableName;
 	}
 	

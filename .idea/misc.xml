@@ -4,6 +4,9 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -21,7 +24,6 @@
         <option value="$PROJECT_DIR$/bcap-common/bcap-common-ttt/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-infrastructure/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-ui/pom.xml" />
       </set>
     </option>

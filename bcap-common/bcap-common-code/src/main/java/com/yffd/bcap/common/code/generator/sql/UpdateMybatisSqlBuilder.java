@@ -14,12 +14,12 @@ import java.util.List;
  */
 public class UpdateMybatisSqlBuilder extends MybatisSqlBuilder {
 	public static final String SQL_ID_UPDATEBY = "updateBy";
-	public static final String DEF_PARAM_TYPE = "java.util.Map";
+	public static final String DEF_PARAM_TYPE = "java.utils.Map";
 	
 	public String buildSqlUpdate(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 更新 -->").append("\r\n");
-		sb.append(String.format("<update id=\"%s\" parameterType=\"java.util.Map\">", SQL_ID_UPDATEBY)).append("\r\n");
+		sb.append(String.format("<update id=\"%s\" parameterType=\"java.utils.Map\">", SQL_ID_UPDATEBY)).append("\r\n");
 		sb.append("\t").append(String.format("update <include refid=\"%s\" />", DEF_SQL_ID_TABLE_NAME)).append("\r\n");
 		
 		sb.append("\t").append("<set>").append("\r\n");

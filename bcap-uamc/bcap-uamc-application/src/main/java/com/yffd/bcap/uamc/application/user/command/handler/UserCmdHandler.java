@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.user.command.handler;
 
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
+import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.account.AccountRepo;
 import com.yffd.bcap.uamc.domain.model.relation.GroupUserRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.PmsUserRltRepo;
@@ -12,6 +12,7 @@ import com.yffd.bcap.uamc.domain.model.user.UserRepo;
 import com.yffd.bcap.uamc.domain.model.user.UserService;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
 import java.util.Set;
 
 public class UserCmdHandler {
@@ -21,11 +22,12 @@ public class UserCmdHandler {
     private RoleUserRltRepo roleUserRltRepo;
     private PmsUserRltRepo pmsUserRltRepo;
     private AccountRepo accountRepo;
+    private UserService userService = new UserService();
 
     public void addUser(UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (exsistById(userEntity))
-            throw BcapValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ userData.getUserId() +", class："+ userData.getClass() +"]");
+            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ userData.getUserId() +", class："+ userData.getClass() +"]");
         userRepo.insertOne(userEntity.add());
     }
 
@@ -37,7 +39,6 @@ public class UserCmdHandler {
     @Transactional
     public void deleteUser(UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
-        UserService userService = new UserService();
         userService.deleteUserWithRlt(userEntity, userRepo, groupUserRltRepo, roleUserRltRepo, pmsUserRltRepo, accountRepo);
     }
 
@@ -54,8 +55,9 @@ public class UserCmdHandler {
     public void assignToGroups(Set<String> groupIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (!exsistById(userEntity))
-            throw BcapValidateException.ERROR("用户指派组失败，用户ID不存在["+ userData.getUserId() +"]");
-        groupUserRltRepo.addRlt(userEntity.assignToGroups(groupIds));
+            throw UamcDomainValidateException.ERROR("用户指派组失败，用户ID不存在["+ userData.getUserId() +"]");
+        Map<String, String> rltMap = userEntity.mappingRltGroup(groupIds);    //构建映射关系
+        userService.addRltToGroups(rltMap, groupUserRltRepo);
     }
 
     /**
@@ -66,7 +68,8 @@ public class UserCmdHandler {
      */
     public void deleteRltGroups(Set<String> groupIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
-        groupUserRltRepo.deleteRlt(userEntity.removeRltGroups(groupIds));
+        Map<String, String> rltMap = userEntity.mappingRltGroup(groupIds);    //构建映射关系
+        userService.removeRltToGroups(rltMap, groupUserRltRepo);
     }
 
     /**
@@ -78,8 +81,9 @@ public class UserCmdHandler {
     public void assignToRoles(Set<String> roleIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (!exsistById(userEntity))
-            throw BcapValidateException.ERROR("用户指派角色失败，用户ID不存在["+ userData.getUserId() +"]");
-        roleUserRltRepo.addRlt(userEntity.assignToRoles(roleIds));
+            throw UamcDomainValidateException.ERROR("用户指派角色失败，用户ID不存在["+ userData.getUserId() +"]");
+        Map<String, String> rltMap = userEntity.mappingRltRole(roleIds);    //构建映射关系
+        userService.addRltToRoles(rltMap, roleUserRltRepo);
     }
 
     /**
@@ -90,7 +94,8 @@ public class UserCmdHandler {
      */
     public void deleteRltRoles(Set<String> roleIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
-        roleUserRltRepo.deleteRlt(userEntity.removeRltRoles(roleIds));
+        Map<String, String> rltMap = userEntity.mappingRltRole(roleIds);    //构建映射关系
+        userService.removeRltToRoles(rltMap, roleUserRltRepo);
     }
 
     /**
@@ -102,8 +107,9 @@ public class UserCmdHandler {
     public void assignToPermissions(Set<String> pmsIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (!exsistById(userEntity))
-            throw BcapValidateException.ERROR("用户指派权限失败，用户ID不存在["+ userData.getUserId() +"]");
-        pmsUserRltRepo.addRlt(userEntity.assignToPermissions(pmsIds));
+            throw UamcDomainValidateException.ERROR("用户指派权限失败，用户ID不存在["+ userData.getUserId() +"]");
+        Map<String, String> rltMap = userEntity.mappingRltPermission(pmsIds);    //构建映射关系
+        userService.addRltToPermissions(rltMap, pmsUserRltRepo);
     }
 
     /**
@@ -114,7 +120,8 @@ public class UserCmdHandler {
      */
     public void deleteRltPermissions(Set<String> pmsIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
-        pmsUserRltRepo.addRlt(userEntity.removeRltPermissions(pmsIds));
+        Map<String, String> rltMap = userEntity.mappingRltPermission(pmsIds);    //构建映射关系
+        userService.removeRltToPermissions(rltMap, pmsUserRltRepo);
     }
 
 }

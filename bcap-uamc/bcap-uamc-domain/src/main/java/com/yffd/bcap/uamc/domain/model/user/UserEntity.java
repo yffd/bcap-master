@@ -2,8 +2,7 @@ package com.yffd.bcap.uamc.domain.model.user;
 
 import com.yffd.bcap.common.ddd.domain.entity.EntityObjectSupport;
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
-import com.yffd.bcap.common.support.util.CollectionUtils;
+import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,13 +20,12 @@ public class UserEntity extends EntityObjectSupport<UserData> {
     }
 
     /**
-     * 指派组
+     * 映射关联关系，组：用户
      * @param groupIds
-     * @return
+     * @return          映射关系，key:groupId, value:userId
      */
-    public Map<String, String> assignToGroups(Set<String> groupIds) {
-        if (CollectionUtils.isEmpty(groupIds))
-            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+    public Map<String, String> mappingRltGroup(Set<String> groupIds) {
+        if (BcapCollectionUtils.isEmpty(groupIds)) return null;
         Map<String, String> map = new HashMap<>(groupIds.size());
         for (String grouId : groupIds) {
             map.put(grouId, this.data().getUserId());
@@ -36,22 +34,12 @@ public class UserEntity extends EntityObjectSupport<UserData> {
     }
 
     /**
-     * 解除已指派组
-     * @param groupIds
-     * @return
-     */
-    public Map<String, String> removeRltGroups(Set<String> groupIds) {
-        return this.assignToGroups(groupIds);
-    }
-
-    /**
-     * 指派角色
+     * 映射关联关系，角色：用户
      * @param roleIds
-     * @return
+     * @return          映射关系，key:roleId, value:userId
      */
-    public Map<String, String> assignToRoles(Set<String> roleIds) {
-        if (CollectionUtils.isEmpty(roleIds))
-            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+    public Map<String, String> mappingRltRole(Set<String> roleIds) {
+        if (BcapCollectionUtils.isEmpty(roleIds)) return null;
         Map<String, String> map = new HashMap<>(roleIds.size());
         for (String roleId : roleIds) {
             map.put(roleId, this.data().getUserId());
@@ -60,22 +48,12 @@ public class UserEntity extends EntityObjectSupport<UserData> {
     }
 
     /**
-     * 解除已指派角色
-     * @param roleIds
-     * @return
-     */
-    public Map<String, String> removeRltRoles(Set<String> roleIds) {
-        return this.assignToRoles(roleIds);
-    }
-
-    /**
-     * 指派权限
+     * 映射关联关系，权限：用户
      * @param pmsIds
-     * @return
+     * @return          映射关系，key:pmsIds, value:userId
      */
-    public Map<String, String> assignToPermissions(Set<String> pmsIds) {
-        if (CollectionUtils.isEmpty(pmsIds))
-            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+    public Map<String, String> mappingRltPermission(Set<String> pmsIds) {
+        if (BcapCollectionUtils.isEmpty(pmsIds)) return null;
         Map<String, String> map = new HashMap<>(pmsIds.size());
         for (String pmsId : pmsIds) {
             map.put(pmsId, this.data().getUserId());
@@ -83,12 +61,4 @@ public class UserEntity extends EntityObjectSupport<UserData> {
         return map;
     }
 
-    /**
-     * 解除已指派权限
-     * @param pmsIds
-     * @return
-     */
-    public Map<String, String> removeRltPermissions(Set<String> pmsIds) {
-        return this.assignToPermissions(pmsIds);
-    }
 }

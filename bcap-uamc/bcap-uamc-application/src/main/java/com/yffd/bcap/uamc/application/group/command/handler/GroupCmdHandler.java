@@ -1,7 +1,8 @@
 package com.yffd.bcap.uamc.application.group.command.handler;
 
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
+import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
+import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.group.GroupEntity;
 import com.yffd.bcap.uamc.domain.model.group.GroupRepo;
@@ -19,11 +20,12 @@ public class GroupCmdHandler {
     private RoleGroupRltRepo roleGroupRltRepo;
     private GroupPmsRltRepo groupPmsRltRepo;
     private GroupUserRltRepo groupUserRltRepo;
+    private GroupService groupService = new GroupService();
 
     public void addGroup(GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
         if (exsistById(groupEntity))
-            throw BcapValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ groupData.getGroupId() +", class："+ groupData.getClass() +"]");
+            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ groupData.getGroupId() +", class："+ groupData.getClass() +"]");
         groupRepo.insertOne(groupEntity.add());
     }
 
@@ -35,7 +37,6 @@ public class GroupCmdHandler {
     @Transactional
     public void deleteGroup(GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
-        GroupService groupService = new GroupService();
         groupService.deleteGroupWithRlt(groupEntity, groupRepo, roleGroupRltRepo, groupPmsRltRepo, groupUserRltRepo);
     }
 
@@ -68,8 +69,9 @@ public class GroupCmdHandler {
     public void assignToRoles(Set<String> roleIds, GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
         if (!exsistById(groupEntity))
-            throw BcapValidateException.ERROR("组指派角色失败，组ID不存在["+ groupData.getGroupId() +"]");
-        roleGroupRltRepo.addRlt(groupEntity.assignToRoles(roleIds));
+            throw UamcDomainValidateException.ERROR("组指派角色失败，组ID不存在["+ groupData.getGroupId() +"]");
+        Map<String, String> rltMap = groupEntity.mappingRltRole(roleIds);    //构建映射关系
+        groupService.addRltToRoles(rltMap, roleGroupRltRepo);
     }
 
     /**
@@ -80,7 +82,8 @@ public class GroupCmdHandler {
      */
     public void deleteRltRoles(Set<String> roleIds, GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
-        roleGroupRltRepo.deleteRlt(groupEntity.removeRltRoles(roleIds));
+        Map<String, String> rltMap = groupEntity.mappingRltRole(roleIds);    //构建映射关系
+        groupService.removeRltToRoles(rltMap, roleGroupRltRepo);
     }
 
     /**
@@ -89,11 +92,13 @@ public class GroupCmdHandler {
      * @param groupData
      * @param sysOperator
      */
+    @Transactional
     public void assignToPermissions(Set<String> pmsIds, GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
         if (!exsistById(groupEntity))
-            throw BcapValidateException.ERROR("组指派权限失败，组ID不存在["+ groupData.getGroupId() +"]");
-        groupPmsRltRepo.addRlt(groupEntity.assignToPermissions(pmsIds));
+            throw UamcDomainValidateException.ERROR("组指派权限失败，组ID不存在["+ groupData.getGroupId() +"]");
+        Map<String, String> rltMap = groupEntity.mappingRltPermission(pmsIds);    //构建映射关系
+        groupService.addRltToPermissions(rltMap, groupPmsRltRepo);
     }
 
     /**
@@ -104,12 +109,12 @@ public class GroupCmdHandler {
      */
     public void deleteRltPermissions(Set<String> pmsIds, GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
-        groupPmsRltRepo.addRlt(groupEntity.removeRltPermissions(pmsIds));
+        Map<String, String> rltMap = groupEntity.mappingRltPermission(pmsIds);
+        groupService.removeRltToPermissions(rltMap, groupPmsRltRepo);    //构建映射关系
     }
 
     private Boolean exsistById(GroupEntity groupEntity) {
         return null != groupRepo.findById(groupEntity.exsistById());
     }
-
 
 }

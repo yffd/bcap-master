@@ -1,6 +1,8 @@
 package com.yffd.bcap.uamc.domain.model.role.service;
 
 import com.yffd.bcap.common.model.system.SysOperator;
+import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
+import com.yffd.bcap.uamc.domain.model.role.entity.RoleEntity;
 import com.yffd.bcap.uamc.domain.model.role.repository.RoleRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +12,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Calendar;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.spy;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoleServiceTest {
@@ -33,14 +36,14 @@ public class RoleServiceTest {
 
     @Test
     public void addRoleTest() {
-        /*RolerootEntity rolerootEntity = spy(RolerootEntity.class);
-        rolerootEntity.setRoleId(roleRepo.nextIdrootEntity);
-        RoleAgrgt roleAgrgt = new RoleAgrgt(sysOperator, rolerootEntity);
+        RoleData roleData = spy(RoleData.class);
+        roleData.setRoleId(roleRepo.nextIdentity());
+        RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
 
-        doNothing().when(roleRepo).add(rolerootEntity);
-        roleService.addRole(roleRepo, roleAgrgt);
+        doNothing().when(roleRepo).insertOne(roleData);
+        roleRepo.insertOne(roleData);
 
-        System.out.println(rolerootEntity.getRoleId());
-        System.out.println(roleAgrgt.sysOperator.getOperatorId());*/
+        System.out.println(roleData.getRoleId());
+        System.out.println(sysOperator.getOperatorId());
     }
 }

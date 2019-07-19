@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.role.command.handler;
 
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
+import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.relation.RoleGroupRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.RolePmsRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.RoleUserRltRepo;
@@ -11,6 +11,7 @@ import com.yffd.bcap.uamc.domain.model.role.repository.RoleRepo;
 import com.yffd.bcap.uamc.domain.model.role.service.RoleService;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
 import java.util.Set;
 
 public class RoleCmdHandler {
@@ -19,11 +20,12 @@ public class RoleCmdHandler {
     private RoleGroupRltRepo roleGroupRltRepo;
     private RolePmsRltRepo rolePmsRltRepo;
     private RoleUserRltRepo roleUserRltRepo;
+    private RoleService roleService = new RoleService();
 
     public void addRole(RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (exsistById(roleEntity))
-            throw BcapValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ roleData.getRoleId() +", class："+ roleData.getClass() +"]");
+            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ roleData.getRoleId() +", class："+ roleData.getClass() +"]");
         roleRepo.insertOne(roleEntity.add());
     }
 
@@ -39,7 +41,6 @@ public class RoleCmdHandler {
     @Transactional
     public void deleteRole(RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
-        RoleService roleService = new RoleService();
         roleService.deleteRoleWithRlt(roleEntity, roleRepo, roleGroupRltRepo, rolePmsRltRepo, roleUserRltRepo);
     }
 
@@ -72,8 +73,9 @@ public class RoleCmdHandler {
     public void assignToGroups(Set<String> groupIds, RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (!exsistById(roleEntity))
-            throw BcapValidateException.ERROR("角色指派组失败，角色ID不存在["+ roleData.getRoleId() +"]");
-        roleGroupRltRepo.addRlt(roleEntity.assignToGroup(groupIds));
+            throw UamcDomainValidateException.ERROR("角色指派组失败，角色ID不存在["+ roleData.getRoleId() +"]");
+        Map<String, String> rltMap = roleEntity.mappingRltGroup(groupIds);    //构建映射关系
+        roleService.addRltToGroups(rltMap, roleGroupRltRepo);
     }
 
     /**
@@ -84,7 +86,8 @@ public class RoleCmdHandler {
      */
     public void deleteRltGroups(Set<String> groupIds, RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
-        roleGroupRltRepo.deleteRlt(roleEntity.removeRltGroup(groupIds));
+        Map<String, String> rltMap = roleEntity.mappingRltGroup(groupIds);    //构建映射关系
+        roleService.removeRltToGroups(rltMap, roleGroupRltRepo);
     }
 
     /**
@@ -96,8 +99,9 @@ public class RoleCmdHandler {
     public void assignToPermissions(Set<String> pmsIds, RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (!exsistById(roleEntity))
-            throw BcapValidateException.ERROR("角色指派权限失败，角色ID不存在["+ roleData.getRoleId() +"]");
-        rolePmsRltRepo.addRlt(roleEntity.assignToPermissions(pmsIds));
+            throw UamcDomainValidateException.ERROR("角色指派权限失败，角色ID不存在["+ roleData.getRoleId() +"]");
+        Map<String, String> rltMap = roleEntity.mappingRltPermission(pmsIds);    //构建映射关系
+        roleService.addRltToPermissions(rltMap, rolePmsRltRepo);
     }
 
     /**
@@ -108,7 +112,8 @@ public class RoleCmdHandler {
      */
     public void deleteRltPermissions(Set<String> pmsIds, RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
-        rolePmsRltRepo.deleteRlt(roleEntity.removeRltPermissions(pmsIds));
+        Map<String, String> rltMap = roleEntity.mappingRltPermission(pmsIds);    //构建映射关系
+        roleService.removeRltToPermissions(rltMap, rolePmsRltRepo);
     }
 
 }

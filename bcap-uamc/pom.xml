@@ -10,12 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bcap-uamc</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>bcap-uamc-domain</module>
         <module>bcap-uamc-application</module>
-        <module>bcap-uamc-infrastructure</module>
-        <module>bcap-uamc-client</module>
         <module>bcap-uamc-infrastructure</module>
         <module>bcap-uamc-ui</module>
     </modules>

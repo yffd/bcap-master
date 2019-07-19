@@ -2,19 +2,17 @@ package com.yffd.bcap.uamc.domain.model.role.entity;
 
 import com.yffd.bcap.common.ddd.domain.data.DataObjectHelper;
 import com.yffd.bcap.common.ddd.domain.entity.IEntityObject;
+import com.yffd.bcap.common.ddd.exception.DomainValidateException;
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
-import com.yffd.bcap.common.support.util.CollectionUtils;
-import com.yffd.bcap.common.support.util.StringUtils;
+import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
 import com.yffd.bcap.uamc.domain.constants.enums.ActiveStateEnum;
 import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
-import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-@Getter
 public class RoleEntity implements IEntityObject {
     private static final long serialVersionUID = -5209277505214546383L;
     private SysOperator sysOperator;
@@ -22,7 +20,7 @@ public class RoleEntity implements IEntityObject {
 
     public RoleEntity(RoleData data, SysOperator sysOperator) {
         if (null == data || null == sysOperator)
-            throw BcapValidateException.ERROR_PARAMS("构造器参数错误[data:"+data+", sysOperator:"+sysOperator+"]");
+            throw DomainValidateException.ERROR_PARAMS("构造器参数错误[data:"+data+", sysOperator:"+sysOperator+"]");
         this.sysOperator = sysOperator;
         this.data = data;
     }
@@ -33,21 +31,21 @@ public class RoleEntity implements IEntityObject {
     }
 
     public RoleData updateById() {
-        if (StringUtils.isBlank(this.data.getRoleId()))
-            throw BcapValidateException.ERROR_PARAMS("修改失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+        if (BcapStringUtils.isEmpty(this.data.getRoleId()))
+            throw DomainValidateException.ERROR_PARAMS("修改失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         DataObjectHelper.initPropsForAdd(this.data, this.sysOperator);
         return this.data;
     }
 
     public String deleteById() {
-        if (StringUtils.isBlank(this.data.getRoleId()))
-            throw BcapValidateException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+        if (BcapStringUtils.isEmpty(this.data.getRoleId()))
+            throw DomainValidateException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         return this.data.getRoleId();
     }
 
     public String exsistById() {
-        if (StringUtils.isBlank(this.data.getRoleId()))
-            throw BcapValidateException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+        if (BcapStringUtils.isEmpty(this.data.getRoleId()))
+            throw DomainValidateException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         return this.data.getRoleId();
     }
 
@@ -55,8 +53,8 @@ public class RoleEntity implements IEntityObject {
      * 启用角色
      */
     public RoleData active() {
-        if (StringUtils.isBlank(this.data.getRoleId()))
-            throw BcapValidateException.ERROR_PARAMS("启用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+        if (BcapStringUtils.isEmpty(this.data.getRoleId()))
+            throw DomainValidateException.ERROR_PARAMS("启用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         this.data.setRoleState(ActiveStateEnum.ACTIVE.getCode());
         DataObjectHelper.initPropsForUpdate(this.data, this.sysOperator);
         return this.data;
@@ -66,21 +64,20 @@ public class RoleEntity implements IEntityObject {
      * 禁用角色
      */
     public RoleData deactive() {
-        if (StringUtils.isBlank(this.data.getRoleId()))
-            throw BcapValidateException.ERROR_PARAMS("停用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+        if (BcapStringUtils.isEmpty(this.data.getRoleId()))
+            throw DomainValidateException.ERROR_PARAMS("停用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         this.data.setRoleState(ActiveStateEnum.DEACTIVE.getCode());
         DataObjectHelper.initPropsForUpdate(this.data, this.sysOperator);
         return this.data;
     }
 
     /**
-     * 指派组
+     * 映射关联关系，组：角色
      * @param groupIds
-     * @return  key:groupId, value:roleId
+     * @return          映射关系，key:groupId, value:roleId
      */
-    public Map<String, String> assignToGroup(Set<String> groupIds) {
-        if (CollectionUtils.isEmpty(groupIds))
-            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+    public Map<String, String> mappingRltGroup(Set<String> groupIds) {
+        if (BcapCollectionUtils.isEmpty(groupIds)) return null;
         Map<String, String> map = new HashMap<>(groupIds.size());
         for (String groupId : groupIds) {
             map.put(groupId, this.data.getRoleId());
@@ -89,22 +86,12 @@ public class RoleEntity implements IEntityObject {
     }
 
     /**
-     * 解除已指派组
-     * @param groupIds
-     * @return  key:groupId, value:roleId
-     */
-    public Map<String, String> removeRltGroup(Set<String> groupIds) {
-        return assignToGroup(groupIds);
-    }
-
-    /**
-     * 指派权限
+     * 映射关联关系，权限：角色
      * @param pmsIds
-     * @return  key:pmsId, value:roleId
+     * @return          映射关系，key:pmsId, value:roleId
      */
-    public Map<String, String> assignToPermissions(Set<String> pmsIds) {
-        if (CollectionUtils.isEmpty(pmsIds))
-            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+    public Map<String, String> mappingRltPermission(Set<String> pmsIds) {
+        if (BcapCollectionUtils.isEmpty(pmsIds)) return null;
         Map<String, String> map = new HashMap<>(pmsIds.size());
         for (String pmsId : pmsIds) {
             map.put(pmsId, this.data.getRoleId());
@@ -113,26 +100,17 @@ public class RoleEntity implements IEntityObject {
     }
 
     /**
-     * 解除已指派权限
-     * @param pmsIds
-     * @return  key:pmsId, value:roleId
-     */
-    public Map<String, String> removeRltPermissions(Set<String> pmsIds) {
-        return assignToPermissions(pmsIds);
-    }
-
-    /**
-     * 解除已指派用户
+     * 映射关联关系，用户：角色
      * @param userIds
-     * @return  key:userId, value:roleId
+     * @return          映射关系，key:userId, value:roleId
      */
-    public Map<String, String> removeRltUsers(Set<String> userIds) {
-        if (CollectionUtils.isEmpty(userIds))
-            throw BcapValidateException.ERROR_PARAMS("集合不能为空");
+    public Map<String, String> mappingRltUser(Set<String> userIds) {
+        if (BcapCollectionUtils.isEmpty(userIds)) return null;
         Map<String, String> map = new HashMap<>(userIds.size());
         for (String userId : userIds) {
             map.put(userId, this.data.getRoleId());
         }
         return map;
     }
+
 }

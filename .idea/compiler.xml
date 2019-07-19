@@ -22,11 +22,9 @@
         <module name="bcap-demo-core" />
         <module name="bcap-infrastructure" />
         <module name="bcap-uamc-application" />
-        <module name="bcap-uamc-client" />
         <module name="bcap-uamc-domain" />
         <module name="bcap-uamc-infrastructure" />
         <module name="bcap-uamc-ui" />
-        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

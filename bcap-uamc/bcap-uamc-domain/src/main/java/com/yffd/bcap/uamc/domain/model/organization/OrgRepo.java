@@ -11,5 +11,5 @@ public interface OrgRepo extends RepositorySupport<OrgData> {
 
     Boolean exsistUser(Set<String> orgIds);
 
-    List<OrgData> findByOrgPathIn(String orgId);
+    List<OrgData> findChildren(String orgId);
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class DeleteMybatisSqlBuilder extends MybatisSqlBuilder {
 
 	public static final String SQL_ID_DELETE = "deleteBy";
-	public static final String DEF_PARAM_TYPE = "java.util.Map";
+	public static final String DEF_PARAM_TYPE = "java.utils.Map";
 	public static final List<String> DEF_SKIP_PROPS = new ArrayList<String>();
 	
 	static {

@@ -1,7 +1,6 @@
 package com.yffd.bcap.common.support.exception;
 
 import com.yffd.bcap.common.model.exception.BaseException;
-import com.yffd.bcap.common.support.util.StringUtils;
 
 public class BcapMybatisException extends BaseException {
     private static final long serialVersionUID = -6653933750953804185L;
@@ -106,7 +105,7 @@ public class BcapMybatisException extends BaseException {
      */
     public static BcapMybatisException DB_SQL_ID_EMPTY(String... msg) {
         String tmp = "sqlId 不能为空";
-        if (StringUtils.isNotBlank(msg[0])) tmp = msg[0];
+        if (null!=msg[0] && !"".equals(msg[0].trim())) tmp = msg[0];
         return new BcapMybatisException(null, "DD1000", tmp, "");
     }
 

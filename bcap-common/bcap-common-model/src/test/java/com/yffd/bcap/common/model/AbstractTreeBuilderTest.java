@@ -1,6 +1,5 @@
 package com.yffd.bcap.common.model;
 
-import com.alibaba.fastjson.JSON;
 import com.yffd.bcap.common.model.tree.AbstractTreeBuilder;
 import com.yffd.bcap.common.model.tree.Treeable;
 import org.junit.Test;
@@ -15,8 +14,7 @@ public class AbstractTreeBuilderTest {
 		List<CustObj> nodeList = getList();
 		CustObj root = new CustObj("root", "", "虚根");
 		Node node = builder.buildTree(root, nodeList);
-		String json = JSON.toJSONString(node);
-		System.out.println(json);
+		System.out.println(node);
 	}
 	
 	AbstractTreeBuilder<CustObj, Node> builder = new AbstractTreeBuilder<CustObj, Node>() {

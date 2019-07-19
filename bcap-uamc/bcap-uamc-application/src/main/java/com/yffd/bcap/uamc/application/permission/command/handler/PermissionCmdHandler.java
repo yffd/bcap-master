@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.permission.command.handler;
 
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.common.support.exception.BcapValidateException;
+import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionEntity;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionRepo;
@@ -21,7 +21,7 @@ public class PermissionCmdHandler {
     public void addPms(PermissionData permissionData, SysOperator sysOperator) {
         PermissionEntity permissionEntity = new PermissionEntity(permissionData, sysOperator);
         if (exsistById(permissionEntity))
-            throw BcapValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ permissionData.getPmsId() +", class："+ permissionData.getClass() +"]");
+            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ permissionData.getPmsId() +", class："+ permissionData.getClass() +"]");
         permissionRepo.insertOne(permissionEntity.add());
     }
 
