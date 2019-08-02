@@ -2,7 +2,7 @@ package com.yffd.bcap.uamc.domain.model.role.entity;
 
 import com.yffd.bcap.common.ddd.domain.data.DataObjectHelper;
 import com.yffd.bcap.common.ddd.domain.entity.IEntityObject;
-import com.yffd.bcap.common.ddd.exception.DomainValidateException;
+import com.yffd.bcap.common.ddd.exception.DomainException;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
@@ -20,7 +20,7 @@ public class RoleEntity implements IEntityObject {
 
     public RoleEntity(RoleData data, SysOperator sysOperator) {
         if (null == data || null == sysOperator)
-            throw DomainValidateException.ERROR_PARAMS("构造器参数错误[data:"+data+", sysOperator:"+sysOperator+"]");
+            throw DomainException.ERROR_PARAMS("构造器参数错误[data:"+data+", sysOperator:"+sysOperator+"]");
         this.sysOperator = sysOperator;
         this.data = data;
     }
@@ -32,20 +32,20 @@ public class RoleEntity implements IEntityObject {
 
     public RoleData updateById() {
         if (BcapStringUtils.isEmpty(this.data.getRoleId()))
-            throw DomainValidateException.ERROR_PARAMS("修改失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw DomainException.ERROR_PARAMS("修改失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         DataObjectHelper.initPropsForAdd(this.data, this.sysOperator);
         return this.data;
     }
 
     public String deleteById() {
         if (BcapStringUtils.isEmpty(this.data.getRoleId()))
-            throw DomainValidateException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw DomainException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         return this.data.getRoleId();
     }
 
     public String exsistById() {
         if (BcapStringUtils.isEmpty(this.data.getRoleId()))
-            throw DomainValidateException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw DomainException.ERROR_PARAMS("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         return this.data.getRoleId();
     }
 
@@ -54,7 +54,7 @@ public class RoleEntity implements IEntityObject {
      */
     public RoleData active() {
         if (BcapStringUtils.isEmpty(this.data.getRoleId()))
-            throw DomainValidateException.ERROR_PARAMS("启用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw DomainException.ERROR_PARAMS("启用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         this.data.setRoleState(ActiveStateEnum.ACTIVE.getCode());
         DataObjectHelper.initPropsForUpdate(this.data, this.sysOperator);
         return this.data;
@@ -65,7 +65,7 @@ public class RoleEntity implements IEntityObject {
      */
     public RoleData deactive() {
         if (BcapStringUtils.isEmpty(this.data.getRoleId()))
-            throw DomainValidateException.ERROR_PARAMS("停用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw DomainException.ERROR_PARAMS("停用失败，数据实体ID不能为空[" + this.data.getClass() + "]");
         this.data.setRoleState(ActiveStateEnum.DEACTIVE.getCode());
         DataObjectHelper.initPropsForUpdate(this.data, this.sysOperator);
         return this.data;

@@ -24,7 +24,7 @@ public class RoleServiceTest {
     private RoleRepo roleRepo;*/
     @Spy
     private RoleRepo roleRepo;
-    private RoleService roleService = new RoleService();
+    private RoleService roleService = RoleService.getInstance();
     private SysOperator sysOperator = spy(SysOperator.class);
 
     @Before

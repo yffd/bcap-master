@@ -9,7 +9,7 @@ public interface OrgRepo extends RepositorySupport<OrgData> {
 
     void deleteByIds(Set<String> orgIds);
 
-    Boolean exsistUser(Set<String> orgIds);
+    Integer countUsers(Set<String> orgIds);
 
     List<OrgData> findChildren(String orgId);
 }

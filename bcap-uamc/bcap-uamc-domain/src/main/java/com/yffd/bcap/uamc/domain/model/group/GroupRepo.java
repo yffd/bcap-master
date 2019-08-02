@@ -6,8 +6,7 @@ import java.util.Set;
 
 public interface GroupRepo extends RepositorySupport<GroupData> {
 
-    Set<String> findChildrenIds(String parentId);
-
     void deleteByIdIn(Set<String> delIds);
 
+    void updateGroupState(GroupData groupData);
 }

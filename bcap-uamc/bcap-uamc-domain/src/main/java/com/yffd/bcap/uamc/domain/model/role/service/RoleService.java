@@ -12,6 +12,18 @@ import java.util.Map;
 import java.util.Set;
 
 public class RoleService implements IDomainService {
+    private static final RoleService instance = new RoleService();
+
+    private RoleService() {
+    }
+
+    public static RoleService getInstance() {
+        return instance;
+    }
+
+    public Boolean exsistRoleById(RoleEntity roleEntity, RoleRepo roleRepo) {
+        return null != roleRepo.findById(roleEntity.exsistById());
+    }
 
     public void deleteRoleWithRlt(RoleEntity roleEntity, RoleRepo roleRepo, RoleGroupRltRepo roleGroupRltRepo,
                                   RolePmsRltRepo rolePmsRltRepo, RoleUserRltRepo roleUserRltRepo) {

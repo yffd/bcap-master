@@ -5,4 +5,5 @@ import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
 
 public interface RoleRepo extends RepositorySupport<RoleData> {
 
+    void updateRoleState(RoleData roleData);
 }

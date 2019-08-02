@@ -17,6 +17,14 @@ import java.util.Map;
 import java.util.Set;
 
 public class UserService {
+    private static final UserService instance = new UserService();
+
+    private UserService() {
+    }
+
+    public static UserService getInstance() {
+        return instance;
+    }
 
     public void deleteUserWithRlt(UserEntity userEntity, UserRepo userRepo, GroupUserRltRepo groupUserRltRepo,
                                   RoleUserRltRepo roleUserRltRepo, PmsUserRltRepo pmsUserRltRepo, AccountRepo accountRepo) {
@@ -120,6 +128,10 @@ public class UserService {
             String userId = entry.getValue();
             pmsUserRltRepo.deleteRlt(userId, pmsId);
         }
+    }
+
+    public Boolean exsistById(UserEntity userEntity, UserRepo userRepo) {
+        return null != userRepo.findById(userEntity.exsistById());
     }
 
     public AccountData hasAccount(UserRepo repo) {

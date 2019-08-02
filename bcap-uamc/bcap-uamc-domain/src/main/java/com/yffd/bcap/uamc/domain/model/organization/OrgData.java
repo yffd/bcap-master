@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.organization;
 
-import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
+import com.yffd.bcap.common.ddd.domain.data.DataObject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="uamc_org")
-public class OrgData extends DataObjectSupport {
+public class OrgData extends DataObject {
     private static final long serialVersionUID = 2689173809583888360L;
     @Id
     private String orgId;//机构ID
@@ -16,7 +16,7 @@ public class OrgData extends DataObjectSupport {
     private String shotName;//机构简称
     private String parentId;//父机构ID
     private String orgType;//类型，企业=company、分公司=branch、部门=dept
-    private String num;//排序号
+    private Integer num;//排序号
     private String orgPath;//机构路径
     private String remark;//描述
 
@@ -60,11 +60,11 @@ public class OrgData extends DataObjectSupport {
         this.orgType = orgType;
     }
 
-    public String getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(String num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 

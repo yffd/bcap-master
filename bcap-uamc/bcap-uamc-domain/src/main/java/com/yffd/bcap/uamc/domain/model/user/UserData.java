@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.user;
 
-import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
+import com.yffd.bcap.common.ddd.domain.data.DataObject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="uamc_user")
-public class UserData extends DataObjectSupport {
+public class UserData extends DataObject {
     private static final long serialVersionUID = 926423415872727207L;
     @Id
     private String userId;//用户ID

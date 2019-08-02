@@ -38,4 +38,4 @@ spring:
 
 logging:
   level:
-    com.yffd.bcap.uamc: 'off'
+    com.yffd.bcap.uamc: 'on'

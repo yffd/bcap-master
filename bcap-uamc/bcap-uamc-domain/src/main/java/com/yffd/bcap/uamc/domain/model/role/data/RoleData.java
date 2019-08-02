@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.role.data;
 
-import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
+import com.yffd.bcap.common.ddd.domain.data.DataObject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,12 +8,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="uamc_role")
-public class RoleData extends DataObjectSupport {
+public class RoleData extends DataObject {
     private static final long serialVersionUID = -2563742842078527305L;
     @Id
     private String roleId;//角色ID
     private String roleName;//角色名称
-    private String roleState;//状态，启用=enabled、停用=disabled
+    private String roleState;//状态
     private String remark;//描述
 
     public String getRoleId() {

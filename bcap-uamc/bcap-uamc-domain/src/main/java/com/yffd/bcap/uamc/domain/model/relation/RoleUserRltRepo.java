@@ -1,7 +1,5 @@
 package com.yffd.bcap.uamc.domain.model.relation;
 
-import java.util.Map;
-
 public interface RoleUserRltRepo {
 
     /**

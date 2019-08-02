@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.account;
 
-import com.yffd.bcap.common.ddd.domain.data.DataObjectSupport;
+import com.yffd.bcap.common.ddd.domain.data.DataObject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,12 +9,12 @@ import java.util.Date;
 
 @Entity
 @Table(name="uamc_account")
-public class AccountData extends DataObjectSupport {
+public class AccountData extends DataObject {
     private static final long serialVersionUID = 2771217497705346815L;
     @Id
     private String acntId;//账号ID
     private String acntPwd;//账号密码
-    private String acntState;//账号状态，启用=enabled、停用=disabled
+    private String acntState;//账号状态
     private String userId;//用户id
     private Date loginTime;//登录时间
     private Date loginTimeBefore;//上次登录时间

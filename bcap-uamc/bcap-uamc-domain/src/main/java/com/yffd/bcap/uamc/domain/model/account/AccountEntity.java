@@ -1,12 +1,12 @@
 package com.yffd.bcap.uamc.domain.model.account;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObjectSupport;
+import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
 import com.yffd.bcap.uamc.domain.constants.enums.ActiveStateEnum;
 import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 
-public class AccountEntity extends EntityObjectSupport<AccountData> {
+public class AccountEntity extends EntityObject<AccountData> {
 
     public AccountEntity(AccountData data, SysOperator sysOperator) {
         super(data, sysOperator);

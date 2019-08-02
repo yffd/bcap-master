@@ -5,6 +5,18 @@ import com.yffd.bcap.uamc.domain.model.relation.PmsUserRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.RolePmsRltRepo;
 
 public class PermissionService {
+    private static final PermissionService instance = new PermissionService();
+
+    private PermissionService() {
+    }
+
+    public static PermissionService getInstance() {
+        return instance;
+    }
+
+    public Boolean exsistPmsById(PermissionEntity permissionEntity, PermissionRepo permissionRepo) {
+        return null != permissionRepo.findById(permissionEntity.exsistById());
+    }
 
     public void deletePmsWithRlt(PermissionEntity permissionEntity, PermissionRepo permissionRepo, RolePmsRltRepo rolePmsRltRepo,
                        GroupPmsRltRepo groupPmsRltRepo, PmsUserRltRepo pmsUserRltRepo) {

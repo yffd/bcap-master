@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.user;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObjectSupport;
+import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class UserEntity extends EntityObjectSupport<UserData> {
+public class UserEntity extends EntityObject<UserData> {
 
     public UserEntity(UserData data, SysOperator sysOperator) {
         super(data, sysOperator);

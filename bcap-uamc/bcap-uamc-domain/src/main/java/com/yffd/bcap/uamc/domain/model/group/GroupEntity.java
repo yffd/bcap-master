@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.domain.model.group;
 
-import com.yffd.bcap.common.ddd.domain.entity.EntityObjectSupport;
+import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class GroupEntity extends EntityObjectSupport<GroupData> {
+public class GroupEntity extends EntityObject<GroupData> {
     private static final long serialVersionUID = -7522198672181255411L;
 
     public GroupEntity(GroupData rootEntity, SysOperator sysOperator) {

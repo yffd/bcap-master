@@ -1,6 +1,7 @@
 package com.yffd.bcap.uamc.domain.model.organization;
 
 import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -8,13 +9,17 @@ import java.util.List;
 import java.util.Set;
 
 public class OrgService {
-    private static OrgService instance;
+    private static final OrgService instance = new OrgService();
 
     private OrgService() {
     }
 
     public static OrgService instance() {
-        return new OrgService();
+        return instance;
+    }
+
+    public Boolean exsistOrgById(OrgEntity orgEntity, OrgRepo orgRepo) {
+        return null != orgRepo.findById(orgEntity.exsistById());
     }
 
     public void deleteOrgWithChildren(OrgEntity orgEntity, OrgRepo orgRepo) {
@@ -24,7 +29,7 @@ public class OrgService {
         tmpOrgIds.add(delOrgId);
         Set<String> childrenIds = this.orgChildrenIds(delOrgId, orgRepo);
         if (BcapCollectionUtils.isNotEmpty(tmpOrgIds)) tmpOrgIds.addAll(childrenIds);
-        if (orgRepo.exsistUser(tmpOrgIds)) return;
+        if (orgRepo.countUsers(tmpOrgIds) > 0) return;
         //2.若有子机构，则子机构一起删除；
         if (BcapCollectionUtils.isNotEmpty(childrenIds))
             orgRepo.deleteByIds(childrenIds);
@@ -36,7 +41,7 @@ public class OrgService {
         Set<String> parentIds = new HashSet<>();
         OrgData orgData = orgRepo.findById(orgId);
         String orgPath = orgData.getOrgPath();
-        if (orgPath.contains(",")) {
+        if (BcapStringUtils.isNotEmpty(orgPath) && orgPath.contains(",")) {
             String[] arr = orgPath.split(",");
             List<String> tmp = Arrays.asList(arr);
             parentIds.addAll(tmp);
