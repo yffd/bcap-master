@@ -2462,7 +2462,7 @@
 <XPD:REF name="Associations[2]">gzVzMgoch0uokqh4qemUggAA</XPD:REF>
 <XPD:REF name="Associations[3]">tlWDbSppV0SQn4DxP+yPogAA</XPD:REF>
 <XPD:REF name="Associations[4]">f6rY40G9X0uyJ13Pdk/FMQAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">5</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">4</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="FIGmSRVsMkOPdX2rvuBs/wAA">
 <XPD:ATTR name="Name" type="string">组ID</XPD:ATTR>
 <XPD:REF name="Owner">3gf49tRdMUaxHWVKiuQ3KAAA</XPD:REF>
@@ -2471,15 +2471,11 @@
 <XPD:ATTR name="Name" type="string">组名称</XPD:ATTR>
 <XPD:REF name="Owner">3gf49tRdMUaxHWVKiuQ3KAAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="Bqc/+ITM+k+D5qA8k1yBEgAA">
-<XPD:ATTR name="Name" type="string">父组ID</XPD:ATTR>
-<XPD:REF name="Owner">3gf49tRdMUaxHWVKiuQ3KAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="OUZDGRX0O0eUBEtq420iOAAA">
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="OUZDGRX0O0eUBEtq420iOAAA">
 <XPD:ATTR name="Name" type="string">组状态（启用、停用）</XPD:ATTR>
 <XPD:REF name="Owner">3gf49tRdMUaxHWVKiuQ3KAAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="bl5B1QL6d068q2zdcwZZngAA">
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="bl5B1QL6d068q2zdcwZZngAA">
 <XPD:ATTR name="Name" type="string">组描述</XPD:ATTR>
 <XPD:REF name="Owner">3gf49tRdMUaxHWVKiuQ3KAAA</XPD:REF>
 </XPD:OBJ>

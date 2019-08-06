@@ -44,7 +44,7 @@
 <XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="c52ydgohuEWldtVZcZdbCAAA">
 <XPD:ATTR name="Name" type="string">Kum, Deukkyu</XPD:ATTR>
 <XPD:ATTR name="StereotypeProfile" type="string">UMLStandard</XPD:ATTR>
-<XPD:ATTR name="StereotypeName" type="string">rootEntity</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">entity</XPD:ATTR>
 <XPD:REF name="Namespace">R4cV9LqhsEObrBMH6rm0VgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -4089,7 +4089,7 @@
 <XPD:ATTR name="#Associations" type="integer">2</XPD:ATTR>
 <XPD:REF name="Associations[0]">H/pLTQl/cUCSKvMtODWMsAAA</XPD:REF>
 <XPD:REF name="Associations[1]">7jSzpzR7m02QPC0+ywHmXQAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">9</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">8</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="YE601fDpP0yZAZXzleDCkQAA">
 <XPD:ATTR name="Name" type="string">账号ID</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
@@ -4102,27 +4102,23 @@
 <XPD:ATTR name="Name" type="string">账号状态（启用、停用）</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="z8lnsWOS30WUI8kNbg71sAAA">
-<XPD:ATTR name="Name" type="string">账号等级</XPD:ATTR>
-<XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="yN1XorAy1kyWtUPLVEuxtwAA">
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="yN1XorAy1kyWtUPLVEuxtwAA">
 <XPD:ATTR name="Name" type="string">用户编号</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="cEegOl/S1UecJdJ/tsrqhwAA">
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="cEegOl/S1UecJdJ/tsrqhwAA">
 <XPD:ATTR name="Name" type="string">登录时间</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="dMvJjqtuSkWOJv2Lq2SH8QAA">
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="dMvJjqtuSkWOJv2Lq2SH8QAA">
 <XPD:ATTR name="Name" type="string">登录IP</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="Vh1QBOlRWkySwraJRrJhjQAA">
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="Vh1QBOlRWkySwraJRrJhjQAA">
 <XPD:ATTR name="Name" type="string">上次登录时间</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="F8fXG4VRX0u4JoDP77L31QAA">
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="F8fXG4VRX0u4JoDP77L31QAA">
 <XPD:ATTR name="Name" type="string">登录次数</XPD:ATTR>
 <XPD:REF name="Owner">9R1iBIat0USwlr5Ry2XZTQAA</XPD:REF>
 </XPD:OBJ>

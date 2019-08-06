@@ -17,30 +17,30 @@ import java.util.List;
  * @see 	 
  */
 public class FileGenerator {
-	public static final String DEF_rootEntity_SUFFIX = "rootEntity";
+	public static final String DEF_entity_SUFFIX = "entity";
 	private static final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
 	
-	private List<String> skiprootEntityList = new ArrayList<String>();
+	private List<String> skipentityList = new ArrayList<String>();
 	
 	{
-		skiprootEntityList.add("EasyPersistrootEntity");
-		skiprootEntityList.add("BaserootEntity");
-		skiprootEntityList.add("CommonrootEntity");
+		skipentityList.add("EasyPersistentity");
+		skipentityList.add("Baseentity");
+		skipentityList.add("Commonentity");
 	}
 	
-	public List<String> getSkiprootEntityList() {
-		return skiprootEntityList;
+	public List<String> getSkipentityList() {
+		return skipentityList;
 	}
 
 	public String dateFmt(Date date) {
 		return DATE_FMT.format(new Date());
 	}
 	
-	public String rootEntityFmt(Class<?> rootEntityClazz, String rootEntityPrefix, String rootEntitySuffix,
+	public String entityFmt(Class<?> entityClazz, String entityPrefix, String entitySuffix,
 			String fmtPrefix, String fmtSuffix) {
-		String simpleName = rootEntityClazz.getSimpleName();
-		int beginIndex = BcapStringUtils.isEmpty(rootEntityPrefix) ? 0 : simpleName.indexOf(rootEntityPrefix) + rootEntityPrefix.length();
-		int endIndex = BcapStringUtils.isEmpty(rootEntitySuffix) ? simpleName.length() : simpleName.lastIndexOf(rootEntitySuffix);
+		String simpleName = entityClazz.getSimpleName();
+		int beginIndex = BcapStringUtils.isEmpty(entityPrefix) ? 0 : simpleName.indexOf(entityPrefix) + entityPrefix.length();
+		int endIndex = BcapStringUtils.isEmpty(entitySuffix) ? simpleName.length() : simpleName.lastIndexOf(entitySuffix);
 		String tableName = simpleName.substring(beginIndex, endIndex);
 		tableName = BcapStringUtils.isEmpty(fmtPrefix) ? tableName : fmtPrefix + tableName;
 		tableName = BcapStringUtils.isEmpty(fmtSuffix) ? tableName : tableName + fmtSuffix;

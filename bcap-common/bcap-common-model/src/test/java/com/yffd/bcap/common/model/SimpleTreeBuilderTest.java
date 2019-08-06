@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleTreeBuilderTest {
-	
+
+	SimpleTreeBuilder<CustObj> builder = new SimpleTreeBuilder<CustObj>();
 	@Test
 	public void test() {
 		List<CustObj> nodeList = getList();
@@ -16,8 +17,7 @@ public class SimpleTreeBuilderTest {
 		CustObj node = builder.buildTree(root, nodeList);
 		System.out.println(node);
 	}
-	SimpleTreeBuilder<CustObj> builder = new SimpleTreeBuilder<CustObj>();
-	
+
 	public class CustObj implements Treeable<CustObj> {
 		private String id;
 		private String pid;

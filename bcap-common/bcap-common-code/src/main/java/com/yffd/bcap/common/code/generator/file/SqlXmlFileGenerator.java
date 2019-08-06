@@ -22,10 +22,10 @@ public class SqlXmlFileGenerator extends FileGenerator {
 	private UpdateMybatisSqlBuilder updateBuilder = new UpdateMybatisSqlBuilder();
 	private DeleteMybatisSqlBuilder deleteBuilder = new DeleteMybatisSqlBuilder();
 	
-	public void writeAllToFile(Class<?> baserootEntityClazz, String rootEntityRootDirPath, String rootEntityPackageName, String sqlNamespace, String outRootDirPath, boolean covered) throws Exception {
-		if(!rootEntityRootDirPath.endsWith(File.separator)) rootEntityRootDirPath += File.separator;
-		String rootEntityPackageDirPath = rootEntityPackageName.replace(".", File.separator);
-		String fullDirPath = rootEntityRootDirPath + rootEntityPackageDirPath;
+	public void writeAllToFile(Class<?> baseEntityClazz, String entityRootDirPath, String entityPackageName, String sqlNamespace, String outRootDirPath, boolean covered) throws Exception {
+		if(!entityRootDirPath.endsWith(File.separator)) entityRootDirPath += File.separator;
+		String entityPackageDirPath = entityPackageName.replace(".", File.separator);
+		String fullDirPath = entityRootDirPath + entityPackageDirPath;
 		
 		File file = new File(fullDirPath);
 		if(file.isDirectory()) {
@@ -36,7 +36,7 @@ public class SqlXmlFileGenerator extends FileGenerator {
 				} else {
 					boolean skip = false;
 					String javaFileName = childFile.getName();	// 不包含路径
-					for(String skipName : this.getSkiprootEntityList()) {
+					for(String skipName : this.getSkipentityList()) {
 						if(javaFileName.contains(skipName)) {
 							skip = true;
 							continue;
@@ -47,32 +47,32 @@ public class SqlXmlFileGenerator extends FileGenerator {
 						if(endIndex!=-1) {
 							javaFileName = javaFileName.substring(0, endIndex);
 						}
-						String rootEntityFullClassName = rootEntityPackageName + "." + javaFileName;
-						Class<?> rootEntityClazz = Class.forName(rootEntityFullClassName);
-						this.writeToFile(rootEntityClazz, baserootEntityClazz, sqlNamespace, outRootDirPath, covered);
+						String entityFullClassName = entityPackageName + "." + javaFileName;
+						Class<?> entityClazz = Class.forName(entityFullClassName);
+						this.writeToFile(entityClazz, baseEntityClazz, sqlNamespace, outRootDirPath, covered);
 					}
 				}
 			}
 		}
 	}
 	
-	public void writeToFile(Class<?> rootEntityClazz, Class<?> baserootEntityClazz, String sqlNamespace, String outRootDirPath, boolean covered) {
-		String fileName = this.rootEntityFmt(rootEntityClazz, null, "rootEntity", null, "Mapper") + ".xml";
+	public void writeToFile(Class<?> entityClazz, Class<?> baseEntityClazz, String sqlNamespace, String outRootDirPath, boolean covered) {
+		String fileName = this.entityFmt(entityClazz, null, "entity", null, "Mapper") + ".xml";
 		String filePath = outRootDirPath + File.separator + fileName;
-		String content = this.makeContent(sqlNamespace, rootEntityClazz, baserootEntityClazz);
+		String content = this.makeContent(sqlNamespace, entityClazz, baseEntityClazz);
 		this.makedirs(outRootDirPath);
 		System.out.println("文件位置：" + outRootDirPath);
 		this.writeToFile(content, filePath, covered);
 		
 	}
 	
-	public void writeToConsole(Class<?> rootEntityClazz, Class<?> baserootEntityClazz, String sqlNamespace) {
-		String content = this.makeContent(sqlNamespace, rootEntityClazz, baserootEntityClazz);
+	public void writeToConsole(Class<?> entityClazz, Class<?> baseEntityClazz, String sqlNamespace) {
+		String content = this.makeContent(sqlNamespace, entityClazz, baseEntityClazz);
 		System.out.println(content);
 		
 	}
 	
-	protected String makeContent(String sqlNamespace, Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+	protected String makeContent(String sqlNamespace, Class<?> entityClazz, Class<?> baseEntityClazz) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append("\r\n");
 		sb.append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">").append("\r\n");
@@ -84,10 +84,10 @@ public class SqlXmlFileGenerator extends FileGenerator {
 		sb.append("\t").append("<!-- ######################################################################### -->").append("\r\n");
 		sb.append("\t").append("\r\n");
 		
-		String tableNameStr = this.selectBuilder.buildTableName(rootEntityClazz);
+		String tableNameStr = this.selectBuilder.buildTableName(entityClazz);
 		sb.append(selectBuilder.linesFmt(tableNameStr, "\t", ""));
 //		
-		String tableColumnsStr = this.selectBuilder.buildTableColumns(rootEntityClazz, baserootEntityClazz);
+		String tableColumnsStr = this.selectBuilder.buildTableColumns(entityClazz, baseEntityClazz);
 		sb.append(selectBuilder.linesFmt(tableColumnsStr, "\t", ""));
 		
 		String conditionsLimitStr = this.selectBuilder.buildLimit();
@@ -96,31 +96,31 @@ public class SqlXmlFileGenerator extends FileGenerator {
 		String conditionsOrderbyStr = this.selectBuilder.buildOrderBy();
 		sb.append(selectBuilder.linesFmt(conditionsOrderbyStr, "\t", ""));
 		
-		String conditionsWhereStr = this.selectBuilder.buildWhere(rootEntityClazz, baserootEntityClazz);
+		String conditionsWhereStr = this.selectBuilder.buildWhere(entityClazz, baseEntityClazz);
 		sb.append(selectBuilder.linesFmt(conditionsWhereStr, "\t", ""));
 		
-		String selectListByStr = this.selectBuilder.buildSelectListBy(rootEntityClazz);
+		String selectListByStr = this.selectBuilder.buildSelectListBy(entityClazz);
 		sb.append(selectBuilder.linesFmt(selectListByStr, "\t", ""));
 		
 		String selectCountByStr = this.selectBuilder.buildSelectCountBy();
 		sb.append(selectBuilder.linesFmt(selectCountByStr, "\t", ""));
 		
-		String selectOneByStr = this.selectBuilder.buildSelectOneBy(rootEntityClazz);
+		String selectOneByStr = this.selectBuilder.buildSelectOneBy(entityClazz);
 		sb.append(selectBuilder.linesFmt(selectOneByStr, "\t", ""));
 		
-		String insertOneByStr = this.insertBuilder.buildSqlInsertOne(rootEntityClazz, baserootEntityClazz);
+		String insertOneByStr = this.insertBuilder.buildSqlInsertOne(entityClazz, baseEntityClazz);
 		sb.append(selectBuilder.linesFmt(insertOneByStr, "\t", ""));
 		
-		String insertBatchByStr = this.insertBuilder.buildSqlInsertBatch(rootEntityClazz, baserootEntityClazz);
+		String insertBatchByStr = this.insertBuilder.buildSqlInsertBatch(entityClazz, baseEntityClazz);
 		sb.append(selectBuilder.linesFmt(insertBatchByStr, "\t", ""));
 		
-		String updateByStr = this.updateBuilder.buildSqlUpdate(rootEntityClazz, baserootEntityClazz);
+		String updateByStr = this.updateBuilder.buildSqlUpdate(entityClazz, baseEntityClazz);
 		sb.append(selectBuilder.linesFmt(updateByStr, "\t", ""));
 		
-		String deleteByStr = this.deleteBuilder.buildSqlDelete(rootEntityClazz, baserootEntityClazz);
+		String deleteByStr = this.deleteBuilder.buildSqlDelete(entityClazz, baseEntityClazz);
 		sb.append(selectBuilder.linesFmt(deleteByStr, "\t", ""));
 		
-//		if(CommonPartialTreerootEntity.class.isAssignableFrom(pojoClazz)) {
+//		if(CommonPartialTreeentity.class.isAssignableFrom(pojoClazz)) {
 //			CodeMapperSqlTreeGenerator sqlTreeGenerator = new CodeMapperSqlTreeGenerator();
 //			String sqlTreeStr = sqlTreeGenerator.makeContent(pojoClazz);
 //			sb.append(selectBuilder.linesFmt("<!-- 树结构相关操作 -->", "\t", ""));

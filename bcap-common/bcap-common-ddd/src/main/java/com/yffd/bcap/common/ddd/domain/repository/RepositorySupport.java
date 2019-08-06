@@ -1,6 +1,9 @@
 package com.yffd.bcap.common.ddd.domain.repository;
 
-import java.util.List;
+import com.yffd.bcap.common.ddd.exception.DomainException;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * 领域厂库接口
@@ -16,6 +19,13 @@ public interface RepositorySupport<D> extends IRepository {
 
     D findById(String id);
 
-    List<D>  listData(D data);
+    default Class<D> getGenericType() {
+        Type genericClazz = this.getClass().getGenericSuperclass();
+        if(genericClazz instanceof ParameterizedType) {
+            return (Class<D>) ((ParameterizedType) genericClazz).getActualTypeArguments()[0];
+        } else {
+            throw DomainException.ERROR("泛型解析错误");
+        }
+    }
 
 }

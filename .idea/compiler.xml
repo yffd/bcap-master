@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bcap-bpm-application" />
         <module name="bcap-bpm-client" />
         <module name="bcap-bpm-domain" />
         <module name="bcap-bpm-infrastructure" />

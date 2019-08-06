@@ -26,21 +26,21 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 	public static final String DEF_RESULT_TYPE = "java.lang.Integer";
 	public static final String DEF_TABLE_ALIAS = "t";
 	
-	public String buildTableName(Class<?> rootEntityClazz) {
-		String tableName = this.entityName2tableName(rootEntityClazz, "rootEntity");
+	public String buildTableName(Class<?> entityClazz) {
+		String tableName = this.entityName2tableName(entityClazz, "entity");
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 表名 -->").append("\r\n");
 		sb.append(String.format("<sql id=\"%s\"> %s </sql>", DEF_SQL_ID_TABLE_NAME, tableName));
 		return sb.toString();
 	}
 	
-	public String buildTableColumns(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+	public String buildTableColumns(Class<?> entityClazz, Class<?> baseEntityClazz) {
 		String tableColumnsId = SQL_ID_TABLE_COLUMNS;
 		String tableAlias = DEF_TABLE_ALIAS;
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 列名 -->").append("\r\n");
 		sb.append(String.format("<sql id=\"%s\">", tableColumnsId)).append("\r\n");
-		sb.append(this.linesFmt(this.buildTableColumnContent(tableColumnsId, tableAlias, rootEntityClazz, baserootEntityClazz), "\t", null));
+		sb.append(this.linesFmt(this.buildTableColumnContent(tableColumnsId, tableAlias, entityClazz, baseEntityClazz), "\t", null));
 		sb.append("</sql>").append("\r\n");
 		return sb.toString();
 	}
@@ -64,7 +64,7 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 		return sb.toString();
 	}
 	
-	public String buildWhere(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+	public String buildWhere(Class<?> entityClazz, Class<?> baseEntityClazz) {
 		String tableAlias = DEF_TABLE_ALIAS;
 		String paramAlias = DEF_PARAM_ALIAS;
 		
@@ -72,7 +72,7 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 		sb.append("<!-- 动态组装复合查询条件 -->").append("\r\n");
 		sb.append("<sql id=\"conditions_where\">").append("\r\n");
 		
-		String whereContent = this.buildWhereConditions(tableAlias, paramAlias, rootEntityClazz, baserootEntityClazz);
+		String whereContent = this.buildWhereConditions(tableAlias, paramAlias, entityClazz, baseEntityClazz);
 		sb.append(this.linesFmt(whereContent, "\t", null));
 		
 		sb.append("</sql>").append("\r\n");
@@ -81,11 +81,11 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 	}
 	
 	
-	public String buildSelectListBy(Class<?> rootEntityClazz) {
+	public String buildSelectListBy(Class<?> entityClazz) {
 		String asTableAliasName = " as " + DEF_TABLE_ALIAS + " ";
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 条件查询 -->").append("\r\n");
-		sb.append("<select id=\"selectListBy\" parameterType=\""+DEF_PARAM_TYPE+"\" resultType=\""+rootEntityClazz.getName()+"\">").append("\r\n");
+		sb.append("<select id=\"selectListBy\" parameterType=\""+DEF_PARAM_TYPE+"\" resultType=\""+entityClazz.getName()+"\">").append("\r\n");
 		sb.append("\t").append("select <include refid=\""+SQL_ID_TABLE_COLUMNS+"\" />").append("\r\n");
 		sb.append("\t").append("from <include refid=\""+DEF_SQL_ID_TABLE_NAME+"\"/>").append(asTableAliasName).append("\r\n");
 		sb.append("\t").append("<where>").append("\r\n");
@@ -111,11 +111,11 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 		return sb.toString();
 	}
 	
-	public String buildSelectOneBy(Class<?> rootEntityClazz) {
+	public String buildSelectOneBy(Class<?> entityClazz) {
 		String asTableAliasName = " as " + DEF_TABLE_ALIAS + " ";
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!-- 单条查询 -->").append("\r\n");
-		sb.append("<select id=\""+SQL_ID_SELECT_ONE+"\" parameterType=\""+DEF_PARAM_TYPE+"\" resultType=\""+rootEntityClazz.getName()+"\">").append("\r\n");
+		sb.append("<select id=\""+SQL_ID_SELECT_ONE+"\" parameterType=\""+DEF_PARAM_TYPE+"\" resultType=\""+entityClazz.getName()+"\">").append("\r\n");
 		sb.append("\t").append("select <include refid=\""+SQL_ID_TABLE_COLUMNS+"\" /> ").append("\r\n");
 		sb.append("\t").append("from <include refid=\""+DEF_SQL_ID_TABLE_NAME+"\"/>").append(asTableAliasName).append("\r\n");
 		sb.append("\t").append("<where>").append("\r\n");
@@ -125,8 +125,8 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 		return sb.toString();
 	}
 	
-	private String buildTableColumnContent(String tableColumnsId, String tableAlias, Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
-		List<TableColumn> tableColumns = this.prop2column(rootEntityClazz, baserootEntityClazz);
+	private String buildTableColumnContent(String tableColumnsId, String tableAlias, Class<?> entityClazz, Class<?> baseEntityClazz) {
+		List<TableColumn> tableColumns = this.prop2column(entityClazz, baseEntityClazz);
 		int size = tableColumns.size();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < size; i++) {
@@ -151,12 +151,12 @@ public class SelectMybatisSqlBuilder extends MybatisSqlBuilder {
 	}
 	
 	@Override
-	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseEntityClazz) {
 		List<TableColumn> equalColums = new ArrayList<>();
 		List<TableColumn> likeColums = new ArrayList<>();
 		List<TableColumn> inColums = new ArrayList<>();
 		
-		List<TableColumn> columns = this.prop2column(rootEntityClazz, baserootEntityClazz);
+		List<TableColumn> columns = this.prop2column(entityClazz, baseEntityClazz);
 		for (TableColumn tc : columns) {
 			String propName = tc.getPropName();
 			if (DEF_SKIP_PROPS.contains(propName)) continue;

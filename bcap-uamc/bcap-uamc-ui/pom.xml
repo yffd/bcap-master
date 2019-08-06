@@ -11,5 +11,11 @@
 
     <artifactId>bcap-uamc-ui</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.yffd</groupId>
+            <artifactId>bcap-uamc-infrastructure</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>

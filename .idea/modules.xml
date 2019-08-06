@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-application/bcap-bpm-application.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-application/bcap-bpm-application.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-client/bcap-bpm-client.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-client/bcap-bpm-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-domain/bcap-bpm-domain.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-domain/bcap-bpm-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-infrastructure/bcap-bpm-infrastructure.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-infrastructure/bcap-bpm-infrastructure.iml" />

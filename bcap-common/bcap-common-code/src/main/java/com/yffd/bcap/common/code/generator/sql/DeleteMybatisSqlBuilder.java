@@ -27,7 +27,7 @@ public class DeleteMybatisSqlBuilder extends MybatisSqlBuilder {
 		DEF_SKIP_PROPS.add("updateTime");
 	}
 	
-	public String buildSqlDelete(Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+	public String buildSqlDelete(Class<?> entityClazz, Class<?> baseEntityClazz) {
 		String tableAlias = null;
 		String paramAlias = DEF_PARAM_ALIAS;
 		
@@ -36,7 +36,7 @@ public class DeleteMybatisSqlBuilder extends MybatisSqlBuilder {
 		sb.append(String.format("<delete id=\"%s\" parameterType=\"%s\">", SQL_ID_DELETE, DEF_PARAM_TYPE)).append("\r\n");
 		sb.append("\t").append(String.format("delete from <include refid=\"%s\" />", DEF_SQL_ID_TABLE_NAME)).append("\r\n");
 		sb.append("\t").append("<where>").append("\r\n");
-		String whereContent = this.buildWhereConditions(tableAlias, paramAlias, rootEntityClazz, baserootEntityClazz);
+		String whereContent = this.buildWhereConditions(tableAlias, paramAlias, entityClazz, baseEntityClazz);
 		buildChoose(paramAlias, DEF_PARAM_MAP_ALIAS, whereContent, sb);
 		sb.append("\t").append("</where>").append("\r\n");
 		
@@ -45,12 +45,12 @@ public class DeleteMybatisSqlBuilder extends MybatisSqlBuilder {
 	}
 
 	@Override
-	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> rootEntityClazz, Class<?> baserootEntityClazz) {
+	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseEntityClazz) {
 		List<TableColumn> equalColums = new ArrayList<>();
 		List<TableColumn> likeColums = new ArrayList<>();
 		List<TableColumn> inColums = new ArrayList<>();
 		
-		List<TableColumn> columns = this.prop2column(rootEntityClazz, baserootEntityClazz);
+		List<TableColumn> columns = this.prop2column(entityClazz, baseEntityClazz);
 		for (TableColumn tc : columns) {
 			String propName = tc.getPropName();
 			if (DEF_SKIP_PROPS.contains(propName)) continue;

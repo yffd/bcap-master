@@ -41,12 +41,12 @@ public class MybatisSqlBuilder {
 		DEF_SKIP_PROPS.add("updateTime");
 	}
 
-	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseentityClazz) {
+	protected String buildWhereConditions(String tableAlias, String paramAlias, Class<?> entityClazz, Class<?> baseEntityClazz) {
 		List<TableColumn> equalColums = new ArrayList<>();
 		List<TableColumn> likeColums = new ArrayList<>();
 		List<TableColumn> inColums = new ArrayList<>();
 
-		List<TableColumn> columns = this.prop2column(entityClazz, baseentityClazz);
+		List<TableColumn> columns = this.prop2column(entityClazz, baseEntityClazz);
 		for (TableColumn tc : columns) {
 			String propName = tc.getPropName();
 			if (DEF_SKIP_PROPS.contains(propName)) continue;
@@ -380,13 +380,13 @@ public class MybatisSqlBuilder {
 		return this.entityName2tableName(entityClazz, null, entitySuffix, null, null);
 	}
 
-	public List<TableColumn> prop2column(Class<?> entityClazz, Class<?> baseentityClazz) {
+	public List<TableColumn> prop2column(Class<?> entityClazz, Class<?> baseEntityClazz) {
 		List<TableColumn> retList = new ArrayList<>();
 		if (null == entityClazz) return retList;
 		Class<?> stopClazz = Object.class;	// 排查实体类的class属性
-		if (null == baseentityClazz || Object.class.getName().equals(baseentityClazz.getName())) stopClazz = Object.class;
+		if (null == baseEntityClazz || Object.class.getName().equals(baseEntityClazz.getName())) stopClazz = Object.class;
 		// 子类
-		if (null != baseentityClazz) stopClazz = baseentityClazz;
+		if (null != baseEntityClazz) stopClazz = baseEntityClazz;
 		Map<String, Class<?>> props = BcapJavaBeanUtils.getProps(entityClazz, stopClazz);
 		if (BcapCollectionUtils.isNotEmpty(props)) {
 			List<TableColumn> tmpList = new ArrayList<>();
@@ -403,8 +403,8 @@ public class MybatisSqlBuilder {
 			retList.addAll(tmpList);
 		}
 		// 父类
-		if (null != baseentityClazz) {
-			Map<String, Class<?>> propsBase = BcapJavaBeanUtils.getProps(baseentityClazz, Object.class);
+		if (null != baseEntityClazz) {
+			Map<String, Class<?>> propsBase = BcapJavaBeanUtils.getProps(baseEntityClazz, Object.class);
 			if (BcapCollectionUtils.isNotEmpty(propsBase)) {
 				List<TableColumn> tmpList = new ArrayList<>();
 				Set<String> keys = propsBase.keySet();

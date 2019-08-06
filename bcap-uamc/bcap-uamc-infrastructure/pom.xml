@@ -15,18 +15,27 @@
     <dependencies>
         <dependency>
             <groupId>com.yffd</groupId>
-            <artifactId>bcap-uamc-domain</artifactId>
+            <artifactId>bcap-uamc-application</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.yffd</groupId>
-            <artifactId>bcap-bpm-application</artifactId>
+            <artifactId>bcap-uamc-domain</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.yffd</groupId>
             <artifactId>bcap-common-support</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yffd</groupId>
+            <artifactId>bcap-common-web</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,10 +55,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.yffd</groupId>
-            <artifactId>bcap-uamc-application</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
+
 </project>
