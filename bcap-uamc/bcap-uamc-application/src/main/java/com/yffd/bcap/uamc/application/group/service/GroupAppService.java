@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.group.service;
 
+import com.yffd.bcap.common.model.exception.CheckException;
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.group.GroupEntity;
 import com.yffd.bcap.uamc.domain.model.group.GroupRepo;
@@ -30,7 +30,7 @@ public class GroupAppService {
     public void addGroup(GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
         if (GroupService.getInstance().exsistGroupById(groupEntity, groupRepo))
-            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ groupData.getGroupId() +", class："+ groupData.getClass() +"]");
+            throw CheckException.DATA_EXSIST("添加失败，数据已存在[ID: "+ groupData.getGroupId() +", class："+ groupData.getClass() +"]");
         groupRepo.insertOne(groupEntity.add());
     }
 
@@ -75,7 +75,7 @@ public class GroupAppService {
     public void assignToRoles(Set<String> roleIds, GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
         if (!GroupService.getInstance().exsistGroupById(groupEntity, groupRepo))
-            throw UamcDomainValidateException.ERROR("组指派角色失败，组ID不存在["+ groupData.getGroupId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("组指派角色失败，组ID不存在["+ groupData.getGroupId() +"]");
         Map<String, String> rltMap = groupEntity.mappingRltRole(roleIds);    //构建映射关系
         GroupService.getInstance().addRltToRoles(rltMap, roleGroupRltRepo);
     }
@@ -103,7 +103,7 @@ public class GroupAppService {
     public void assignToPermissions(Set<String> pmsIds, GroupData groupData, SysOperator sysOperator) {
         GroupEntity groupEntity = new GroupEntity(groupData, sysOperator);
         if (!GroupService.getInstance().exsistGroupById(groupEntity, groupRepo))
-            throw UamcDomainValidateException.ERROR("组指派权限失败，组ID不存在["+ groupData.getGroupId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("组指派权限失败，组ID不存在["+ groupData.getGroupId() +"]");
         Map<String, String> rltMap = groupEntity.mappingRltPermission(pmsIds);    //构建映射关系
         GroupService.getInstance().addRltToPermissions(rltMap, groupPmsRltRepo);
     }

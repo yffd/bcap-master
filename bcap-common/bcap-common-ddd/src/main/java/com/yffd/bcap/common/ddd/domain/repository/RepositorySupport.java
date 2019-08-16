@@ -1,6 +1,6 @@
 package com.yffd.bcap.common.ddd.domain.repository;
 
-import com.yffd.bcap.common.ddd.exception.DomainException;
+import com.yffd.bcap.common.model.exception.SysException;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -24,7 +24,7 @@ public interface RepositorySupport<D> extends IRepository {
         if(genericClazz instanceof ParameterizedType) {
             return (Class<D>) ((ParameterizedType) genericClazz).getActualTypeArguments()[0];
         } else {
-            throw DomainException.ERROR("泛型解析错误");
+            throw SysException.instance("泛型解析错误");
         }
     }
 

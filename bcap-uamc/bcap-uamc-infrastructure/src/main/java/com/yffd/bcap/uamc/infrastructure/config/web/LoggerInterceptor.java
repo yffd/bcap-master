@@ -2,11 +2,11 @@ package com.yffd.bcap.uamc.infrastructure.config.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.yffd.bcap.common.web.WebConstants;
-import com.yffd.bcap.uamc.infrastructure.log.HttpServletUtils;
-import com.yffd.bcap.uamc.infrastructure.log.WebAccessLogRecorder;
-import com.yffd.bcap.uamc.infrastructure.log.WebAccessMsg;
-import com.yffd.bcap.uamc.infrastructure.log.WebAccessRecorder;
+import com.yffd.bcap.common.web.constants.WebConstants;
+import com.yffd.bcap.common.web.util.HttpServletUtils;
+import com.yffd.bcap.common.web.log.WebAccessLogRecorder;
+import com.yffd.bcap.common.web.log.WebAccessMsg;
+import com.yffd.bcap.common.web.log.WebAccessRecorder;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +29,7 @@ public class LoggerInterceptor implements HandlerInterceptor {
         webAccessMsg.setIntervalTime(currentTime - webAccessMsg.getReqTime());
         webAccessMsg.setRespTime(currentTime);
         webAccessMsg.setRespStatus(response.getStatus());
-        String respData = JSON.toJSONString(WebConstants.WEB_RESP_DATA_KEY,
+        String respData = JSON.toJSONString(WebConstants.KEY_WEB_RESP_DATA,
                 SerializerFeature.DisableCircularReferenceDetect,
                 SerializerFeature.WriteMapNullValue);
         webAccessMsg.setRespData(respData);

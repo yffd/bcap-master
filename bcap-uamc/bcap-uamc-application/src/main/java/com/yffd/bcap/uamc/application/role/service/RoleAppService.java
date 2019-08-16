@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.role.service;
 
+import com.yffd.bcap.common.model.exception.CheckException;
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.relation.RoleGroupRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.RolePmsRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.RoleUserRltRepo;
@@ -31,7 +31,7 @@ public class RoleAppService {
     public void addRole(RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (roleService.exsistRoleById(roleEntity, roleRepo))
-            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ roleData.getRoleId() +", class："+ roleData.getClass() +"]");
+            throw CheckException.DATA_EXSIST("添加失败，数据已存在[ID: "+ roleData.getRoleId() +", class："+ roleData.getClass() +"]");
         roleRepo.insertOne(roleEntity.add());
     }
 
@@ -75,7 +75,7 @@ public class RoleAppService {
     public void assignToGroups(Set<String> groupIds, RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (!roleService.exsistRoleById(roleEntity, roleRepo))
-            throw UamcDomainValidateException.ERROR("角色指派组失败，角色ID不存在["+ roleData.getRoleId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("角色指派组失败，角色ID不存在["+ roleData.getRoleId() +"]");
         Map<String, String> rltMap = roleEntity.mappingRltGroup(groupIds);    //构建映射关系
         roleService.addRltToGroups(rltMap, roleGroupRltRepo);
     }
@@ -101,7 +101,7 @@ public class RoleAppService {
     public void assignToPermissions(Set<String> pmsIds, RoleData roleData, SysOperator sysOperator) {
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (!roleService.exsistRoleById(roleEntity, roleRepo))
-            throw UamcDomainValidateException.ERROR("角色指派权限失败，角色ID不存在["+ roleData.getRoleId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("角色指派权限失败，角色ID不存在["+ roleData.getRoleId() +"]");
         Map<String, String> rltMap = roleEntity.mappingRltPermission(pmsIds);    //构建映射关系
         roleService.addRltToPermissions(rltMap, rolePmsRltRepo);
     }

@@ -1,11 +1,11 @@
 package com.yffd.bcap.uamc.domain.model.group;
 
 import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
+import com.yffd.bcap.common.model.exception.CheckException;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.common.model.utils.BcapCollectionUtils;
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
 import com.yffd.bcap.uamc.domain.constants.enums.ActiveStateEnum;
-import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class GroupEntity extends EntityObject<GroupData> {
 
     public GroupData active() {
         if (BcapStringUtils.isEmpty(this.identity()))
-            throw UamcDomainValidateException.ERROR_PARAMS("启用失败，数据实体ID不能为空[" + this.data().getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("启用失败，数据实体ID不能为空[" + this.data().getClass() + "]");
         this.data().setGroupState(ActiveStateEnum.ACTIVE.getCode());
         this.initPropsForUpdate();
         return this.data();
@@ -33,7 +33,7 @@ public class GroupEntity extends EntityObject<GroupData> {
 
     public GroupData deactive() {
         if (BcapStringUtils.isEmpty(this.identity()))
-            throw UamcDomainValidateException.ERROR_PARAMS("停用失败，实体ID不能为空[" + this.data().getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("停用失败，实体ID不能为空[" + this.data().getClass() + "]");
         this.data().setGroupState(ActiveStateEnum.DEACTIVE.getCode());
         this.initPropsForUpdate();
         return this.data();
@@ -69,7 +69,7 @@ public class GroupEntity extends EntityObject<GroupData> {
 
     public Set<String> deleteByGroupIds(Set<String> delIds) {
         if (BcapCollectionUtils.isEmpty(delIds))
-            throw UamcDomainValidateException.ERROR_PARAMS("集合不能为空");
+            throw CheckException.PARAM_IS_EMPTY("将要删除的集合不能为空");
         return delIds;
     }
 

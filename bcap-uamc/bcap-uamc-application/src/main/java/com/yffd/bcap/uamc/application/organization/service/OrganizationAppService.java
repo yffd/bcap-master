@@ -1,10 +1,10 @@
 package com.yffd.bcap.uamc.application.organization.service;
 
+import com.yffd.bcap.common.model.exception.CheckException;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.uamc.application.organization.assembler.OrganizationAssembler;
 import com.yffd.bcap.uamc.application.organization.dto.OrganizationTree;
 import com.yffd.bcap.uamc.application.organization.query.OrganizationQry;
-import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.organization.OrgData;
 import com.yffd.bcap.uamc.domain.model.organization.OrgEntity;
 import com.yffd.bcap.uamc.domain.model.organization.OrgRepo;
@@ -31,7 +31,7 @@ public class OrganizationAppService {
     public void addOrg(OrgData orgData, SysOperator sysOperator) {
         OrgEntity orgEntity = new OrgEntity(orgData, sysOperator);
         if (orgService.exsistOrgById(orgEntity, orgRepo))
-            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ orgData.getOrgId() +", class："+ orgData.getClass() +"]");
+            throw CheckException.DATA_EXSIST("添加失败，数据已存在[ID: "+ orgData.getOrgId() +", class："+ orgData.getClass() +"]");
         orgRepo.insertOne(orgEntity.add());
     }
 

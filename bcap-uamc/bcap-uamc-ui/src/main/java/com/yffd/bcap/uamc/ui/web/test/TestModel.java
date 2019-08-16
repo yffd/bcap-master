@@ -1,7 +1,14 @@
 package com.yffd.bcap.uamc.ui.web.test;
 
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="演示类", description="请求参数类")
 public class TestModel {
+    @ApiModelProperty(value="主键" ,required=true, example="1122")
     private String id;
+    @ApiModelProperty(value="名称" ,required=true, example="张三")
     private String name;
     private String address;
 

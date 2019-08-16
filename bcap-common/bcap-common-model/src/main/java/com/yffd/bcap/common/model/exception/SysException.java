@@ -1,42 +1,44 @@
 package com.yffd.bcap.common.model.exception;
 
-public class SysException extends BaseException {
-    private static final long serialVersionUID = -1029919034705665705L;
-    private static final String DEF_NAME = "system";
+public class SysException extends RuntimeException {
+    private static final long serialVersionUID = -3218233739638650518L;
 
-    public SysException(Throwable cause, String code, String msg) {
-        super(cause, code, msg);
+    private String code;//异常编号
+    private String tip;//异常提示
+
+    public SysException(String code, String tip) {
+        this.code = code;
+        this.tip = tip;
     }
 
-    /**
-     * 错误
-     * @param msg 描述信息
-     * @return
-     */
-    public static SysException ERROR(String msg) {
-        return new SysException(null, "AA0100", msg);
+    public SysException(String code, String tip, Throwable cause) {
+        super(String.format("code:%s, tip:%s", code, tip), cause);
+        this.code = code;
+        this.tip = tip;
     }
-
-    /**
-     * 方法调用参数错误
-     * @param msg 描述信息
-     * @return
-     */
-    public static SysException ERROR_PARAMS(String msg) {
-        return new SysException(null, "AA0101", msg);
-    }
-
-    /**
-     * 方法调用参数为空
-     * @return
-     */
-    public static SysException ERROR_PARAMS_EMPTY() {
-        return new SysException(null, "AA0102", "方法调用参数为空");
-    }
-
 
     @Override
-    public String getName() {
-        return DEF_NAME;
+    public String getMessage() {
+        return String.format("code:%s, tip:%s", this.getCode(), this.getTip());
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public static SysException instance() {
+        return new SysException(SysExceptionEnum.SYS_EXCEPTION.getCode(), SysExceptionEnum.SYS_EXCEPTION.getTip());
+    }
+
+    public static SysException instance(String tip) {
+        return new SysException(SysExceptionEnum.SYS_EXCEPTION.getCode(), tip);
+    }
+
+    public static SysException instance(String tip, Throwable cause) {
+        return new SysException(SysExceptionEnum.SYS_EXCEPTION.getCode(), tip, cause);
     }
 }

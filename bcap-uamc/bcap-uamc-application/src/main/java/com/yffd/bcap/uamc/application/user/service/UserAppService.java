@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.application.user.service;
 
+import com.yffd.bcap.common.model.exception.CheckException;
 import com.yffd.bcap.common.model.system.SysOperator;
-import com.yffd.bcap.uamc.domain.exception.UamcDomainValidateException;
 import com.yffd.bcap.uamc.domain.model.account.AccountRepo;
 import com.yffd.bcap.uamc.domain.model.relation.GroupUserRltRepo;
 import com.yffd.bcap.uamc.domain.model.relation.PmsUserRltRepo;
@@ -34,7 +34,7 @@ public class UserAppService {
     public void addUser(UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (userService.exsistById(userEntity, userRepo))
-            throw UamcDomainValidateException.ERROR_PARAMS("添加失败，数据已存在[ID: "+ userData.getUserId() +", class："+ userData.getClass() +"]");
+            throw CheckException.DATA_EXSIST("添加失败，数据已存在[ID: "+ userData.getUserId() +", class："+ userData.getClass() +"]");
         userRepo.insertOne(userEntity.add());
     }
 
@@ -58,7 +58,7 @@ public class UserAppService {
     public void assignToGroups(Set<String> groupIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (!userService.exsistById(userEntity, userRepo))
-            throw UamcDomainValidateException.ERROR("用户指派组失败，用户ID不存在["+ userData.getUserId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("用户指派组失败，用户ID不存在["+ userData.getUserId() +"]");
         Map<String, String> rltMap = userEntity.mappingRltGroup(groupIds);    //构建映射关系
         userService.addRltToGroups(rltMap, groupUserRltRepo);
     }
@@ -84,7 +84,7 @@ public class UserAppService {
     public void assignToRoles(Set<String> roleIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (!userService.exsistById(userEntity, userRepo))
-            throw UamcDomainValidateException.ERROR("用户指派角色失败，用户ID不存在["+ userData.getUserId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("用户指派角色失败，用户ID不存在["+ userData.getUserId() +"]");
         Map<String, String> rltMap = userEntity.mappingRltRole(roleIds);    //构建映射关系
         userService.addRltToRoles(rltMap, roleUserRltRepo);
     }
@@ -110,7 +110,7 @@ public class UserAppService {
     public void assignToPermissions(Set<String> pmsIds, UserData userData, SysOperator sysOperator) {
         UserEntity userEntity = new UserEntity(userData, sysOperator);
         if (!userService.exsistById(userEntity, userRepo))
-            throw UamcDomainValidateException.ERROR("用户指派权限失败，用户ID不存在["+ userData.getUserId() +"]");
+            throw CheckException.DATA_NOT_EXSIST("用户指派权限失败，用户ID不存在["+ userData.getUserId() +"]");
         Map<String, String> rltMap = userEntity.mappingRltPermission(pmsIds);    //构建映射关系
         userService.addRltToPermissions(rltMap, pmsUserRltRepo);
     }

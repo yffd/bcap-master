@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html,body {
+    font: 12px Arial,sans-serif;
+    -webkit-text-size-adjust: none;
+    background: #f7f7f7;
+}
+/*div,form,input,textarea,p,ul,li,dl,dt,dd,h1,table,h2 {*/
+
+/*}*/
+li {
+    list-style-type: none;
+}
+ol,ul {
+    list-style: none;
+}
+input {
+    vertical-align: middle;
+    font-size: 100%;
+}
+img {
+    vertical-align: top;
+    border: 0;
+}
+em,i {
+    font-style: normal;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+a:hover {
+    color: #F60;
+    text-decoration: none;
+    cursor: pointer;
+}
+hr {
+    height: 0;
+    border-left: none;
+    border-right: 0;
+    border-top: 1px dashed #2d2f34;
+    border-bottom: 1px dashed #474954;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+/*FontAwesome字体图标，使用：<div class="icon">&#xf2b9</div>*/
+.icon{
+    font-family: FontAwesome;
+}
+/*边框*/
+.border_left {
+    border-left-width: 1px
+}
+.border_right {
+    border-right-width: 1px
+}
+.border_top {
+    border-top-width: 1px
+}
+.border_bottom {
+    border-bottom-width: 1px
+}
+
