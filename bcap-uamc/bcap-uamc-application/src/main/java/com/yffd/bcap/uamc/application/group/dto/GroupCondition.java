@@ -2,7 +2,7 @@ package com.yffd.bcap.uamc.application.group.dto;
 
 import java.io.Serializable;
 
-public class GroupCriteria implements Serializable {
+public class GroupCondition implements Serializable {
     private static final long serialVersionUID = -1272118714607219115L;
     private String groupName;//组名称
     private String groupState;//状态

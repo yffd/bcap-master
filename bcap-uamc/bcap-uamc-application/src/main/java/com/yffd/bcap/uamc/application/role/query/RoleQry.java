@@ -2,7 +2,7 @@ package com.yffd.bcap.uamc.application.role.query;
 
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
-import com.yffd.bcap.uamc.application.role.dto.RoleCriteria;
+import com.yffd.bcap.uamc.application.role.dto.RoleConditon;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
@@ -12,9 +12,9 @@ import java.util.List;
 
 public interface RoleQry {
 
-    List<RoleData> findList(RoleCriteria criteria);
+    List<RoleData> findList(RoleConditon condition);
 
-    PageData<RoleData> findPage(RoleCriteria criteria, PageInfo pageInfo);
+    PageData<RoleData> findPage(RoleConditon condition, PageInfo pageInfo);
 
     /**
      * 查看相关联的组信息

@@ -3,12 +3,14 @@ package com.yffd.bcap.uamc.infrastructure.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.yffd.bcap.uamc.infrastructure.config.web.DateConverter;
 import com.yffd.bcap.uamc.infrastructure.config.web.LoggerInterceptor;
 import com.yffd.bcap.uamc.infrastructure.config.web.SessionInterceptor;
 import com.yffd.bcap.uamc.infrastructure.config.web.SpringHandlerExceptionResolver;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -27,7 +29,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 自定义静态资源文件路径
+     * 配置自定义静态资源文件路径
      * @param registry
      */
     @Override
@@ -35,6 +37,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/login.html").addResourceLocations("classpath:/login.html");
         registry.addResourceHandler("/index.html").addResourceLocations("classpath:/index.html");
+    }
+
+    /**
+     * 配置自定义类型转换器
+     * @param registry
+     */
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new DateConverter());//将任意字符串形式的日期转换成java.util.Date类型
     }
 
     /**

@@ -28,8 +28,8 @@ public interface JpaGroupRepoPlus extends JpaRepository<GroupData, String>, JpaS
     void deleteByIdIn(Set<String> ids);
 
 
-    @Query(value = "select g.* from uamc_role_group_rlt rlt left join uamc_group g on rlt.group_id = g.group_id where rlt.role_id = ?1 order by g.create_time desc",
-            countQuery = "select count(*) from uamc_role_group_rlt rlt left join uamc_group g on rlt.group_id = g.group_id where rlt.role_id = ?1",
+    @Query(value = "select g.* from uamc_role_group_rlt rlt left join uamc_group g on rlt.group_id = g.group_id where g.group_id is not null and rlt.role_id = ?1 order by g.create_time desc",
+            countQuery = "select count(*) from uamc_role_group_rlt rlt left join uamc_group g on rlt.group_id = g.group_id where  g.group_id is not null and rlt.role_id = ?1",
             nativeQuery = true)
     Page<GroupData> findPageByRoleId(String roleId, Pageable pageable);
 }

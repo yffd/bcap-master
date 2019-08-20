@@ -1,9 +1,11 @@
 package com.yffd.bcap.uamc.infrastructure.persistence.role.jpa.query;
 
+import com.yffd.bcap.common.model.exception.CheckException;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
+import com.yffd.bcap.common.model.utils.BcapStringUtils;
 import com.yffd.bcap.uamc.application.role.query.RoleQry;
-import com.yffd.bcap.uamc.application.role.dto.RoleCriteria;
+import com.yffd.bcap.uamc.application.role.dto.RoleConditon;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
@@ -35,16 +37,16 @@ public class JpaRoleQry implements RoleQry {
     private JpaUserRepoPlus jpaUserRepoPlus;
 
     @Override
-    public List<RoleData> findList(RoleCriteria criteria) {
+    public List<RoleData> findList(RoleConditon condition) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createTime");
-        return this.jpaRoleRepoPlus.findAll(JpaRoleSpec.build(criteria), sort);
+        return this.jpaRoleRepoPlus.findAll(JpaRoleSpec.build(condition), sort);
     }
 
     @Override
-    public PageData<RoleData> findPage(RoleCriteria criteria, PageInfo pageInfo) {
+    public PageData<RoleData> findPage(RoleConditon conditon, PageInfo pageInfo) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createTime");
         Pageable pageable = this.toPageable(pageInfo, sort);
-        Page<RoleData> page = this.jpaRoleRepoPlus.findAll(JpaRoleSpec.build(criteria), pageable);
+        Page<RoleData> page = this.jpaRoleRepoPlus.findAll(JpaRoleSpec.build(conditon), pageable);
         return this.toPageData(page, pageInfo);
 
         /*pageInfo.setTotalRecord(Integer.parseInt(page.getTotalElements() + ""));
@@ -56,18 +58,21 @@ public class JpaRoleQry implements RoleQry {
 
     @Override
     public PageData<GroupData> findGroupsByRoleId(String roleId, PageInfo pageInfo) {
+        if (BcapStringUtils.isEmpty(roleId)) throw CheckException.PARAM_IS_EMPTY();
         Page<GroupData> page = jpaGroupRepoPlus.findPageByRoleId(roleId, toPageable(pageInfo));
         return this.toPageData(page, pageInfo);
     }
 
     @Override
     public PageData<PermissionData> findPermissionsByRoleId(String roleId, PageInfo pageInfo) {
+        if (BcapStringUtils.isEmpty(roleId)) throw CheckException.PARAM_IS_EMPTY();
         Page<PermissionData> page = jpaPermissionRepoPlus.findPageByRoleId(roleId, toPageable(pageInfo));
         return this.toPageData(page, pageInfo);
     }
 
     @Override
     public PageData<UserData> findUsersByRoleId(String roleId, PageInfo pageInfo) {
+        if (BcapStringUtils.isEmpty(roleId)) throw CheckException.PARAM_IS_EMPTY();
         Page<UserData> page = jpaUserRepoPlus.findPageByRoleId(roleId, toPageable(pageInfo));
         return this.toPageData(page, pageInfo);
     }

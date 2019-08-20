@@ -57,7 +57,7 @@ public class JpaRoleRepo implements RoleRepo {
         Optional<RoleData> optional = this.roleJpa.findById(data.getRoleId());
         RoleData po = optional.orElse(null);
         if (null == po) {
-            LOG.warn("更新数据不存在[id="+ data.getRoleId() +"]");
+            LOG.warn("更新数据不存在[id="+ data.getRoleId() +", class="+ data.getClass() +"]");
             return;
         }
         this.copyPropsIgnoreNull(data, po);

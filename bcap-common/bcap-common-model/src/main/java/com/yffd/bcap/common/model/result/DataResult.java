@@ -24,6 +24,10 @@ public class DataResult implements Serializable {
         return new DataResult(StatusResultEnum.OK.getCode(), msg, null);
     }
 
+    public static DataResult ok(Object data) {
+        return new DataResult(StatusResultEnum.OK.getCode(), StatusResultEnum.OK.getMsg(), data);
+    }
+
     public static DataResult ok(String msg, Object data) {
         return new DataResult(StatusResultEnum.OK.getCode(), msg, data);
     }

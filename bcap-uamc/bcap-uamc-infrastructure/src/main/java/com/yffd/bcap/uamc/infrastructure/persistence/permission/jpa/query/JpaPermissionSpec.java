@@ -1,9 +1,8 @@
 package com.yffd.bcap.uamc.infrastructure.persistence.permission.jpa.query;
 
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
-import com.yffd.bcap.uamc.application.permission.dto.PermissionCriteria;
+import com.yffd.bcap.uamc.application.permission.dto.PermissionCondition;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
-import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,16 +12,17 @@ import javax.persistence.criteria.Root;
 
 public class JpaPermissionSpec {
 
-    public static Specification<PermissionData> build(PermissionCriteria criteria) {
+    public static Specification<PermissionData> build(PermissionCondition condition) {
         Specification<PermissionData> spec = new Specification<PermissionData>() {
             @Override
             public Predicate toPredicate(Root<PermissionData> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 return criteriaBuilder.equal(root.get("delFlag"), "0");
             }
         };
-        if (BcapStringUtils.isNotEmpty(criteria.getPmsName())) spec = spec.and(pmsNameLike(criteria.getPmsName()));
-        if (BcapStringUtils.isNotEmpty(criteria.getPmsState())) spec = spec.and(pmsStateEqual(criteria.getPmsState()));
-        if (BcapStringUtils.isNotEmpty(criteria.getPmsId())) spec = spec.and(pmsIdEqual(criteria.getPmsId()));
+        if (null == condition) return spec;
+        if (BcapStringUtils.isNotEmpty(condition.getPmsName())) spec = spec.and(pmsNameLike(condition.getPmsName()));
+        if (BcapStringUtils.isNotEmpty(condition.getPmsState())) spec = spec.and(pmsStateEqual(condition.getPmsState()));
+        if (BcapStringUtils.isNotEmpty(condition.getPmsId())) spec = spec.and(pmsIdEqual(condition.getPmsId()));
         return spec;
     }
 

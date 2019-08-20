@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.uamc.UamcApplicationTest;
-import com.yffd.bcap.uamc.application.permission.dto.PermissionCriteria;
+import com.yffd.bcap.uamc.application.permission.dto.PermissionCondition;
 import com.yffd.bcap.uamc.domain.constants.enums.ActiveStateEnum;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.infrastructure.persistence.permission.jpa.query.JpaPermissionQry;
@@ -17,7 +17,7 @@ public class JpaPermissionQryTest extends UamcApplicationTest {
 
     @Test
     public void findPageTest() {
-        PermissionCriteria criteria = new PermissionCriteria();
+        PermissionCondition criteria = new PermissionCondition();
 //        criteria.setPmsId("88F952AC07EC4CC5A1F8D960F0226E8F");
         criteria.setPmsName("权限");
         criteria.setPmsState(ActiveStateEnum.ACTIVE.getCode());

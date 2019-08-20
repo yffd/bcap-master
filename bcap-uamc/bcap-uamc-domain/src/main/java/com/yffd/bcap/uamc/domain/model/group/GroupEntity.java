@@ -25,7 +25,7 @@ public class GroupEntity extends EntityObject<GroupData> {
 
     public GroupData active() {
         if (BcapStringUtils.isEmpty(this.identity()))
-            throw CheckException.PARAM_IS_EMPTY("启用失败，数据实体ID不能为空[" + this.data().getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("启用失败，数据实体ID不能为空[" + this.getClass() + "]");
         this.data().setGroupState(ActiveStateEnum.ACTIVE.getCode());
         this.initPropsForUpdate();
         return this.data();
@@ -33,7 +33,7 @@ public class GroupEntity extends EntityObject<GroupData> {
 
     public GroupData deactive() {
         if (BcapStringUtils.isEmpty(this.identity()))
-            throw CheckException.PARAM_IS_EMPTY("停用失败，实体ID不能为空[" + this.data().getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("停用失败，实体ID不能为空[" + this.getClass() + "]");
         this.data().setGroupState(ActiveStateEnum.DEACTIVE.getCode());
         this.initPropsForUpdate();
         return this.data();

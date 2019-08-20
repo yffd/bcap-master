@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.uamc.UamcApplicationTest;
-import com.yffd.bcap.uamc.application.group.dto.GroupCriteria;
+import com.yffd.bcap.uamc.application.group.dto.GroupCondition;
 import com.yffd.bcap.uamc.domain.constants.enums.ActiveStateEnum;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
@@ -20,7 +20,7 @@ public class JpaGroupQryTest extends UamcApplicationTest {
 
     @Test
     public void findPageTest() {
-        GroupCriteria criteria = new GroupCriteria();
+        GroupCondition criteria = new GroupCondition();
         criteria.setGroupName("组");
         criteria.setGroupState(ActiveStateEnum.ACTIVE.getCode());
         PageInfo pageInfo = new PageInfo(1, 10);

@@ -9,13 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface JpaPermissionRepoPlus extends JpaRepository<PermissionData, String>, JpaSpecificationExecutor<PermissionData> {
 
-    @Query(value = "select p.* from uamc_role_pms_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where rlt.role_id = ?1 order by p.create_time desc",
-            countQuery = "select count(*) from uamc_role_pms_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where rlt.role_id = ?1",
+    @Query(value = "select p.* from uamc_role_pms_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where p.pms_id is not null and rlt.role_id = ?1 order by p.create_time desc",
+            countQuery = "select count(*) from uamc_role_pms_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where p.pms_id is not null and rlt.role_id = ?1",
             nativeQuery = true)
     Page<PermissionData> findPageByRoleId(String roleId, Pageable pageable);
 
-    @Query(value = "select p.* from uamc_pms_user_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where rlt.user_id = ?1 order by p.create_time desc",
-            countQuery = "select count(*) from uamc_pms_user_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where rlt.user_id = ?1",
+    @Query(value = "select p.* from uamc_pms_user_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where p.pms_id is not null and rlt.user_id = ?1 order by p.create_time desc",
+            countQuery = "select count(*) from uamc_pms_user_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where p.pms_id is not null and rlt.user_id = ?1",
             nativeQuery = true)
     Page<PermissionData> findPermissionsByUserId(String userId, Pageable pageable);
 

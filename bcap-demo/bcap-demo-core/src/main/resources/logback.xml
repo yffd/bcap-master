@@ -36,7 +36,7 @@
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>ERROR</level>
 		</filter>
-		<File>${LOG_HOME}/${LOG_PREFIX}-error.log</File>
+		<File>${LOG_HOME}/${LOG_PREFIX}-templates.error.log</File>
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<!-- 每天一归档 -->

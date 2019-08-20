@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.uamc.UamcApplicationTest;
-import com.yffd.bcap.uamc.application.role.dto.RoleCriteria;
+import com.yffd.bcap.uamc.application.role.dto.RoleConditon;
 import com.yffd.bcap.uamc.domain.constants.enums.ActiveStateEnum;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
@@ -41,7 +41,7 @@ public class JpaRoleQryTest extends UamcApplicationTest {
     public void findListTest() throws ParseException {
         String start = "2019-06-20 17:27:23";
         String end = "2019-06-29 17:27:23";
-        RoleCriteria criteria = new RoleCriteria();
+        RoleConditon criteria = new RoleConditon();
 //        criteria.setRoleName("测试");
 //        criteria.setRoleState(ActiveStateEnum.ACTIVE.getCode());
         criteria.setStartTime(sdf.parse(start));
@@ -57,7 +57,7 @@ public class JpaRoleQryTest extends UamcApplicationTest {
     public void findPageTest() throws ParseException {
         String start = "2019-06-20 17:27:23";
         String end = "2019-06-29 17:27:23";
-        RoleCriteria criteria = new RoleCriteria();
+        RoleConditon criteria = new RoleConditon();
         criteria.setRoleName("测试");
 //        criteria.setRoleState(ActiveStateEnum.ACTIVE.getCode());
 //        criteria.setStartTime(sdf.parse(start));

@@ -12,8 +12,8 @@ public abstract class DomainEntityTest {
 
     @Before
     public void setup() {
-        sysOperator.setOperatorId("junit-test");
-        sysOperator.setOperatorName("单元测试");
+        sysOperator.setUserId("junit-test");
+        sysOperator.setUserName("单元测试");
         sysOperator.setOperateTime(Calendar.getInstance().getTime());
     }
 }

@@ -92,7 +92,7 @@ public class BcapDateUtils {
                     String dateReplace = dateStr.replaceAll("\\D+", "-");
                     return tmpFmt.parse(dateReplace);
                 } catch (ParseException e) {
-                    throw new RuntimeException("日期格式无效：【" + dateStr + "】", e);
+                    throw new RuntimeException("日期类型转换失败：【" + dateStr + "】", e);
                 }
             }
         }

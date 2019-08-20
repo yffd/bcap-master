@@ -1,5 +1,6 @@
 package com.yffd.bcap.common.model.page;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
 public class PageInfo implements Serializable {
@@ -14,6 +15,9 @@ public class PageInfo implements Serializable {
     private Integer pageNum;
     private Integer pageSize;
     private Integer totalRecord;
+
+    public PageInfo() {
+    }
 
     public PageInfo(Integer pageNum, Integer pageSize) {
         // pageNum >= PAGE_NUM_MIN
@@ -38,16 +42,25 @@ public class PageInfo implements Serializable {
         this.totalRecord = totalRecord < 0 ? 0 : totalRecord;
     }
 
-    public Integer getTotalPage() {
+    public Integer calculateTotalPage() {
         return this.getTotalRecord() % this.getPageSize() == 0 ?
                 this.getTotalRecord() / this.getPageSize() : this.getTotalRecord() / this.getPageSize() + 1;
     }
 
+    @Transient
     public Integer getStartIndex() {
         return (this.getPageNum() - 1) * this.getPageSize();
     }
-
+    @Transient
     public Integer getEndIndex() {
         return this.getPageNum() * this.getPageSize();
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 }

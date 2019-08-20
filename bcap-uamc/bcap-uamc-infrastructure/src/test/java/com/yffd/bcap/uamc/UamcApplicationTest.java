@@ -17,8 +17,8 @@ public class UamcApplicationTest {
 
     static {
         sysOperator = new SysOperator();
-        sysOperator.setOperatorId("test_id");
-        sysOperator.setOperatorName("test");
+        sysOperator.setUserId("test_id");
+        sysOperator.setUserName("test");
         sysOperator.setOperateTime(Calendar.getInstance().getTime());
     }
 

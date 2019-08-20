@@ -3,7 +3,7 @@ package com.yffd.bcap.uamc.infrastructure.persistence.user.jpa.query;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.common.support.persistence.jpa.JpaQuerySupport;
-import com.yffd.bcap.uamc.application.user.dto.UserCriteria;
+import com.yffd.bcap.uamc.application.user.dto.UserCondition;
 import com.yffd.bcap.uamc.application.user.query.UserQry;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
@@ -27,10 +27,10 @@ public class JpaUserQry extends JpaQuerySupport implements UserQry {
     private JpaPermissionRepoPlus jpaPermissionRepoPlus;
 
     @Override
-    public PageData<UserData> findPage(UserCriteria criteria, PageInfo pageInfo) {
+    public PageData<UserData> findPage(UserCondition condition, PageInfo pageInfo) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createTime");
         Pageable pageable = this.toPageable(pageInfo, sort);
-        Page<UserData> page = this.jpaUserRepoPlus.findAll(JpaUserSpec.build(criteria), pageable);
+        Page<UserData> page = this.jpaUserRepoPlus.findAll(JpaUserSpec.build(condition), pageable);
         return this.toPageData(page, pageInfo);
     }
 

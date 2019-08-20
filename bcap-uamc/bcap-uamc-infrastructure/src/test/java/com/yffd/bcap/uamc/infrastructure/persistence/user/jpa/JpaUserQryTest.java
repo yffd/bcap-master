@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.uamc.UamcApplicationTest;
-import com.yffd.bcap.uamc.application.user.dto.UserCriteria;
+import com.yffd.bcap.uamc.application.user.dto.UserCondition;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
 import com.yffd.bcap.uamc.domain.model.user.UserData;
@@ -22,7 +22,7 @@ public class JpaUserQryTest extends UamcApplicationTest {
     public void findPageTest() throws ParseException {
         String start = "2019-04-20 17:27:23";
         String end = "2019-06-29 17:27:23";
-        UserCriteria criteria = new UserCriteria();
+        UserCondition criteria = new UserCondition();
         criteria.setUserName("用户");
 //        criteria.setUserId("589F26598EAC44A99B58A31BAD37793E");
         criteria.setStartTime(SDF.parse(start));

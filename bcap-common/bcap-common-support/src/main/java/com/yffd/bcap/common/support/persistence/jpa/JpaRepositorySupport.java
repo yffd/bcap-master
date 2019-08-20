@@ -25,12 +25,6 @@ public abstract class JpaRepositorySupport<D extends DataObject> implements Repo
 
     @Override
     public void insertOne(D data) {
-        /*if (BcapStringUtils.isNotEmpty(getDataId(data))) {
-            Optional<D> optional = this.repository().findById(getDataId(data));
-            D po = optional.orElse(null);
-            if (null != po)
-                throw DomainException.ERROR("数据已存在[id="+ getDataId(data) +", class="+ data.getClass() +"]");
-        }*/
         if (BcapStringUtils.isEmpty(getDataId(data))) setDataId(data, this.nextIdentity());
         this.repository().save(data);
     }

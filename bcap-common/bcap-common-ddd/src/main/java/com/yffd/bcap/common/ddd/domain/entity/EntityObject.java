@@ -12,7 +12,7 @@ public abstract class EntityObject<D extends DataObject> implements IEntityObjec
 
     public EntityObject(D data, SysOperator sysOperator) {
         if (null == data || null == sysOperator)
-            throw CheckException.PARAM_IS_EMPTY("构造器参数错误[data:"+data+", sysOperator:"+sysOperator+"]");
+            throw CheckException.PARAM_IS_EMPTY("构造器参数错误["+this.getClass()+"]");
         this.data = data;
         this.sysOperator = sysOperator;
     }
@@ -38,20 +38,20 @@ public abstract class EntityObject<D extends DataObject> implements IEntityObjec
 
     public D updateById() {
         if (this.isEmptyString(this.identity()))
-            throw CheckException.PARAM_IS_EMPTY("修改失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("修改失败，数据实体ID不能为空[" + this.getClass() + "]");
         DataObjectHelper.initPropsForUpdate(this.data, this.sysOperator);
         return this.data;
     }
 
     public String deleteById() {
         if (this.isEmptyString(this.identity()))
-            throw CheckException.PARAM_IS_EMPTY("删除失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("删除失败，数据实体ID不能为空[" + this.getClass() + "]");
         return this.identity();
     }
 
     public String exsistById() {
         if (this.isEmptyString(this.identity()))
-            throw CheckException.PARAM_IS_EMPTY("主键查询失败，数据实体ID不能为空[" + this.data.getClass() + "]");
+            throw CheckException.PARAM_IS_EMPTY("主键查询失败，数据实体ID不能为空[" + this.getClass() + "]");
         return this.identity();
     }
 

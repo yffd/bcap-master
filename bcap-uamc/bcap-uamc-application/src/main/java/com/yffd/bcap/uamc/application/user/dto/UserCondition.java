@@ -3,7 +3,7 @@ package com.yffd.bcap.uamc.application.user.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserCriteria implements Serializable {
+public class UserCondition implements Serializable {
     private static final long serialVersionUID = 2410985060072197079L;
     private String userId;//用户ID
     private String userName;//用户名称

@@ -3,7 +3,7 @@ package com.yffd.bcap.uamc.application.role.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class RoleCriteria implements Serializable {
+public class RoleConditon implements Serializable {
     private static final long serialVersionUID = 2096611520136024618L;
     private String roleName;//角色名称
     private String roleState;//状态

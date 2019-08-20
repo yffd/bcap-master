@@ -2,7 +2,7 @@ package com.yffd.bcap.uamc.application.resource.dto;
 
 import java.io.Serializable;
 
-public class RsOperationCriteria implements Serializable {
+public class RsOperationCondition implements Serializable {
     private static final long serialVersionUID = 5597557782576480235L;
     private String oprtId;//操作ID
     private String oprtName;//操作名称

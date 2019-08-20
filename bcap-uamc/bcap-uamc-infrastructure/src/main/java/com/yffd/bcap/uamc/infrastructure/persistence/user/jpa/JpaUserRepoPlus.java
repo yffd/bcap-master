@@ -15,13 +15,13 @@ public interface JpaUserRepoPlus extends JpaRepository<UserData, String>, JpaSpe
     Integer countUsers(Set<String> orgIds);
 
 
-    @Query(value = "select u.* from uamc_role_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where rlt.role_id = ?1 order by u.create_time desc",
-            countQuery = "select count(*) from uamc_role_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where rlt.role_id = ?1",
+    @Query(value = "select u.* from uamc_role_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where u.user_id is not null and rlt.role_id = ?1 order by u.create_time desc",
+            countQuery = "select count(*) from uamc_role_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where u.user_id is not null and rlt.role_id = ?1",
             nativeQuery = true)
     Page<UserData> findPageByRoleId(String roleId, Pageable pageable);
 
-    @Query(value = "select u.* from uamc_group_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where rlt.group_id = ?1 order by u.create_time desc",
-            countQuery = "select count(*) from uamc_group_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where rlt.group_id = ?1",
+    @Query(value = "select u.* from uamc_group_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where u.user_id is not null and rlt.group_id = ?1 order by u.create_time desc",
+            countQuery = "select count(*) from uamc_group_user_rlt rlt left join uamc_user u on rlt.user_id = u.user_id where u.user_id is not null and rlt.group_id = ?1",
             nativeQuery = true)
     Page<UserData> findUsersByGroupId(String groupId, Pageable pageable);
 

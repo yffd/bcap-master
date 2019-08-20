@@ -32,7 +32,7 @@ public class SpringHandlerExceptionResolver implements HandlerExceptionResolver,
     private static Logger logger = LoggerFactory.getLogger(SpringHandlerExceptionResolver.class);
     private int order = Ordered.HIGHEST_PRECEDENCE;
     private FastJsonConfig fastJsonConfig;
-    private static final String ERROR_PATH = "/error";
+    private static final String ERROR_PATH = "/error/error.html";
     private static final String STATUS_FAIL = StatusResultEnum.FAIL.getCode();
     private static final String STATUS_TIP = "系统异常[%s]";
 
@@ -42,15 +42,11 @@ public class SpringHandlerExceptionResolver implements HandlerExceptionResolver,
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        if (ex instanceof SysException) {
-            logger.warn("请求处理失败，请求url=[{}], 失败原因 : {}", request.getRequestURI(), ex.getMessage());
-        } else {
-            logger.warn("请求处理失败，请求url=[{}], 失败原因 : {}", request.getRequestURI(), "系统未知异常");
-        }
+        logger.warn(String.format("请求处理失败，请求url=[%s]", request.getRequestURI()), ex);
         if (isAjax(request)) {
             return ajaxResult(ex);
         } else {
-          return normalResult(ex, ERROR_PATH);
+            return normalResult(ex, ERROR_PATH);
         }
     }
 

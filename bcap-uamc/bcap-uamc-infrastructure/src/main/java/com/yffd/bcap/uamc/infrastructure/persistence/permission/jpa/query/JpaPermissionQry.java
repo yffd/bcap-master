@@ -3,7 +3,7 @@ package com.yffd.bcap.uamc.infrastructure.persistence.permission.jpa.query;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.common.support.persistence.jpa.JpaQuerySupport;
-import com.yffd.bcap.uamc.application.permission.dto.PermissionCriteria;
+import com.yffd.bcap.uamc.application.permission.dto.PermissionCondition;
 import com.yffd.bcap.uamc.application.permission.query.PermissionQry;
 import com.yffd.bcap.uamc.domain.constants.enums.SourceTypeEnum;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
@@ -29,9 +29,9 @@ public class JpaPermissionQry extends JpaQuerySupport implements PermissionQry {
     private JpaRsOperationRepoPlus jpaRsOperationRepoPlus;
 
     @Override
-    public PageData<PermissionData> findPage(PermissionCriteria criteria, PageInfo pageInfo) {
+    public PageData<PermissionData> findPage(PermissionCondition condition, PageInfo pageInfo) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createTime");
-        Page<PermissionData> page = jpaPermissionRepoPlus.findAll(JpaPermissionSpec.build(criteria), this.toPageable(pageInfo, sort));
+        Page<PermissionData> page = jpaPermissionRepoPlus.findAll(JpaPermissionSpec.build(condition), this.toPageable(pageInfo, sort));
         return this.toPageData(page, pageInfo);
     }
 

@@ -1,7 +1,7 @@
 package com.yffd.bcap.uamc.infrastructure.persistence.resource.jpa.query;
 
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
-import com.yffd.bcap.uamc.application.resource.dto.RsOperationCriteria;
+import com.yffd.bcap.uamc.application.resource.dto.RsOperationCondition;
 import com.yffd.bcap.uamc.domain.model.resource.RsOperationData;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -12,16 +12,17 @@ import javax.persistence.criteria.Root;
 
 public class JpaRsOperationSpec {
 
-    public static Specification<RsOperationData> build(RsOperationCriteria criteria) {
+    public static Specification<RsOperationData> build(RsOperationCondition condition) {
         Specification<RsOperationData> spec = new Specification<RsOperationData>() {
             @Override
             public Predicate toPredicate(Root<RsOperationData> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 return criteriaBuilder.equal(root.get("delFlag"), "0");
             }
         };
-        if (BcapStringUtils.isNotEmpty(criteria.getOprtId())) spec = spec.and(oprtIdEqual(criteria.getOprtId()));
-        if (BcapStringUtils.isNotEmpty(criteria.getOprtName())) spec = spec.and(oprtNameLike(criteria.getOprtName()));
-        if (BcapStringUtils.isNotEmpty(criteria.getOprtState())) spec = spec.and(oprtStateEqual(criteria.getOprtState()));
+        if (null == condition) return spec;
+        if (BcapStringUtils.isNotEmpty(condition.getOprtId())) spec = spec.and(oprtIdEqual(condition.getOprtId()));
+        if (BcapStringUtils.isNotEmpty(condition.getOprtName())) spec = spec.and(oprtNameLike(condition.getOprtName()));
+        if (BcapStringUtils.isNotEmpty(condition.getOprtState())) spec = spec.and(oprtStateEqual(condition.getOprtState()));
         return spec;
     }
 

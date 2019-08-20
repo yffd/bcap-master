@@ -41,38 +41,53 @@ public class RoleAppService {
     }
 
     @Transactional
-    public void deleteRole(RoleData roleData, SysOperator sysOperator) {
+    public void deleteRole(String roleId, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         roleService.deleteRoleWithRlt(roleEntity, roleRepo, roleGroupRltRepo, rolePmsRltRepo, roleUserRltRepo);
     }
 
+    @Transactional
+    public void deleteBatch(Set<String> roleIds, SysOperator sysOperator) {
+        for (String roleId : roleIds) {
+            this.deleteRole(roleId, sysOperator);
+        }
+    }
+
     /**
      * 启用角色
-     * @param roleData
+     * @param roleId
      * @param sysOperator
      */
-    public void activeRole(RoleData roleData, SysOperator sysOperator) {
+    public void activeRole(String roleId, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         roleRepo.updateRoleState(roleEntity.active());
     }
 
     /**
      * 禁用角色
-     * @param roleData
+     * @param roleId
      * @param sysOperator
      */
-    public void deactiveRole(RoleData roleData, SysOperator sysOperator) {
+    public void deactiveRole(String roleId, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         roleRepo.updateRoleState(roleEntity.deactive());
     }
 
     /**
      * 指派组
+     * @param roleId
      * @param groupIds
-     * @param roleData
      * @param sysOperator
      */
-    public void assignToGroups(Set<String> groupIds, RoleData roleData, SysOperator sysOperator) {
+    public void assignToGroups(String roleId, Set<String> groupIds, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (!roleService.exsistRoleById(roleEntity, roleRepo))
             throw CheckException.DATA_NOT_EXSIST("角色指派组失败，角色ID不存在["+ roleData.getRoleId() +"]");
@@ -82,11 +97,13 @@ public class RoleAppService {
 
     /**
      * 解除已指派组
+     * @param roleId
      * @param groupIds
-     * @param roleData
      * @param sysOperator
      */
-    public void deleteRltGroups(Set<String> groupIds, RoleData roleData, SysOperator sysOperator) {
+    public void deleteRltGroups(String roleId, Set<String> groupIds, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         Map<String, String> rltMap = roleEntity.mappingRltGroup(groupIds);    //构建映射关系
         roleService.removeRltToGroups(rltMap, roleGroupRltRepo);
@@ -94,11 +111,13 @@ public class RoleAppService {
 
     /**
      * 指派权限
+     * @param roleId
      * @param pmsIds
-     * @param roleData
      * @param sysOperator
      */
-    public void assignToPermissions(Set<String> pmsIds, RoleData roleData, SysOperator sysOperator) {
+    public void assignToPermissions(String roleId, Set<String> pmsIds, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         if (!roleService.exsistRoleById(roleEntity, roleRepo))
             throw CheckException.DATA_NOT_EXSIST("角色指派权限失败，角色ID不存在["+ roleData.getRoleId() +"]");
@@ -108,11 +127,13 @@ public class RoleAppService {
 
     /**
      * 解除已指派权限
+     * @param roleId
      * @param pmsIds
-     * @param roleData
      * @param sysOperator
      */
-    public void deleteRltPermissions(Set<String> pmsIds, RoleData roleData, SysOperator sysOperator) {
+    public void deleteRltPermissions(String roleId, Set<String> pmsIds, SysOperator sysOperator) {
+        RoleData roleData = new RoleData();
+        roleData.setRoleId(roleId);
         RoleEntity roleEntity = new RoleEntity(roleData, sysOperator);
         Map<String, String> rltMap = roleEntity.mappingRltPermission(pmsIds);    //构建映射关系
         roleService.removeRltToPermissions(rltMap, rolePmsRltRepo);

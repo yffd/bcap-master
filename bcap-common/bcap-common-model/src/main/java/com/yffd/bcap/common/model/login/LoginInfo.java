@@ -3,6 +3,7 @@ package com.yffd.bcap.common.model.login;
 import java.io.Serializable;
 import java.util.Set;
 
+@Deprecated
 public class LoginInfo implements Serializable {
     private static final long serialVersionUID = 3779269730581980785L;
     private String userId;

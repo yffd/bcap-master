@@ -29,8 +29,8 @@ public class RoleServiceTest {
 
     @Before
     public void setup() {
-        sysOperator.setOperatorId("junit-test");
-        sysOperator.setOperatorName("单元测试");
+        sysOperator.setUserId("junit-test");
+        sysOperator.setUserName("单元测试");
         sysOperator.setOperateTime(Calendar.getInstance().getTime());
     }
 
@@ -44,6 +44,6 @@ public class RoleServiceTest {
         roleRepo.insertOne(roleData);
 
         System.out.println(roleData.getRoleId());
-        System.out.println(sysOperator.getOperatorId());
+        System.out.println(sysOperator.getUserId());
     }
 }

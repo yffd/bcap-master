@@ -2,7 +2,7 @@ package com.yffd.bcap.uamc.application.permission.dto;
 
 import com.yffd.bcap.common.ddd.domain.valobj.IValueObject;
 
-public class PermissionCriteria implements IValueObject {
+public class PermissionCondition implements IValueObject {
     private static final long serialVersionUID = -4094949798260929241L;
     private String pmsId;//权限ID
     private String pmsName;//权限名称

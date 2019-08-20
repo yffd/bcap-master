@@ -3,7 +3,7 @@ package com.yffd.bcap.uamc.infrastructure.persistence.group.jpa.query;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.common.support.persistence.jpa.JpaQuerySupport;
-import com.yffd.bcap.uamc.application.group.dto.GroupCriteria;
+import com.yffd.bcap.uamc.application.group.dto.GroupCondition;
 import com.yffd.bcap.uamc.application.group.query.GroupQry;
 import com.yffd.bcap.uamc.domain.model.group.GroupData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
@@ -11,7 +11,6 @@ import com.yffd.bcap.uamc.domain.model.role.data.RoleData;
 import com.yffd.bcap.uamc.domain.model.user.UserData;
 import com.yffd.bcap.uamc.infrastructure.persistence.group.jpa.JpaGroupRepoPlus;
 import com.yffd.bcap.uamc.infrastructure.persistence.permission.jpa.JpaPermissionRepoPlus;
-import com.yffd.bcap.uamc.infrastructure.persistence.permission.jpa.query.JpaPermissionSpec;
 import com.yffd.bcap.uamc.infrastructure.persistence.role.jpa.JpaRoleRepoPlus;
 import com.yffd.bcap.uamc.infrastructure.persistence.user.jpa.JpaUserRepoPlus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +31,9 @@ public class JpaGroupQry extends JpaQuerySupport implements GroupQry {
     private JpaPermissionRepoPlus jpaPermissionRepoPlus;
 
     @Override
-    public PageData<GroupData> findPage(GroupCriteria criteria, PageInfo pageInfo) {
+    public PageData<GroupData> findPage(GroupCondition condition, PageInfo pageInfo) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createTime");
-        Page<GroupData> page = jpaGroupRepoPlus.findAll(JpaGroupSpec.build(criteria), this.toPageable(pageInfo, sort));
+        Page<GroupData> page = jpaGroupRepoPlus.findAll(JpaGroupSpec.build(condition), this.toPageable(pageInfo, sort));
         return this.toPageData(page, pageInfo);
     }
 
