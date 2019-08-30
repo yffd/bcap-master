@@ -14,6 +14,8 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-ttt/bcap-common-ttt.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-ttt/bcap-common-ttt.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" filepath="$PROJECT_DIR$/bcap-common/bcap-common-web/bcap-common-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app1/bcap-demo-app1.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-app1/bcap-demo-app1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app2/bcap-demo-app2.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-app2/bcap-demo-app2.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-master.iml" filepath="$PROJECT_DIR$/bcap-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" />

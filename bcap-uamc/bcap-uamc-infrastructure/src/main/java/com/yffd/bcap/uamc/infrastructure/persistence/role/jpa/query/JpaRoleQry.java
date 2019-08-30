@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.infrastructure.persistence.role.jpa.query;
 
-import com.yffd.bcap.common.model.exception.CheckException;
+import com.yffd.bcap.common.model.exception.InvalidException;
 import com.yffd.bcap.common.model.page.PageData;
 import com.yffd.bcap.common.model.page.PageInfo;
 import com.yffd.bcap.common.model.utils.BcapStringUtils;
@@ -58,21 +58,21 @@ public class JpaRoleQry implements RoleQry {
 
     @Override
     public PageData<GroupData> findGroupsByRoleId(String roleId, PageInfo pageInfo) {
-        if (BcapStringUtils.isEmpty(roleId)) throw CheckException.PARAM_IS_EMPTY();
+        if (BcapStringUtils.isEmpty(roleId)) throw InvalidException.PARAM_IS_EMPTY();
         Page<GroupData> page = jpaGroupRepoPlus.findPageByRoleId(roleId, toPageable(pageInfo));
         return this.toPageData(page, pageInfo);
     }
 
     @Override
     public PageData<PermissionData> findPermissionsByRoleId(String roleId, PageInfo pageInfo) {
-        if (BcapStringUtils.isEmpty(roleId)) throw CheckException.PARAM_IS_EMPTY();
+        if (BcapStringUtils.isEmpty(roleId)) throw InvalidException.PARAM_IS_EMPTY();
         Page<PermissionData> page = jpaPermissionRepoPlus.findPageByRoleId(roleId, toPageable(pageInfo));
         return this.toPageData(page, pageInfo);
     }
 
     @Override
     public PageData<UserData> findUsersByRoleId(String roleId, PageInfo pageInfo) {
-        if (BcapStringUtils.isEmpty(roleId)) throw CheckException.PARAM_IS_EMPTY();
+        if (BcapStringUtils.isEmpty(roleId)) throw InvalidException.PARAM_IS_EMPTY();
         Page<UserData> page = jpaUserRepoPlus.findPageByRoleId(roleId, toPageable(pageInfo));
         return this.toPageData(page, pageInfo);
     }

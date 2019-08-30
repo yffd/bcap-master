@@ -26,22 +26,24 @@ public interface JpaRoleRepoPlus extends JpaRepository<RoleData, String>, JpaSpe
     nativeQuery = true)
     Page<RoleData> findRolesByUserId(String userId, Pageable pageable);
 
-    @Query(value = "select r.* from uamc_group_user_rlt gu " +
+    @Query(value = "select distinct r.* from uamc_group_user_rlt gu " +
             "left join uamc_role_group_rlt rg on gu.group_id = rg.group_id " +
             "left join uamc_role r on rg.role_id = r.role_id " +
             "where r.role_id is not null and gu.user_id = ?1 " +
             "order by r.create_time desc",
-            countQuery = "select count(*) from uamc_group_user_rlt gu " +
+            countQuery = "select count(*) from (" +
+                    "select distinct(*) from uamc_group_user_rlt gu " +
                     "left join uamc_role_group_rlt rg on gu.group_id = rg.group_id " +
                     "left join uamc_role r on rg.role_id = r.role_id " +
-                    "where r.role_id is not null and gu.user_id = ?",
+                    "where r.role_id is not null and gu.user_id = ?" +
+                    ") tt",
             nativeQuery = true)
     Page<RoleData> findSecondRolesByUserId(String userId, Pageable pageable);
 
     @Query(value = "select * from " +
             "(select r.* from uamc_role_user_rlt rlt left join uamc_role r on rlt.role_id = r.role_id where rlt.user_id = ?1 " +
             "union " +
-            "select r.* from uamc_group_user_rlt gu " +
+            "select distinct(*) from uamc_group_user_rlt gu " +
             "left join uamc_role_group_rlt rg on gu.group_id = rg.group_id " +
             "left join uamc_role r on rg.role_id = r.role_id " +
             "where r.role_id is not null and gu.user_id = ?1) tt " +
@@ -49,7 +51,7 @@ public interface JpaRoleRepoPlus extends JpaRepository<RoleData, String>, JpaSpe
             countQuery = "select count(*) from " +
                     "(select r.* from uamc_role_user_rlt rlt left join uamc_role r on rlt.role_id = r.role_id where rlt.user_id = ?1 " +
                     "union " +
-                    "select r.* from uamc_group_user_rlt gu " +
+                    "select distinct(*) from uamc_group_user_rlt gu " +
                     "left join uamc_role_group_rlt rg on gu.group_id = rg.group_id " +
                     "left join uamc_role r on rg.role_id = r.role_id " +
                     "where r.role_id is not null and gu.user_id = ?1) tt",

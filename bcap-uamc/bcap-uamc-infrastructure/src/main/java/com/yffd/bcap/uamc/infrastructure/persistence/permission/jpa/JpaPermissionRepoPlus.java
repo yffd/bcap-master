@@ -19,22 +19,24 @@ public interface JpaPermissionRepoPlus extends JpaRepository<PermissionData, Str
             nativeQuery = true)
     Page<PermissionData> findPermissionsByUserId(String userId, Pageable pageable);
 
-    @Query(value = "select p.* from uamc_group_user_rlt gu " +
+    @Query(value = "select distinct p.* from uamc_group_user_rlt gu " +
             "left join uamc_group_pms_rlt gp on gu.group_id = gp.group_id " +
             "left join uamc_permission p on gp.pms_id = p.pms_id " +
             "where p.pms_id is not null and gu.user_id = ?1 " +
             "order by p.create_time desc",
-            countQuery = "select count(*) from uamc_group_user_rlt gu " +
+            countQuery = "select count(*) from (" +
+                    "select distinct(*) from uamc_group_user_rlt gu " +
                     "left join uamc_group_pms_rlt gp on gu.group_id = gp.group_id " +
                     "left join uamc_permission p on gp.pms_id = p.pms_id " +
-                    "where p.pms_id is not null and gu.user_id = ?1 ",
+                    "where p.pms_id is not null and gu.user_id = ?1 " +
+                    ") tt",
             nativeQuery = true)
     Page<PermissionData> findSecondPermissionsByUserId(String userId, Pageable pageable);
 
     @Query(value = "select * from " +
             "(select p.* from uamc_pms_user_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where rlt.user_id = ?1 " +
             "union " +
-            "select p.* from uamc_group_user_rlt gu " +
+            "select distinct p.* from uamc_group_user_rlt gu " +
             "left join uamc_group_pms_rlt gp on gu.group_id = gp.group_id " +
             "left join uamc_permission p on gp.pms_id = p.pms_id " +
             "where p.pms_id is not null and gu.user_id = ?1) tt " +
@@ -42,7 +44,7 @@ public interface JpaPermissionRepoPlus extends JpaRepository<PermissionData, Str
             countQuery = "select count(*) from " +
                     "(select p.* from uamc_pms_user_rlt rlt left join uamc_permission p on rlt.pms_id = p.pms_id where rlt.user_id = ?1 " +
                     "union " +
-                    "select p.* from uamc_group_user_rlt gu " +
+                    "select distinct p.* from uamc_group_user_rlt gu " +
                     "left join uamc_group_pms_rlt gp on gu.group_id = gp.group_id " +
                     "left join uamc_permission p on gp.pms_id = p.pms_id " +
                     "where p.pms_id is not null and gu.user_id = ?1) tt",

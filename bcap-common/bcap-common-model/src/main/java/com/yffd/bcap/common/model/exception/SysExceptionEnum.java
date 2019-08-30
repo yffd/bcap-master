@@ -39,6 +39,7 @@ public enum SysExceptionEnum {
     PARAM_IS_INVALID("CCC998", "参数无效"),
     DATA_EXSIST("CCC989", "数据已存在"),
     DATA_NOT_EXSIST("CCC988", "数据不存在"),
+    METHOD_UNSUPPORT("CCC979", "方法不支持"),
     ;
     private String code; //编号
     private String tip; //提示

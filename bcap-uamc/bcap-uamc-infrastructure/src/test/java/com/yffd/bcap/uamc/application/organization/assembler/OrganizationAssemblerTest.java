@@ -2,7 +2,7 @@ package com.yffd.bcap.uamc.application.organization.assembler;
 
 import com.alibaba.fastjson.JSON;
 import com.yffd.bcap.uamc.UamcApplicationTest;
-import com.yffd.bcap.uamc.application.organization.dto.OrganizationTree;
+import com.yffd.bcap.uamc.application.organization.dto.OrganizationNode;
 import com.yffd.bcap.uamc.application.organization.query.OrganizationQry;
 import com.yffd.bcap.uamc.domain.model.organization.OrgData;
 import org.junit.Test;
@@ -17,8 +17,8 @@ public class OrganizationAssemblerTest extends UamcApplicationTest {
 
     @Test
     public void buildTreeTest() {
-        List<OrgData> dataList = organizationQry.findAll();
-        OrganizationTree tree = OrganizationAssembler.buildTree(dataList);
+        List<OrganizationNode> dataList = organizationQry.findNodeList();
+        OrganizationNode tree = OrganizationAssembler.buildTree(dataList);
         System.out.println(JSON.toJSONString(tree));
     }
 }

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonJsonView;
 import com.yffd.bcap.common.model.exception.SysException;
 import com.yffd.bcap.common.model.exception.SysExceptionEnum;
-import com.yffd.bcap.common.model.result.StatusResultEnum;
+import com.yffd.bcap.common.model.result.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.ConversionNotSupportedException;
@@ -33,7 +33,7 @@ public class SpringHandlerExceptionResolver implements HandlerExceptionResolver,
     private int order = Ordered.HIGHEST_PRECEDENCE;
     private FastJsonConfig fastJsonConfig;
     private static final String ERROR_PATH = "/error/error.html";
-    private static final String STATUS_FAIL = StatusResultEnum.FAIL.getCode();
+    private static final Integer STATUS_FAIL = ResultCode.FAIL.code();
     private static final String STATUS_TIP = "系统异常[%s]";
 
     public SpringHandlerExceptionResolver(FastJsonConfig fastJsonConfig) {
@@ -119,7 +119,7 @@ public class SpringHandlerExceptionResolver implements HandlerExceptionResolver,
         return null;
     }
 
-    private Map<String, Object> buildModel(String code, String tip) {
+    private Map<String, Object> buildModel(Integer code, String tip) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", code);
         map.put("tip", tip);

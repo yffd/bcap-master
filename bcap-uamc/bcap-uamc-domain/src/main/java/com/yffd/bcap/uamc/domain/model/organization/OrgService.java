@@ -41,10 +41,10 @@ public class OrgService {
         Set<String> parentIds = new HashSet<>();
         OrgData orgData = orgRepo.findById(orgId);
         String orgPath = orgData.getOrgPath();
-        if (BcapStringUtils.isNotEmpty(orgPath) && orgPath.contains(",")) {
-            String[] arr = orgPath.split(",");
+        if (BcapStringUtils.isNotEmpty(orgPath) && orgPath.contains(OrgEntity.PATH_SEPARATION)) {
+            String[] arr = orgPath.split(OrgEntity.PATH_SEPARATION);
             List<String> tmp = Arrays.asList(arr);
-            parentIds.addAll(tmp);
+            parentIds.addAll(tmp.subList(0, tmp.size() - 1));
         }
         return parentIds;
     }

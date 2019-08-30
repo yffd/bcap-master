@@ -1,6 +1,6 @@
 package com.yffd.bcap.uamc.application.permission.service;
 
-import com.yffd.bcap.common.model.exception.CheckException;
+import com.yffd.bcap.common.model.exception.InvalidException;
 import com.yffd.bcap.common.model.system.SysOperator;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionData;
 import com.yffd.bcap.uamc.domain.model.permission.PermissionEntity;
@@ -28,7 +28,7 @@ public class PermissionAppService {
     public void addPms(PermissionData permissionData, SysOperator sysOperator) {
         PermissionEntity permissionEntity = new PermissionEntity(permissionData, sysOperator);
         if (permissionService.exsistPmsById(permissionEntity, permissionRepo))
-            throw CheckException.DATA_EXSIST("添加失败，数据已存在[ID: "+ permissionData.getPmsId() +", class："+ permissionData.getClass() +"]");
+            throw InvalidException.DATA_EXSIST("添加失败，数据已存在[ID: "+ permissionData.getPmsId() +", class："+ permissionData.getClass() +"]");
         permissionRepo.insertOne(permissionEntity.add());
     }
 

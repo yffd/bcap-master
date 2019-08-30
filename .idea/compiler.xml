@@ -18,6 +18,8 @@
         <module name="bcap-common-support" />
         <module name="bcap-common-ttt" />
         <module name="bcap-common-web" />
+        <module name="bcap-demo-app1" />
+        <module name="bcap-demo-app2" />
         <module name="bcap-demo-core" />
         <module name="bcap-infrastructure" />
         <module name="bcap-uamc-application" />
@@ -52,6 +54,8 @@
       <module name="bcap-common-ttt" target="1.8" />
       <module name="bcap-common-web" target="1.8" />
       <module name="bcap-demo" target="1.8" />
+      <module name="bcap-demo-app1" target="1.8" />
+      <module name="bcap-demo-app2" target="1.8" />
       <module name="bcap-demo-core" target="1.8" />
       <module name="bcap-domain" target="8" />
       <module name="bcap-infrastructure" target="8" />
@@ -63,6 +67,7 @@
       <module name="bcap-uamc-infrastructure" target="1.8" />
       <module name="bcap-uamc-ui" target="1.8" />
       <module name="bcap-ui" target="8" />
+      <module name="ddd" target="1.7" />
       <module name="demo" target="1.8" />
     </bytecodeTargetLevel>
   </component>

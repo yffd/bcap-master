@@ -11,11 +11,35 @@ public interface UserQry {
 
     PageData<UserData> findPage(UserCondition condition, PageInfo pageInfo);
 
+    /**
+     * 用户的直接角色
+     * @param userId
+     * @param pageInfo
+     * @return
+     */
     PageData<RoleData> findRolesByUserId(String userId, PageInfo pageInfo);
 
+    /**
+     * 用户的间接角色，通过组扩展来的角色
+     * @param userId
+     * @param pageInfo
+     * @return
+     */
     PageData<RoleData> findSecondRolesByUserId(String userId, PageInfo pageInfo);
 
+    /**
+     * 用户的直接权限
+     * @param userId
+     * @param pageInfo
+     * @return
+     */
     PageData<PermissionData> findPermissionsByUserId(String userId, PageInfo pageInfo);
 
+    /**
+     * 用户的间接权限，通过组扩展来的权限
+     * @param userId
+     * @param pageInfo
+     * @return
+     */
     PageData<PermissionData> findSecondPermissionsByUserId(String userId, PageInfo pageInfo);
 }

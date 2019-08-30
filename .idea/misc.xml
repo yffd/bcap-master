@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app1" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui" />
   </component>
   <component name="MavenProjectsManager">
@@ -10,6 +11,7 @@
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-demo/bcap-demo-app1/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -26,6 +28,7 @@
         <option value="$PROJECT_DIR$/bcap-common/bcap-common-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-common/bcap-common-generic/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-common/bcap-common-ttt/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-demo/ddd/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-ui/pom.xml" />

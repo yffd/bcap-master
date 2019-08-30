@@ -3,19 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>bcap-master</artifactId>
+        <artifactId>bcap-demo</artifactId>
         <groupId>com.yffd</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>bcap-demo</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>bcap-demo-core</module>
-        <module>bcap-demo-app1</module>
-        <module>bcap-demo-app2</module>
-    </modules>
+    <artifactId>bcap-demo-app2</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-core</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+    </dependencies>
 </project>

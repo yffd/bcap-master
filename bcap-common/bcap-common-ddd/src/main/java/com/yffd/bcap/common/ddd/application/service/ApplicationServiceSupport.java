@@ -3,7 +3,7 @@ package com.yffd.bcap.common.ddd.application.service;
 import com.yffd.bcap.common.ddd.domain.data.DataObject;
 import com.yffd.bcap.common.ddd.domain.entity.EntityObject;
 import com.yffd.bcap.common.ddd.domain.repository.RepositorySupport;
-import com.yffd.bcap.common.model.exception.CheckException;
+import com.yffd.bcap.common.model.exception.InvalidException;
 import com.yffd.bcap.common.model.system.SysOperator;
 
 public abstract class ApplicationServiceSupport<D extends DataObject> implements IApplicationService {
@@ -14,7 +14,7 @@ public abstract class ApplicationServiceSupport<D extends DataObject> implements
     public void add(D data, SysOperator sysOperator) {
         EntityObject entity = this.buildEntity(data, sysOperator);
         if (this.exsistById(entity)) {
-            throw CheckException.DATA_EXSIST("添加失败，数据已存在[ID: "+ entity.identity() +", class："+ data.getClass() +"]");
+            throw InvalidException.DATA_EXSIST("添加失败，数据已存在[ID: "+ entity.identity() +", class："+ data.getClass() +"]");
         }
         this.repository().insertOne(entity.add());
     }
