@@ -13,6 +13,8 @@
         <module>bcap-common</module>
         <module>bcap-demo</module>
         <module>bcap-uamc</module>
+        <module>bcap-sso</module>
+        <module>bcap-admin</module>
     </modules>
 
     <properties>

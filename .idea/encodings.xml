@@ -2,6 +2,13 @@
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin/bcap-admin-application-acnt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin/bcap-admin-application-sacm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin/bcap-admin-domain-acnt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin/bcap-admin-domain-sacm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin/bcap-admin-infrastructure-acnt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-admin/bcap-admin-infrastructure-sacm" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-bpm" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-application" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-client" charset="UTF-8" />
@@ -19,8 +26,12 @@
     <file url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app1" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app2" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bcap-demo/ddd" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bcap-demo/ddd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-support" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-application" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain" charset="UTF-8" />

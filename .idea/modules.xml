@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin-application-acnt/bcap-admin-application-acnt.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin-application-acnt/bcap-admin-application-acnt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin-application-sacm/bcap-admin-application-sacm.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin-application-sacm/bcap-admin-application-sacm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin-domain-acnt/bcap-admin-domain-acnt.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin-domain-acnt/bcap-admin-domain-acnt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin-domain-sacm/bcap-admin-domain-sacm.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin-domain-sacm/bcap-admin-domain-sacm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin-infrastructure-acnt/bcap-admin-infrastructure-acnt.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin-infrastructure-acnt/bcap-admin-infrastructure-acnt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-admin/bcap-admin-infrastructure-sacm/bcap-admin-infrastructure-sacm.iml" filepath="$PROJECT_DIR$/bcap-admin/bcap-admin-infrastructure-sacm/bcap-admin-infrastructure-sacm.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-client/bcap-bpm-client.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-client/bcap-bpm-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-domain/bcap-bpm-domain.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-domain/bcap-bpm-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-bpm/bcap-bpm-infrastructure/bcap-bpm-infrastructure.iml" filepath="$PROJECT_DIR$/bcap-bpm/bcap-bpm-infrastructure/bcap-bpm-infrastructure.iml" />
@@ -18,6 +25,12 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app2/bcap-demo-app2.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-app2/bcap-demo-app2.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-master.iml" filepath="$PROJECT_DIR$/bcap-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1/bcap-sso-cas-app1.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1/bcap-sso-cas-app1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client1/bcap-sso-cas-client1.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client1/bcap-sso-cas-client1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management/bcap-sso-cas-management.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management/bcap-sso-cas-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/bcap-sso-cas-server.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/bcap-sso-cas-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-support/bcap-sso-support.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-support/bcap-sso-support.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/bcap-uamc-application.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/bcap-uamc-application.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" filepath="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/bcap-uamc-domain.iml" />

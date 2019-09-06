@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management/overlays" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/overlays" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app1" />
+    <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client2" />
+    <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management" />
+    <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-ui" />
+    <type id="Spring" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -12,26 +18,17 @@
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-demo/bcap-demo-app1/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-sso/bcap-sso-support/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/bcap-application/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-api/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-app/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-admin/bcap-admin-application-acm/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-admin/bcap-admin-domain-acm/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-application/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-core/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-service/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-bpm/bcap-bpm-web/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-bpm/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-common/bcap-common-domain/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-common/bcap-common-generic/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-common/bcap-common-ttt/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-demo/ddd/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-domain/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-infrastructure/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-ui/pom.xml" />
+        <option value="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client2/pom.xml" />
       </set>
     </option>
   </component>

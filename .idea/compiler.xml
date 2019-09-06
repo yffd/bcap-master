@@ -7,10 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bcap-admin-application-acnt" />
+        <module name="bcap-admin-application-sacm" />
+        <module name="bcap-admin-domain-acnt" />
+        <module name="bcap-admin-domain-sacm" />
+        <module name="bcap-admin-infrastructure-acnt" />
+        <module name="bcap-admin-infrastructure-sacm" />
         <module name="bcap-bpm-client" />
         <module name="bcap-bpm-domain" />
         <module name="bcap-bpm-infrastructure" />
         <module name="bcap-bpm-ui" />
+        <module name="bcap-cas-server" />
         <module name="bcap-common-code" />
         <module name="bcap-common-ddd" />
         <module name="bcap-common-generic" />
@@ -22,6 +29,11 @@
         <module name="bcap-demo-app2" />
         <module name="bcap-demo-core" />
         <module name="bcap-infrastructure" />
+        <module name="bcap-sso-cas-app1" />
+        <module name="bcap-sso-cas-client1" />
+        <module name="bcap-sso-cas-management" />
+        <module name="bcap-sso-cas-server" />
+        <module name="bcap-sso-support" />
         <module name="bcap-uamc-application" />
         <module name="bcap-uamc-domain" />
         <module name="bcap-uamc-infrastructure" />
@@ -29,6 +41,15 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bcap-admin" target="1.8" />
+      <module name="bcap-admin-application-acm" target="1.8" />
+      <module name="bcap-admin-application-acnt" target="1.8" />
+      <module name="bcap-admin-application-sacm" target="1.8" />
+      <module name="bcap-admin-domain-acm" target="1.8" />
+      <module name="bcap-admin-domain-acnt" target="1.8" />
+      <module name="bcap-admin-domain-sacm" target="1.8" />
+      <module name="bcap-admin-infrastructure-acnt" target="1.8" />
+      <module name="bcap-admin-infrastructure-sacm" target="1.8" />
       <module name="bcap-application" target="8" />
       <module name="bcap-bpm" target="1.8" />
       <module name="bcap-bpm-admin" target="8" />
@@ -42,6 +63,7 @@
       <module name="bcap-bpm-service" target="8" />
       <module name="bcap-bpm-ui" target="1.8" />
       <module name="bcap-bpm-web" target="8" />
+      <module name="bcap-cas-server" target="1.8" />
       <module name="bcap-common" target="1.8" />
       <module name="bcap-common-code" target="1.8" />
       <module name="bcap-common-core" target="1.8" />
@@ -60,6 +82,13 @@
       <module name="bcap-domain" target="8" />
       <module name="bcap-infrastructure" target="8" />
       <module name="bcap-master" target="1.8" />
+      <module name="bcap-sso" target="1.8" />
+      <module name="bcap-sso-cas-app1" target="1.8" />
+      <module name="bcap-sso-cas-client1" target="1.8" />
+      <module name="bcap-sso-cas-client2" target="1.8" />
+      <module name="bcap-sso-cas-management" target="1.8" />
+      <module name="bcap-sso-cas-server" target="1.8" />
+      <module name="bcap-sso-support" target="1.8" />
       <module name="bcap-uamc" target="1.8" />
       <module name="bcap-uamc-application" target="1.8" />
       <module name="bcap-uamc-client" target="1.8" />
