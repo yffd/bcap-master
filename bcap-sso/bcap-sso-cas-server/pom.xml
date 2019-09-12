@@ -21,7 +21,7 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
-        <!--新增支持jdbc验证-->
+        <!--新增支持jdbc验证（4种方式）-->
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-jdbc</artifactId>
@@ -33,12 +33,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- 支持三种校验方式，包括文件存储用户校验器（白名单）、拒绝用户校验器（黑名单）、shiro校验器 -->
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-support-generic</artifactId>
-            <version>${cas.version}</version>
-        </dependency>
+        <!-- 支持三种认证方式，包括文件存储用户认证（白名单）、拒绝用户认证（黑名单）、shiro认证 -->
+        <!--<dependency>-->
+            <!--<groupId>org.apereo.cas</groupId>-->
+            <!--<artifactId>cas-server-support-generic</artifactId>-->
+            <!--<version>${cas.version}</version>-->
+        <!--</dependency>-->
         <!-- rest 认证 -->
         <dependency>
             <groupId>org.apereo.cas</groupId>

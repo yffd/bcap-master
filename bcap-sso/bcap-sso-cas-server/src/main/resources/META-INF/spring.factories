@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.yffd.bcap.sso.middleware.cas.authentication.CustomAuthenticationEventExecutionPlanConfigurer,\
+com.yffd.bcap.sso.middleware.cas.authentication.shiro.CustomShiroAuthenticationEventExecutionPlanConfigurer

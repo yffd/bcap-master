@@ -26,7 +26,9 @@
       <module fileurl="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" filepath="$PROJECT_DIR$/bcap-demo/bcap-demo-core/bcap-demo-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-master.iml" filepath="$PROJECT_DIR$/bcap-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app/bcap-sso-cas-app.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app/bcap-sso-cas-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1/bcap-sso-cas-app1.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1/bcap-sso-cas-app1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app2/bcap-sso-cas-app2.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app2/bcap-sso-cas-app2.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client1/bcap-sso-cas-client1.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client1/bcap-sso-cas-client1.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management/bcap-sso-cas-management.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management/bcap-sso-cas-management.iml" />
       <module fileurl="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/bcap-sso-cas-server.iml" filepath="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/bcap-sso-cas-server.iml" />

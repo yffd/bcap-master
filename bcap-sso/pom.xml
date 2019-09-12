@@ -17,6 +17,9 @@
         <module>bcap-sso-cas-client1</module>
         <!--<module>bcap-sso-cas-management</module>-->
         <module>bcap-sso-support</module>
+        <module>bcap-sso-cas-app</module>
+        <module>bcap-sso-cas-app1</module>
+        <module>bcap-sso-cas-app2</module>
     </modules>
 
     <properties>

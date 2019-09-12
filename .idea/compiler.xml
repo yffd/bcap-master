@@ -29,7 +29,9 @@
         <module name="bcap-demo-app2" />
         <module name="bcap-demo-core" />
         <module name="bcap-infrastructure" />
+        <module name="bcap-sso-cas-app" />
         <module name="bcap-sso-cas-app1" />
+        <module name="bcap-sso-cas-app2" />
         <module name="bcap-sso-cas-client1" />
         <module name="bcap-sso-cas-management" />
         <module name="bcap-sso-cas-server" />
@@ -83,7 +85,9 @@
       <module name="bcap-infrastructure" target="8" />
       <module name="bcap-master" target="1.8" />
       <module name="bcap-sso" target="1.8" />
+      <module name="bcap-sso-cas-app" target="1.8" />
       <module name="bcap-sso-cas-app1" target="1.8" />
+      <module name="bcap-sso-cas-app2" target="1.8" />
       <module name="bcap-sso-cas-client1" target="1.8" />
       <module name="bcap-sso-cas-client2" target="1.8" />
       <module name="bcap-sso-cas-management" target="1.8" />

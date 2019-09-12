@@ -104,7 +104,7 @@
             <AppenderRef ref="casAudit"/>
         </AsyncLogger>
 
-        <AsyncLogger name="com.yffd.bcap.sso.middleware.cas.password.CustomPasswordEncoder" level="info" includeLocation="true">
+        <AsyncLogger name="com.yffd.bcap.sso.middleware.cas" level="info" includeLocation="true">
             <AppenderRef ref="casConsole"/>
         </AsyncLogger>
 

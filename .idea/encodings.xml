@@ -27,10 +27,13 @@
     <file url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app2" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app2" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client1" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/src/main/resources/services/HTTPSandIMAPS-10000001.json" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-support" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bcap-uamc/bcap-uamc-application" charset="UTF-8" />

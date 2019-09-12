@@ -9,4 +9,6 @@ public class SsoPasswordUtilsTest {
         String encodePwd = SsoPasswordUtils.encodePwd("123456", "adminsalt");
         System.out.println(encodePwd);
     }
+
+
 }

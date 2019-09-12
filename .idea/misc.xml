@@ -4,6 +4,9 @@
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management/overlays" />
     <file url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server/overlays" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-demo/bcap-demo-app1" />
+    <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app" />
+    <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1" />
+    <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app2" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-client2" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-management" />
     <file type="web" url="file://$PROJECT_DIR$/bcap-sso/bcap-sso-cas-server" />
@@ -18,7 +21,6 @@
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-domain/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-uamc/bcap-uamc-application/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-demo/bcap-demo-app1/pom.xml" />
-        <option value="$PROJECT_DIR$/bcap-sso/bcap-sso-cas-app1/pom.xml" />
         <option value="$PROJECT_DIR$/bcap-sso/bcap-sso-support/pom.xml" />
       </list>
     </option>

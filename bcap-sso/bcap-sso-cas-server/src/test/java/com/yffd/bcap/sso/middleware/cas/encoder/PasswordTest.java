@@ -34,4 +34,5 @@ public class PasswordTest {
         String encodPwd = md5PasswordEncoder.encodePassword("123456", "");
         System.out.println(encodPwd);
     }
+
 }
